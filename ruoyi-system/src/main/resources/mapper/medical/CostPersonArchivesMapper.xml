@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.CostPersonArchivesMapper">
+
+    <resultMap type="CostPersonArchives" id="CostPersonArchivesResult">
+        <result property="id" column="id" javaType="java.lang.String"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="code" column="code"/>
+        <result property="sex" column="sex"/>
+        <association property="tmd" javaType="TMedicalDo">
+            <id column="myId" property="id"/>
+            <result column="doUser" property="doUser"/>
+            <result column="doTime" property="doTime"/>
+            <result column="doId" property="doId"/>
+            <result column="doType" property="doType"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectCostPersonArchivesVo">
+        select id, name, age, code, sex from t_medical_cost_person_archives
+    </sql>
+
+    <sql id="selJoin">
+        select ta.id, name, age, code, sex,td.id myId,td.doUser,td.doTime,td.doId,td.doType
+        from t_medical_cost_person_archives ta,t_medical_do td
+        where td.doType = 0 and ta.id = td.doId
+    </sql>
+
+    <select id="selectCostPersonArchivesList" parameterType="CostPersonArchives" resultMap="CostPersonArchivesResult">
+        <include refid="selJoin"/>
+        <if test="name != null  and name != ''">and name like concat('%', #{name}, '%')</if>
+        <if test="id != null ">and td.doUser like concat('%', #{id}, '%')</if>
+        <if test="code != null  and code != ''">and code = #{code}</if>
+        <if test="sex != null  and sex != ''">and sex = #{sex}</if>
+    </select>
+
+    <select id="selectCostPersonArchivesById" parameterType="String" resultMap="CostPersonArchivesResult">
+        <include refid="selJoin"/>
+        and ta.id = #{id}
+    </select>
+
+    <insert id="insertCostPersonArchives" parameterType="CostPersonArchives">
+        insert into t_medical_cost_person_archives
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="age != null">age,</if>
+            <if test="code != null">code,</if>
+            <if test="sex != null">sex,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="age != null">#{age},</if>
+            <if test="code != null">#{code},</if>
+            <if test="sex != null">#{sex},</if>
+        </trim>
+    </insert>
+
+    <update id="updateCostPersonArchives" parameterType="CostPersonArchives">
+        update t_medical_cost_person_archives
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="code != null">code = #{code},</if>
+            <if test="sex != null">sex = #{sex},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCostPersonArchivesById" parameterType="String">
+        delete from t_medical_cost_person_archives where id = #{id}
+    </delete>
+
+    <delete id="deleteCostPersonArchivesByIds" parameterType="String">
+        delete from t_medical_cost_person_archives where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

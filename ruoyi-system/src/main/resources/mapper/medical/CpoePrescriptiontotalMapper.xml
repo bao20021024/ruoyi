@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.CpoePrescriptiontotalMapper">
+    
+    <resultMap type="CpoePrescriptiontotal" id="CpoePrescriptiontotalResult">
+        <result property="id"    column="id"    />
+        <result property="statue"    column="statue"    />
+        <result property="partId"    column="partId"    />
+        <result property="partType"    column="partType"    />
+        <result property="partNo"    column="partNo"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectCpoePrescriptiontotalVo">
+        select id, statue, partId, partType, partNo, createTime, remark from t_medical_cpoe_prescriptiontotal
+    </sql>
+
+    <select id="selectCpoePrescriptiontotalList" parameterType="CpoePrescriptiontotal" resultMap="CpoePrescriptiontotalResult">
+        <include refid="selectCpoePrescriptiontotalVo"/>
+        <where>  
+            <if test="statue != null "> and statue = #{statue}</if>
+            <if test="partId != null  and partId != ''"> and partId = #{partId}</if>
+            <if test="partType != null  and partType != ''"> and partType = #{partType}</if>
+            <if test="partNo != null  and partNo != ''"> and partNo = #{partNo}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectCpoePrescriptiontotalById" parameterType="String" resultMap="CpoePrescriptiontotalResult">
+        <include refid="selectCpoePrescriptiontotalVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCpoePrescriptiontotal" parameterType="CpoePrescriptiontotal">
+        insert into t_medical_cpoe_prescriptiontotal
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="statue != null">statue,</if>
+            <if test="partId != null">partId,</if>
+            <if test="partType != null">partType,</if>
+            <if test="partNo != null">partNo,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="statue != null">#{statue},</if>
+            <if test="partId != null">#{partId},</if>
+            <if test="partType != null">#{partType},</if>
+            <if test="partNo != null">#{partNo},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCpoePrescriptiontotal" parameterType="CpoePrescriptiontotal">
+        update t_medical_cpoe_prescriptiontotal
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="statue != null">statue = #{statue},</if>
+            <if test="partId != null">partId = #{partId},</if>
+            <if test="partType != null">partType = #{partType},</if>
+            <if test="partNo != null">partNo = #{partNo},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCpoePrescriptiontotalById" parameterType="String">
+        delete from t_medical_cpoe_prescriptiontotal where id = #{id}
+    </delete>
+
+    <delete id="deleteCpoePrescriptiontotalByIds" parameterType="String">
+        delete from t_medical_cpoe_prescriptiontotal where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

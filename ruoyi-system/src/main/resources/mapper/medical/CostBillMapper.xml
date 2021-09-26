@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.CostBillMapper">
+    
+    <resultMap type="CostBill" id="CostBillResult">
+        <result property="id"    column="id"    />
+        <result property="outpatientId"    column="outpatientId"    />
+        <result property="money"    column="money"    />
+        <result property="createTime"    column="createTime"    />
+    </resultMap>
+
+    <sql id="selectCostBillVo">
+        select id, outpatientId, money, createTime from t_medical_cost_bill
+    </sql>
+
+    <select id="selectCostBillList" parameterType="CostBill" resultMap="CostBillResult">
+        <include refid="selectCostBillVo"/>
+        <where>  
+            <if test="outpatientId != null  and outpatientId != ''"> and outpatientId = #{outpatientId}</if>
+            <if test="money != null "> and money = #{money}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectCostBillById" parameterType="String" resultMap="CostBillResult">
+        <include refid="selectCostBillVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCostBill" parameterType="CostBill">
+        insert into t_medical_cost_bill
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="outpatientId != null">outpatientId,</if>
+            <if test="money != null">money,</if>
+            <if test="createTime != null">createTime,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="outpatientId != null">#{outpatientId},</if>
+            <if test="money != null">#{money},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCostBill" parameterType="CostBill">
+        update t_medical_cost_bill
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="outpatientId != null">outpatientId = #{outpatientId},</if>
+            <if test="money != null">money = #{money},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCostBillById" parameterType="String">
+        delete from t_medical_cost_bill where id = #{id}
+    </delete>
+
+    <delete id="deleteCostBillByIds" parameterType="String">
+        delete from t_medical_cost_bill where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

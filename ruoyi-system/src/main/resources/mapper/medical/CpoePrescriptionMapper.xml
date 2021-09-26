@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.CpoePrescriptionMapper">
+    
+    <resultMap type="CpoePrescription" id="CpoePrescriptionResult">
+        <result property="id"    column="id"    />
+        <result property="prescriptionTotalId"    column="prescriptionTotalId"    />
+        <result property="doctorsOrderId"    column="doctorsOrderId"    />
+        <result property="partId"    column="partId"    />
+        <result property="partNo"    column="partNo"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectCpoePrescriptionVo">
+        select id, prescriptionTotalId, doctorsOrderId, partId, partNo, createTime, remark from t_medical_cpoe_prescription
+    </sql>
+
+    <select id="selectCpoePrescriptionList" parameterType="CpoePrescription" resultMap="CpoePrescriptionResult">
+        <include refid="selectCpoePrescriptionVo"/>
+        <where>  
+            <if test="prescriptionTotalId != null  and prescriptionTotalId != ''"> and prescriptionTotalId = #{prescriptionTotalId}</if>
+            <if test="doctorsOrderId != null  and doctorsOrderId != ''"> and doctorsOrderId = #{doctorsOrderId}</if>
+            <if test="partId != null  and partId != ''"> and partId = #{partId}</if>
+            <if test="partNo != null  and partNo != ''"> and partNo = #{partNo}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectCpoePrescriptionById" parameterType="String" resultMap="CpoePrescriptionResult">
+        <include refid="selectCpoePrescriptionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCpoePrescription" parameterType="CpoePrescription">
+        insert into t_medical_cpoe_prescription
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="prescriptionTotalId != null">prescriptionTotalId,</if>
+            <if test="doctorsOrderId != null">doctorsOrderId,</if>
+            <if test="partId != null">partId,</if>
+            <if test="partNo != null">partNo,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="prescriptionTotalId != null">#{prescriptionTotalId},</if>
+            <if test="doctorsOrderId != null">#{doctorsOrderId},</if>
+            <if test="partId != null">#{partId},</if>
+            <if test="partNo != null">#{partNo},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCpoePrescription" parameterType="CpoePrescription">
+        update t_medical_cpoe_prescription
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="prescriptionTotalId != null">prescriptionTotalId = #{prescriptionTotalId},</if>
+            <if test="doctorsOrderId != null">doctorsOrderId = #{doctorsOrderId},</if>
+            <if test="partId != null">partId = #{partId},</if>
+            <if test="partNo != null">partNo = #{partNo},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCpoePrescriptionById" parameterType="String">
+        delete from t_medical_cpoe_prescription where id = #{id}
+    </delete>
+
+    <delete id="deleteCpoePrescriptionByIds" parameterType="String">
+        delete from t_medical_cpoe_prescription where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

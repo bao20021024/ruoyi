@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.DrugsStorageMapper">
+    
+    <resultMap type="DrugsStorage" id="DrugsStorageResult">
+        <result property="id"    column="id"    />
+        <result property="drugsId"    column="drugsId"    />
+        <result property="no"    column="no"    />
+    </resultMap>
+
+    <sql id="selectDrugsStorageVo">
+        select id, drugsId, no from t_medical_drugs_storage
+    </sql>
+
+    <select id="selectDrugsStorageList" parameterType="DrugsStorage" resultMap="DrugsStorageResult">
+        <include refid="selectDrugsStorageVo"/>
+        <where>  
+            <if test="drugsId != null  and drugsId != ''"> and drugsId = #{drugsId}</if>
+            <if test="no != null "> and no = #{no}</if>
+        </where>
+    </select>
+    
+    <select id="selectDrugsStorageById" parameterType="String" resultMap="DrugsStorageResult">
+        <include refid="selectDrugsStorageVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDrugsStorage" parameterType="DrugsStorage">
+        insert into t_medical_drugs_storage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="drugsId != null">drugsId,</if>
+            <if test="no != null">no,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="drugsId != null">#{drugsId},</if>
+            <if test="no != null">#{no},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDrugsStorage" parameterType="DrugsStorage">
+        update t_medical_drugs_storage
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="drugsId != null">drugsId = #{drugsId},</if>
+            <if test="no != null">no = #{no},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDrugsStorageById" parameterType="String">
+        delete from t_medical_drugs_storage where id = #{id}
+    </delete>
+
+    <delete id="deleteDrugsStorageByIds" parameterType="String">
+        delete from t_medical_drugs_storage where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

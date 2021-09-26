@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.LisInfoMapper">
+    
+    <resultMap type="LisInfo" id="LisInfoResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="personId"    column="personId"    />
+        <result property="doctorid"    column="doctorid"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="status"    column="status"    />
+        <result property="receiveRecordId"    column="receiveRecordId"    />
+    </resultMap>
+
+    <sql id="selectLisInfoVo">
+        select id, name, personId, doctorid, createTime, status, receiveRecordId from t_medical_lis_info
+    </sql>
+
+    <select id="selectLisInfoList" parameterType="LisInfo" resultMap="LisInfoResult">
+        <include refid="selectLisInfoVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="personId != null  and personId != ''"> and personId = #{personId}</if>
+            <if test="doctorid != null  and doctorid != ''"> and doctorid = #{doctorid}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="receiveRecordId != null  and receiveRecordId != ''"> and receiveRecordId = #{receiveRecordId}</if>
+        </where>
+    </select>
+    
+    <select id="selectLisInfoById" parameterType="String" resultMap="LisInfoResult">
+        <include refid="selectLisInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertLisInfo" parameterType="LisInfo">
+        insert into t_medical_lis_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="personId != null">personId,</if>
+            <if test="doctorid != null">doctorid,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="status != null">status,</if>
+            <if test="receiveRecordId != null">receiveRecordId,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="personId != null">#{personId},</if>
+            <if test="doctorid != null">#{doctorid},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="receiveRecordId != null">#{receiveRecordId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateLisInfo" parameterType="LisInfo">
+        update t_medical_lis_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="personId != null">personId = #{personId},</if>
+            <if test="doctorid != null">doctorid = #{doctorid},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="receiveRecordId != null">receiveRecordId = #{receiveRecordId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteLisInfoById" parameterType="String">
+        delete from t_medical_lis_info where id = #{id}
+    </delete>
+
+    <delete id="deleteLisInfoByIds" parameterType="String">
+        delete from t_medical_lis_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

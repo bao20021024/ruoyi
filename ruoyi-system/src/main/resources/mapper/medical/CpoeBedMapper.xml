@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.CpoeBedMapper">
+    
+    <resultMap type="CpoeBed" id="CpoeBedResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="sickroomId"    column="sickroomId"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectCpoeBedVo">
+        select id, name, sickroomId, remark from t_medical_cpoe_bed
+    </sql>
+
+    <select id="selectCpoeBedList" parameterType="CpoeBed" resultMap="CpoeBedResult">
+        <include refid="selectCpoeBedVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="sickroomId != null  and sickroomId != ''"> and sickroomId = #{sickroomId}</if>
+        </where>
+    </select>
+    
+    <select id="selectCpoeBedById" parameterType="String" resultMap="CpoeBedResult">
+        <include refid="selectCpoeBedVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCpoeBed" parameterType="CpoeBed">
+        insert into t_medical_cpoe_bed
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="sickroomId != null">sickroomId,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="sickroomId != null">#{sickroomId},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCpoeBed" parameterType="CpoeBed">
+        update t_medical_cpoe_bed
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="sickroomId != null">sickroomId = #{sickroomId},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCpoeBedById" parameterType="String">
+        delete from t_medical_cpoe_bed where id = #{id}
+    </delete>
+
+    <delete id="deleteCpoeBedByIds" parameterType="String">
+        delete from t_medical_cpoe_bed where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

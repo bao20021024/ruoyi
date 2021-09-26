@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.TMedicalDoMapper">
+    
+    <resultMap type="TMedicalDo" id="TMedicalDoResult">
+        <result property="id"    column="id"    />
+        <result property="doUser"    column="doUser"    />
+        <result property="doTime"    column="doTime"    />
+        <result property="doId"    column="doId"    />
+        <result property="doType"    column="doType"    />
+    </resultMap>
+
+    <sql id="selectTMedicalDoVo">
+        select id, doUser, doTime, doId, doType from t_medical_do
+    </sql>
+
+    <select id="selectTMedicalDoList" parameterType="TMedicalDo" resultMap="TMedicalDoResult">
+        <include refid="selectTMedicalDoVo"/>
+        <where>  
+            <if test="doUser != null  and doUser != ''"> and doUser = #{doUser}</if>
+            <if test="doTime != null "> and doTime = #{doTime}</if>
+            <if test="doId != null  and doId != ''"> and doId = #{doId}</if>
+            <if test="doType != null "> and doType = #{doType}</if>
+        </where>
+    </select>
+    
+    <select id="selectTMedicalDoById" parameterType="String" resultMap="TMedicalDoResult">
+        <include refid="selectTMedicalDoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTMedicalDo" parameterType="TMedicalDo">
+        insert into t_medical_do
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="doUser != null">doUser,</if>
+            <if test="doTime != null">doTime,</if>
+            <if test="doId != null">doId,</if>
+            <if test="doType != null">doType,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="doUser != null">#{doUser},</if>
+            <if test="doTime != null">#{doTime},</if>
+            <if test="doId != null">#{doId},</if>
+            <if test="doType != null">#{doType},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTMedicalDo" parameterType="TMedicalDo">
+        update t_medical_do
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="doUser != null">doUser = #{doUser},</if>
+            <if test="doTime != null">doTime = #{doTime},</if>
+            <if test="doId != null">doId = #{doId},</if>
+            <if test="doType != null">doType = #{doType},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTMedicalDoById" parameterType="String">
+        delete from t_medical_do where id = #{id}
+    </delete>
+
+    <delete id="deleteTMedicalDoByIds" parameterType="String">
+        delete from t_medical_do where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

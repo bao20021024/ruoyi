@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.DrugsPharmacyMapper">
+    
+    <resultMap type="DrugsPharmacy" id="DrugsPharmacyResult">
+        <result property="id"    column="id"    />
+        <result property="drugsId"    column="drugsId"    />
+        <result property="name"    column="name"    />
+        <result property="no"    column="no"    />
+    </resultMap>
+
+    <sql id="selectDrugsPharmacyVo">
+        select id, drugsId, name, no from t_medical_drugs_pharmacy
+    </sql>
+
+    <select id="selectDrugsPharmacyList" parameterType="DrugsPharmacy" resultMap="DrugsPharmacyResult">
+        <include refid="selectDrugsPharmacyVo"/>
+        <where>  
+            <if test="drugsId != null  and drugsId != ''"> and drugsId = #{drugsId}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="no != null "> and no = #{no}</if>
+        </where>
+    </select>
+    
+    <select id="selectDrugsPharmacyById" parameterType="String" resultMap="DrugsPharmacyResult">
+        <include refid="selectDrugsPharmacyVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDrugsPharmacy" parameterType="DrugsPharmacy">
+        insert into t_medical_drugs_pharmacy
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="drugsId != null">drugsId,</if>
+            <if test="name != null">name,</if>
+            <if test="no != null">no,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="drugsId != null">#{drugsId},</if>
+            <if test="name != null">#{name},</if>
+            <if test="no != null">#{no},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDrugsPharmacy" parameterType="DrugsPharmacy">
+        update t_medical_drugs_pharmacy
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="drugsId != null">drugsId = #{drugsId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="no != null">no = #{no},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDrugsPharmacyById" parameterType="String">
+        delete from t_medical_drugs_pharmacy where id = #{id}
+    </delete>
+
+    <delete id="deleteDrugsPharmacyByIds" parameterType="String">
+        delete from t_medical_drugs_pharmacy where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
