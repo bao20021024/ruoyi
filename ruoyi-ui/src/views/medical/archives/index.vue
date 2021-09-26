@@ -220,7 +220,7 @@
             this.pdMoney = true;
             this.show = false;
             this.open = true;
-            this.title = "办卡";
+            this.title = "办卡 ";
           }
         });
       },
