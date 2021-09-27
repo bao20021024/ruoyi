@@ -92,4 +92,9 @@ public class CostOutpatientRechargeRecordServiceImpl implements ICostOutpatientR
     {
         return costOutpatientRechargeRecordMapper.deleteCostOutpatientRechargeRecordById(id);
     }
+
+    @Override
+    public List<CostOutpatientRechargeRecord> selectByInfo(String outpatientId) {
+        return costOutpatientRechargeRecordMapper.selectByInfo(outpatientId);
+    }
 }

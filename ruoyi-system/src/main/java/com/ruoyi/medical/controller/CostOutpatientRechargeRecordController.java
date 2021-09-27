@@ -1,6 +1,7 @@
 package com.ruoyi.medical.controller;
 
 import java.util.List;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +23,13 @@ import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * 门诊卡充值记录Controller
- * 
+ *
  * @author bao
  * @date 2021-09-23
  */
 @RestController
 @RequestMapping("/medical/record")
-public class CostOutpatientRechargeRecordController extends BaseController
-{
+public class CostOutpatientRechargeRecordController extends BaseController {
     @Autowired
     private ICostOutpatientRechargeRecordService costOutpatientRechargeRecordService;
 
@@ -38,8 +38,7 @@ public class CostOutpatientRechargeRecordController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:record:list')")
     @GetMapping("/list")
-    public TableDataInfo list(CostOutpatientRechargeRecord costOutpatientRechargeRecord)
-    {
+    public TableDataInfo list(CostOutpatientRechargeRecord costOutpatientRechargeRecord) {
         startPage();
         List<CostOutpatientRechargeRecord> list = costOutpatientRechargeRecordService.selectCostOutpatientRechargeRecordList(costOutpatientRechargeRecord);
         return getDataTable(list);
@@ -51,21 +50,21 @@ public class CostOutpatientRechargeRecordController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:record:export')")
     @Log(title = "门诊卡充值记录", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(CostOutpatientRechargeRecord costOutpatientRechargeRecord)
-    {
+    public AjaxResult export(CostOutpatientRechargeRecord costOutpatientRechargeRecord) {
         List<CostOutpatientRechargeRecord> list = costOutpatientRechargeRecordService.selectCostOutpatientRechargeRecordList(costOutpatientRechargeRecord);
         ExcelUtil<CostOutpatientRechargeRecord> util = new ExcelUtil<CostOutpatientRechargeRecord>(CostOutpatientRechargeRecord.class);
         return util.exportExcel(list, "门诊卡充值记录数据");
     }
 
     /**
-     * 获取门诊卡充值记录详细信息
+     * 获取门诊卡充值取现记录
      */
     @PreAuthorize("@ss.hasPermi('medical:record:query')")
-    @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") String id)
-    {
-        return AjaxResult.success(costOutpatientRechargeRecordService.selectCostOutpatientRechargeRecordById(id));
+    @GetMapping(value = "/{outpatientId}")
+    public TableDataInfo getInfo(@PathVariable("outpatientId") String outpatientId) {
+        startPage();
+        List<CostOutpatientRechargeRecord> list = costOutpatientRechargeRecordService.selectByInfo(outpatientId);
+        return getDataTable(list);
     }
 
     /**
@@ -74,8 +73,7 @@ public class CostOutpatientRechargeRecordController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:record:add')")
     @Log(title = "门诊卡充值记录", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody CostOutpatientRechargeRecord costOutpatientRechargeRecord)
-    {
+    public AjaxResult add(@RequestBody CostOutpatientRechargeRecord costOutpatientRechargeRecord) {
         return toAjax(costOutpatientRechargeRecordService.insertCostOutpatientRechargeRecord(costOutpatientRechargeRecord));
     }
 
@@ -85,8 +83,7 @@ public class CostOutpatientRechargeRecordController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:record:edit')")
     @Log(title = "门诊卡充值记录", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody CostOutpatientRechargeRecord costOutpatientRechargeRecord)
-    {
+    public AjaxResult edit(@RequestBody CostOutpatientRechargeRecord costOutpatientRechargeRecord) {
         return toAjax(costOutpatientRechargeRecordService.updateCostOutpatientRechargeRecord(costOutpatientRechargeRecord));
     }
 
@@ -95,9 +92,8 @@ public class CostOutpatientRechargeRecordController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:record:remove')")
     @Log(title = "门诊卡充值记录", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable String[] ids)
-    {
+    @DeleteMapping("/{ids}")
+    public AjaxResult remove(@PathVariable String[] ids) {
         return toAjax(costOutpatientRechargeRecordService.deleteCostOutpatientRechargeRecordByIds(ids));
     }
 }

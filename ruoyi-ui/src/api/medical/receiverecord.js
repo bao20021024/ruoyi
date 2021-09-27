@@ -51,3 +51,12 @@ export function exportReceiverecord(query) {
     params: query
   })
 }
+
+// 新增医生看病流程
+export function kanAction(data) {
+  return request({
+    url: '/medical/action',
+    method: 'post',
+    data: data
+  })
+}

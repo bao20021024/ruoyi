@@ -23,6 +23,13 @@
             <result column="doId" property="doId"/>
             <result column="doType" property="doType"/>
         </association>
+        <association property="cpa" javaType="CostPersonArchives">
+            <result property="id" column="cpaId"/>
+            <result property="name" column="name"/>
+            <result property="age" column="age"/>
+            <result property="code" column="code"/>
+            <result property="sex" column="sex"/>
+        </association>
     </resultMap>
 
     <sql id="selectCostOutpatientInfoVo">

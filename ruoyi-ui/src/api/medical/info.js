@@ -69,3 +69,21 @@ export function moneyArchives(data) {
     data: data
   })
 }
+
+// 查询接诊记录列表
+export function listReceiverecord(query) {
+  return request({
+    url: '/medical/receiverecord/list',
+    method: 'get',
+    params: query
+  })
+}
+
+// 新增接诊记录
+export function jieReceiverecord(data) {
+  return request({
+    url: '/medical/receiverecord',
+    method: 'post',
+    data: data
+  })
+}

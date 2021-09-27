@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.medical.mapper.TMedicalOutpatientdoctorReceiverecordMapper">
+
+    <resultMap type="TMedicalOutpatientdoctorReceiverecord" id="base">
+        <result property="opDoctorReceiveRecordId" column="opDoctorReceiveRecordId"/>
+        <result property="outpatientId" column="outpatientId"/>
+        <result property="doctorId" column="doctorId"/>
+        <result property="type" column="type"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="createTime"/>
+    </resultMap>
+
+    <resultMap type="TMedicalOutpatientdoctorReceiverecord" extends="base"
+               id="TMedicalOutpatientdoctorReceiverecordResult">
+        <association property="coi" javaType="CostOutpatientInfo">
+            <result property="id" column="id"/>
+            <result property="money" column="money"/>
+            <result property="enableTime" column="enableTime"/>
+            <result property="lossTime" column="lossTime"/>
+            <result property="deadTime" column="deadTime"/>
+            <result property="returnTime" column="returnTime"/>
+            <result property="status" column="coiStatus"/>
+            <result property="deposit" column="deposit"/>
+            <result property="personid" column="personid"/>
+            <association property="cpa" javaType="CostPersonArchives">
+                <result property="id" column="cpaId"/>
+                <result property="name" column="name"/>
+                <result property="age" column="age"/>
+                <result property="code" column="code"/>
+                <result property="sex" column="sex"/>
+            </association>
+        </association>
+        <association property="user" javaType="SysUser">
+            <id property="userId" column="user_id"/>
+            <result property="deptId" column="dept_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="nickName" column="nick_name"/>
+            <result property="email" column="email"/>
+            <result property="phonenumber" column="phonenumber"/>
+            <result property="sex" column="sex"/>
+            <result property="avatar" column="avatar"/>
+            <result property="password" column="password"/>
+            <result property="status" column="status"/>
+            <result property="delFlag" column="del_flag"/>
+            <result property="loginIp" column="login_ip"/>
+            <result property="loginDate" column="login_date"/>
+            <result property="createBy" column="create_by"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateBy" column="update_by"/>
+            <result property="updateTime" column="update_time"/>
+            <result property="remark" column="remark"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectTMedicalOutpatientdoctorReceiverecordVo">
+        select opDoctorReceiveRecordId, outpatientId, doctorId, type, status, createTime from t_medical_outpatientdoctor_receiverecord
+    </sql>
+
+    <sql id="selJoin">
+        select opDoctorReceiveRecordId, outpatientId ,doctorId, t.type, t.status, t.createTime, name, personid,nick_name
+        from (select opDoctorReceiveRecordId, outpatientId ,doctorId, type, tr.status, tr.createTime, name, personid
+        from t_medical_outpatientdoctor_receiverecord tr,t_medical_cost_outpatient_info ti,t_medical_cost_person_archives ta
+        where tr.outpatientId = ti.id and ti.personid = ta.id) t
+        left join sys_user u on t.doctorId = u.user_id
+    </sql>
+
+    <select id="selectTMedicalOutpatientdoctorReceiverecordList" parameterType="TMedicalOutpatientdoctorReceiverecord"
+            resultMap="TMedicalOutpatientdoctorReceiverecordResult">
+        <include refid="selJoin"/>
+        where 1 = 1
+        <if test="outpatientId != null  and outpatientId != ''">and outpatientId = #{outpatientId}</if>
+        <if test="doctorId != null  and doctorId != ''">and doctorId = #{doctorId}</if>
+        <if test="type != null ">and t.type = #{type}</if>
+        <if test="status != null and opDoctorReceiveRecordId == null">and t.status = #{status}</if>
+        <if test="status != null and opDoctorReceiveRecordId != null">and t.status &lt; #{status}</if>
+        <if test="createTime != null ">and t.createTime = #{createTime}</if>
+        order by t.status,opDoctorReceiveRecordId
+    </select>
+
+    <select id="selectTMedicalOutpatientdoctorReceiverecordByOpDoctorReceiveRecordId" parameterType="String"
+            resultMap="TMedicalOutpatientdoctorReceiverecordResult">
+        <include refid="selJoin"/>
+        where opDoctorReceiveRecordId = #{opDoctorReceiveRecordId}
+    </select>
+
+    <insert id="insertTMedicalOutpatientdoctorReceiverecord" parameterType="TMedicalOutpatientdoctorReceiverecord">
+        insert into t_medical_outpatientdoctor_receiverecord
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="opDoctorReceiveRecordId != null">opDoctorReceiveRecordId,</if>
+            <if test="outpatientId != null">outpatientId,</if>
+            <if test="doctorId != null">doctorId,</if>
+            <if test="type != null">type,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="opDoctorReceiveRecordId != null">#{opDoctorReceiveRecordId},</if>
+            <if test="outpatientId != null">#{outpatientId},</if>
+            <if test="doctorId != null">#{doctorId},</if>
+            <if test="type != null">#{type},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+
+    <update id="updateTMedicalOutpatientdoctorReceiverecord" parameterType="TMedicalOutpatientdoctorReceiverecord">
+        update t_medical_outpatientdoctor_receiverecord
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="outpatientId != null">outpatientId = #{outpatientId},</if>
+            <if test="doctorId != null">doctorId = #{doctorId},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+        </trim>
+        where opDoctorReceiveRecordId = #{opDoctorReceiveRecordId}
+    </update>
+
+    <delete id="deleteTMedicalOutpatientdoctorReceiverecordByOpDoctorReceiveRecordId" parameterType="String">
+        delete from t_medical_outpatientdoctor_receiverecord where opDoctorReceiveRecordId = #{opDoctorReceiveRecordId}
+    </delete>
+
+    <delete id="deleteTMedicalOutpatientdoctorReceiverecordByOpDoctorReceiveRecordIds" parameterType="String">
+        delete from t_medical_outpatientdoctor_receiverecord where opDoctorReceiveRecordId in
+        <foreach item="opDoctorReceiveRecordId" collection="array" open="(" separator="," close=")">
+            #{opDoctorReceiveRecordId}
+        </foreach>
+    </delete>
+</mapper>

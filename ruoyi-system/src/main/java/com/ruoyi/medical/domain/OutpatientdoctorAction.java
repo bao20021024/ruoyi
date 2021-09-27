@@ -42,6 +42,16 @@ public class OutpatientdoctorAction extends BaseEntity
     @Excel(name = "门诊医生接诊记录id/医嘱记录id")
     private String opDoctorReceiveRecordId;
 
+    private TMedicalOutpatientdoctorReceiverecord tmor;
+
+    public TMedicalOutpatientdoctorReceiverecord getTmor() {
+        return tmor;
+    }
+
+    public void setTmor(TMedicalOutpatientdoctorReceiverecord tmor) {
+        this.tmor = tmor;
+    }
+
     public void setId(String id) 
     {
         this.id = id;

@@ -1,40 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.OutpatientdoctorActionMapper">
-    
-    <resultMap type="OutpatientdoctorAction" id="OutpatientdoctorActionResult">
-        <result property="id"    column="id"    />
-        <result property="partName"    column="partName"    />
-        <result property="partNumber"    column="partNumber"    />
-        <result property="personType"    column="personType"    />
-        <result property="partMoney"    column="partMoney"    />
-        <result property="type"    column="type"    />
-        <result property="opDoctorReceiveRecordId"    column="opDoctorReceiveRecordId"    />
+
+    <resultMap type="OutpatientdoctorAction" id="base">
+        <result property="id" column="id"/>
+        <result property="partName" column="partName"/>
+        <result property="partNumber" column="partNumber"/>
+        <result property="personType" column="personType"/>
+        <result property="partMoney" column="partMoney"/>
+        <result property="type" column="type"/>
+        <result property="opDoctorReceiveRecordId" column="opDoctorReceiveRecordId"/>
+    </resultMap>
+
+    <resultMap type="OutpatientdoctorAction" extends="base" id="OutpatientdoctorActionResult">
+        <association property="tmor" javaType="TMedicalOutpatientdoctorReceiverecord">
+            <result property="opDoctorReceiveRecordId" column="tmorOpDoctorReceiveRecordId"/>
+            <result property="outpatientId" column="outpatientId"/>
+            <result property="doctorId" column="doctorId"/>
+            <result property="type" column="tmorType"/>
+            <result property="status" column="status"/>
+            <result property="createTime" column="createTime"/>
+            <association property="coi" javaType="CostOutpatientInfo">
+                <result property="id" column="coiId"/>
+                <result property="money" column="money"/>
+                <result property="enableTime" column="enableTime"/>
+                <result property="lossTime" column="lossTime"/>
+                <result property="deadTime" column="deadTime"/>
+                <result property="returnTime" column="returnTime"/>
+                <result property="status" column="coiStatus"/>
+                <result property="deposit" column="deposit"/>
+                <result property="personid" column="personid"/>
+            </association>
+        </association>
     </resultMap>
 
     <sql id="selectOutpatientdoctorActionVo">
         select id, partName, partNumber, personType, partMoney, type, opDoctorReceiveRecordId from t_medical_outpatientdoctor_action
     </sql>
 
-    <select id="selectOutpatientdoctorActionList" parameterType="OutpatientdoctorAction" resultMap="OutpatientdoctorActionResult">
-        <include refid="selectOutpatientdoctorActionVo"/>
-        <where>  
-            <if test="partName != null  and partName != ''"> and partName like concat('%', #{partName}, '%')</if>
-            <if test="partNumber != null "> and partNumber = #{partNumber}</if>
-            <if test="personType != null "> and personType = #{personType}</if>
-            <if test="partMoney != null "> and partMoney = #{partMoney}</if>
-            <if test="type != null "> and type = #{type}</if>
-            <if test="opDoctorReceiveRecordId != null  and opDoctorReceiveRecordId != ''"> and opDoctorReceiveRecordId = #{opDoctorReceiveRecordId}</if>
-        </where>
+    <sql id="selJoin">
+        select ta.id, partName, partNumber, personType, partMoney, ta.type, ta.opDoctorReceiveRecordId,personid
+        from t_medical_outpatientdoctor_action ta,t_medical_outpatientDoctor_receiveRecord tr,t_medical_cost_outpatient_info ti
+        where ta.opDoctorReceiveRecordId = tr.opDoctorReceiveRecordId and tr.outpatientId = ti.id
+    </sql>
+
+    <select id="selectOutpatientdoctorActionList" parameterType="OutpatientdoctorAction"
+            resultMap="OutpatientdoctorActionResult">
+        <include refid="selJoin"/>
+        <if test="partName != null  and partName != ''">and partName like concat('%', #{partName}, '%')</if>
+        <if test="partNumber != null ">and partNumber = #{partNumber}</if>
+        <if test="personType != null ">and personType = #{personType}</if>
+        <if test="partMoney != null ">and partMoney = #{partMoney}</if>
+        <if test="type != null ">and ta.type = #{type}</if>
+        <if test="opDoctorReceiveRecordId != null  and opDoctorReceiveRecordId != ''">and ta.opDoctorReceiveRecordId =
+            #{opDoctorReceiveRecordId}
+        </if>
     </select>
-    
+
     <select id="selectOutpatientdoctorActionById" parameterType="String" resultMap="OutpatientdoctorActionResult">
         <include refid="selectOutpatientdoctorActionVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertOutpatientdoctorAction" parameterType="OutpatientdoctorAction">
         insert into t_medical_outpatientdoctor_action
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -45,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="partMoney != null">partMoney,</if>
             <if test="type != null">type,</if>
             <if test="opDoctorReceiveRecordId != null">opDoctorReceiveRecordId,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
             <if test="partName != null">#{partName},</if>
@@ -54,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="partMoney != null">#{partMoney},</if>
             <if test="type != null">#{type},</if>
             <if test="opDoctorReceiveRecordId != null">#{opDoctorReceiveRecordId},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateOutpatientdoctorAction" parameterType="OutpatientdoctorAction">
@@ -75,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteOutpatientdoctorActionByIds" parameterType="String">
-        delete from t_medical_outpatientdoctor_action where id in 
+        delete from t_medical_outpatientdoctor_action where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

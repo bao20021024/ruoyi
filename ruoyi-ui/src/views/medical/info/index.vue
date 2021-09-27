@@ -42,7 +42,11 @@
     </el-form>
 
     <el-row :gutter="10" class="mb8">
-
+      <el-col :span="1.5">
+        <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleGua"
+                   v-hasPermi="['medical:info:edit']">挂号
+        </el-button>
+      </el-col>
       <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleUpdate(1)"
                    v-hasPermi="['medical:info:edit']">启用
@@ -85,7 +89,13 @@
 
     <el-table v-loading="loading" :data="infoList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="门诊卡信息id" align="center" prop="id"/>
+      <el-table-column label="门诊卡信息id" align="center" prop="id" :show-overflow-tooltip="true">
+        <template slot-scope="scope">
+          <router-link :to="'/medical/record-data/index/' + scope.row.id" class="link-type">
+            <span>{{ scope.row.id }}</span>
+          </router-link>
+        </template>
+      </el-table-column>
       <el-table-column label="金额" align="center" prop="money"/>
       <el-table-column label="启用日期" align="center" prop="enableTime" width="180">
         <template slot-scope="scope">
@@ -117,6 +127,9 @@
       <el-table-column label="操作人" align="center" prop="tmd.doUser"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
+          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleGua(scope.row)"
+                     v-hasPermi="['medical:info:remove']">挂号
+          </el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(1,scope.row)"
                      v-hasPermi="['medical:info:remove']">启用
           </el-button>
@@ -199,7 +212,9 @@
     updateInfo,
     exportInfo,
     getCostInfoArchives,
-    moneyArchives
+    moneyArchives,
+    listReceiverecord,
+    jieReceiverecord
   } from "@/api/medical/info";
 
   export default {
@@ -373,6 +388,31 @@
             this.show = false;
             this.open = true;
             this.title = "取现";
+          }
+        });
+      },
+      /** 挂号 */
+      handleGua(row) {
+        const id = row.id || this.ids;
+        getInfo(id).then(response => {
+          this.form = response.data;
+          let status = this.form.status;
+          if (status != 1) {
+            this.msgError("卡未启用，不可挂号!");
+          } else {
+            listReceiverecord({
+              "outpatientId": id, "status": 5, "opDoctorReceiveRecordId": "bao"
+            }).then(response => {
+              if (response.rows.length == 0) {
+                jieReceiverecord({
+                  "outpatientId": id
+                }).then(response => {
+                  this.msgSuccess("挂号成功，请耐心等待接诊");
+                });
+              } else {
+                this.msgError("该卡已挂号，请耐心等待......");
+              }
+            });
           }
         });
       },

@@ -3,13 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CostOutpatientRechargeRecordMapper">
-
-    <resultMap type="CostOutpatientRechargeRecord" id="CostOutpatientRechargeRecordResult">
+    <resultMap type="CostOutpatientRechargeRecord" id="base">
         <result property="id" column="id"/>
         <result property="money" column="money"/>
         <result property="type" column="type"/>
         <result property="createTime" column="createTime"/>
         <result property="outpatientId" column="outpatientId"/>
+    </resultMap>
+
+    <resultMap type="CostOutpatientRechargeRecord" extends="base" id="CostOutpatientRechargeRecordResult">
         <association property="tmd" javaType="TMedicalDo">
             <id column="myId" property="id"/>
             <result column="doUser" property="doUser"/>
@@ -40,6 +42,11 @@
             resultMap="CostOutpatientRechargeRecordResult">
         <include refid="selJoin"/>
         and id = #{id}
+    </select>
+
+    <select id="selectByInfo" parameterType="String" resultMap="CostOutpatientRechargeRecordResult">
+        <include refid="selJoin" />
+        and outpatientId = #{outpatientId}
     </select>
 
     <insert id="insertCostOutpatientRechargeRecord" parameterType="CostOutpatientRechargeRecord">

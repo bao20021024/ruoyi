@@ -58,4 +58,12 @@ public interface CostOutpatientRechargeRecordMapper
      * @return 结果
      */
     public int deleteCostOutpatientRechargeRecordByIds(String[] ids);
+
+    /**
+     * 根据门诊卡信息id查询对应充值取现记录
+     * @param outpatientId 门诊卡信息id
+     * @return 门诊卡充值取现记录集合
+     */
+    public List<CostOutpatientRechargeRecord> selectByInfo(String outpatientId);
+
 }

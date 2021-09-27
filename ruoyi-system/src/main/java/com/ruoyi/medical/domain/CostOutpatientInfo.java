@@ -58,6 +58,16 @@ public class CostOutpatientInfo extends BaseEntity
 
     private TMedicalDo tmd;
 
+    private CostPersonArchives cpa;
+
+    public CostPersonArchives getCpa() {
+        return cpa;
+    }
+
+    public void setCpa(CostPersonArchives cpa) {
+        this.cpa = cpa;
+    }
+
     public void setId(Long id)
     {
         this.id = id;
