@@ -1,15 +1,13 @@
 package com.ruoyi.medical.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.ruoyi.common.utils.SecurityUtils;
-import com.ruoyi.medical.domain.LisInfo;
-import com.ruoyi.medical.domain.PacsInfo;
-import com.ruoyi.medical.domain.TMedicalOutpatientdoctorReceiverecord;
-import com.ruoyi.medical.service.ILisInfoService;
-import com.ruoyi.medical.service.IPacsInfoService;
-import com.ruoyi.medical.service.ITMedicalOutpatientdoctorReceiverecordService;
+import com.ruoyi.medical.domain.*;
+import com.ruoyi.medical.modle.LisAndPacs;
+import com.ruoyi.medical.service.*;
 import com.ruoyi.util.MyIdGenUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,6 @@ import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.enums.BusinessType;
-import com.ruoyi.medical.domain.OutpatientdoctorAction;
-import com.ruoyi.medical.service.IOutpatientdoctorActionService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
@@ -50,6 +46,9 @@ public class OutpatientdoctorActionController extends BaseController {
 
     @Autowired
     private ITMedicalOutpatientdoctorReceiverecordService itmors;
+
+    @Autowired
+    private IEmrDoctorsorderService ieds;
 
 
     /**
@@ -109,9 +108,9 @@ public class OutpatientdoctorActionController extends BaseController {
         if ("1".equals(type)) {
             outpatientdoctorAction.setType(1l);
             if ("1001".equals(partName)) {
-                outpatientdoctorAction.setPartMoney(50l);
+                outpatientdoctorAction.setPartMoney(50f);
             } else if ("1002".equals(partName)) {
-                outpatientdoctorAction.setPartMoney(20l);
+                outpatientdoctorAction.setPartMoney(20f);
             }
 
             LisInfo li = new LisInfo();
@@ -122,18 +121,32 @@ public class OutpatientdoctorActionController extends BaseController {
             li.setStatus(1l);
             li.setReceiveRecordId(opDoctorReceiveRecordId);
 
+            EmrDoctorsorder ed = new EmrDoctorsorder();
+            ed.setPersonId(personid);
+            ed.setDoctorId(userId);
+            ed.setStatus(2l);
+            ed.setType(2l);
+            ed.setDescription(partName);
+            ed.setCreateTime(d);
+
             for (int i = 0; i < partNumber; i++) {
-                li.setId(MyIdGenUtils.ByPinyinAndTimestamp(username));
+                id = MyIdGenUtils.ByPinyinAndTimestamp(username);
+                li.setId(id);
+                ed.setId(id);
 
                 code = ilis.insertLisInfo(li);
+
+                if (code > 0) {
+                    code = ieds.insertEmrDoctorsorder(ed);
+                }
             }
 
         } else if ("2".equals(type)) {
             outpatientdoctorAction.setType(2l);
             if ("2001".equals(partName)) {
-                outpatientdoctorAction.setPartMoney(70l);
+                outpatientdoctorAction.setPartMoney(70f);
             } else if ("2002".equals(partName)) {
-                outpatientdoctorAction.setPartMoney(100l);
+                outpatientdoctorAction.setPartMoney(100f);
             }
 
             PacsInfo pi = new PacsInfo();
@@ -144,10 +157,25 @@ public class OutpatientdoctorActionController extends BaseController {
             pi.setStatus(1l);
             pi.setReceiveRecordId(opDoctorReceiveRecordId);
 
+            EmrDoctorsorder ed = new EmrDoctorsorder();
+            ed.setPersonId(personid);
+            ed.setDoctorId(userId);
+            ed.setStatus(2l);
+            ed.setType(2l);
+            ed.setDescription(partName);
+            ed.setCreateTime(d);
+
             for (int i = 0; i < partNumber; i++) {
-                pi.setId(MyIdGenUtils.ByPinyinAndTimestamp(username));
+                id = MyIdGenUtils.ByPinyinAndTimestamp(username);
+                pi.setId(id);
+                ed.setId(id);
 
                 code = ipis.insertPacsInfo(pi);
+
+                if (code > 0) {
+                    code = ieds.insertEmrDoctorsorder(ed);
+                }
+
             }
 
         }
@@ -182,5 +210,22 @@ public class OutpatientdoctorActionController extends BaseController {
     @DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable String[] ids) {
         return toAjax(outpatientdoctorActionService.deleteOutpatientdoctorActionByIds(ids));
+    }
+
+    /**
+     * 检查详情
+     */
+    @PreAuthorize("@ss.hasPermi('medical:action:list')")
+    @PostMapping("/jian")
+    public TableDataInfo jian(@RequestBody String id) {
+        List<LisAndPacs> ls = ilis.selByReceiveRecordId(id);
+
+        List<LisAndPacs> ps = ipis.selByReceiveRecordId(id);
+
+        List<LisAndPacs> list = new ArrayList<>();
+        list.addAll(ls);
+        list.addAll(ps);
+
+        return getDataTable(list);
     }
 }

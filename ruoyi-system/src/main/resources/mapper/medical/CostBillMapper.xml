@@ -1,48 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CostBillMapper">
-    
-    <resultMap type="CostBill" id="CostBillResult">
-        <result property="id"    column="id"    />
-        <result property="outpatientId"    column="outpatientId"    />
-        <result property="money"    column="money"    />
-        <result property="createTime"    column="createTime"    />
+
+    <resultMap type="CostBill" id="base">
+        <result property="id" column="id"/>
+        <result property="outpatientId" column="outpatientId"/>
+        <result property="money" column="money"/>
+        <result property="createTime" column="createTime"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <resultMap type="CostBill" extends="base" id="CostBillResult">
+        <association property="coi" javaType="CostOutpatientInfo">
+            <result property="id" column="coiId"/>
+            <result property="money" column="coiMoney"/>
+            <result property="enableTime" column="enableTime"/>
+            <result property="lossTime" column="lossTime"/>
+            <result property="deadTime" column="deadTime"/>
+            <result property="returnTime" column="returnTime"/>
+            <result property="status" column="coiStatus"/>
+            <result property="deposit" column="deposit"/>
+            <result property="personid" column="personid"/>
+            <association property="cpa" javaType="CostPersonArchives">
+                <result property="id" column="cpaId"/>
+                <result property="name" column="name"/>
+                <result property="age" column="age"/>
+                <result property="code" column="code"/>
+                <result property="sex" column="sex"/>
+            </association>
+        </association>
     </resultMap>
 
     <sql id="selectCostBillVo">
-        select id, outpatientId, money, createTime from t_medical_cost_bill
+        select id, outpatientId, money, createTime,status from t_medical_cost_bill
+    </sql>
+
+    <sql id="selJoin">
+        select tb.id, ti.id coiId,tb.outpatientId, tb.money, tb.createTime,tb.status ,ti.money coiMoney,ti.status coiStatus,name
+        from t_medical_cost_bill tb,t_medical_cost_outpatient_info ti,t_medical_cost_person_archives ta
+        where tb.outpatientId = ti.id and ti.personid = ta.id
     </sql>
 
     <select id="selectCostBillList" parameterType="CostBill" resultMap="CostBillResult">
-        <include refid="selectCostBillVo"/>
-        <where>  
-            <if test="outpatientId != null  and outpatientId != ''"> and outpatientId = #{outpatientId}</if>
-            <if test="money != null "> and money = #{money}</if>
-            <if test="createTime != null "> and createTime = #{createTime}</if>
+        <include refid="selJoin"/>
+        <where>
+            <if test="money != null ">and tb.money = #{money}</if>
+            <if test="status != null ">and tb.status = #{status}</if>
+            <if test="createTime != null ">and tb.createTime = #{createTime}</if>
         </where>
     </select>
-    
+
     <select id="selectCostBillById" parameterType="String" resultMap="CostBillResult">
         <include refid="selectCostBillVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertCostBill" parameterType="CostBill">
         insert into t_medical_cost_bill
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>
             <if test="outpatientId != null">outpatientId,</if>
             <if test="money != null">money,</if>
-            <if test="createTime != null">createTime,</if>
-         </trim>
+            <if test="status != null">status,</if>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
             <if test="outpatientId != null">#{outpatientId},</if>
             <if test="money != null">#{money},</if>
-            <if test="createTime != null">#{createTime},</if>
-         </trim>
+            <if test="status != null">#{status},</if>
+        </trim>
     </insert>
 
     <update id="updateCostBill" parameterType="CostBill">
@@ -51,6 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="outpatientId != null">outpatientId = #{outpatientId},</if>
             <if test="money != null">money = #{money},</if>
             <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
         </trim>
         where id = #{id}
     </update>
@@ -60,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteCostBillByIds" parameterType="String">
-        delete from t_medical_cost_bill where id in 
+        delete from t_medical_cost_bill where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

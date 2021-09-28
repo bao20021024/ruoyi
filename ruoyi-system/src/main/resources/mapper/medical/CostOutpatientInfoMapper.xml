@@ -37,7 +37,9 @@
     </sql>
 
     <sql id="selJoin">
-        select ta.id, money, enableTime, lossTime, deadTime, returnTime, status, deposit, personid ,td.id myId,td.doUser,td.doTime,td.doId,td.doType from t_medical_cost_outpatient_info ta,t_medical_do td where td.doType = 1 and ta.id = td.doId
+        select ta.id, money, enableTime, lossTime, deadTime, returnTime, status, deposit, personid ,td.id myId,td.doUser,td.doTime,td.doId,td.doType,tp.name,tp.code
+        from t_medical_cost_outpatient_info ta,t_medical_do td,t_medical_cost_person_archives tp
+        where td.doType = 1 and ta.id = td.doId and ta.personid = tp.id
     </sql>
 
     <select id="selectCostOutpatientInfoList" parameterType="CostOutpatientInfo" resultMap="CostOutpatientInfoResult">
@@ -48,7 +50,7 @@
         <if test="deadTime != null ">and deadTime = #{deadTime}</if>
         <if test="returnTime != null ">and returnTime = #{returnTime}</if>
         <if test="status != null ">and status = #{status}</if>
-        <if test="personid != null">and td.doUser like concat('%', #{personid}, '%')</if>
+        <if test="personid != null">and personid = #{personid}</if>
     </select>
 
     <select id="selectCostOutpatientInfoById" parameterType="Long" resultMap="CostOutpatientInfoResult">

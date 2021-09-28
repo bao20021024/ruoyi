@@ -102,4 +102,5 @@ public class TMedicalOutpatientdoctorReceiverecordController extends BaseControl
     public AjaxResult remove(@PathVariable String[] opDoctorReceiveRecordIds) {
         return toAjax(tMedicalOutpatientdoctorReceiverecordService.deleteTMedicalOutpatientdoctorReceiverecordByOpDoctorReceiveRecordIds(opDoctorReceiveRecordIds));
     }
+
 }

@@ -8,7 +8,6 @@
         <result property="id" column="id"/>
         <result property="partName" column="partName"/>
         <result property="partNumber" column="partNumber"/>
-        <result property="personType" column="personType"/>
         <result property="partMoney" column="partMoney"/>
         <result property="type" column="type"/>
         <result property="opDoctorReceiveRecordId" column="opDoctorReceiveRecordId"/>
@@ -37,11 +36,11 @@
     </resultMap>
 
     <sql id="selectOutpatientdoctorActionVo">
-        select id, partName, partNumber, personType, partMoney, type, opDoctorReceiveRecordId from t_medical_outpatientdoctor_action
+        select id, partName, partNumber,partMoney, type, opDoctorReceiveRecordId from t_medical_outpatientdoctor_action
     </sql>
 
     <sql id="selJoin">
-        select ta.id, partName, partNumber, personType, partMoney, ta.type, ta.opDoctorReceiveRecordId,personid
+        select ta.id, ta.partName, ta.partNumber,ta.partMoney, ta.type, ta.opDoctorReceiveRecordId,personid
         from t_medical_outpatientdoctor_action ta,t_medical_outpatientDoctor_receiveRecord tr,t_medical_cost_outpatient_info ti
         where ta.opDoctorReceiveRecordId = tr.opDoctorReceiveRecordId and tr.outpatientId = ti.id
     </sql>
@@ -51,7 +50,6 @@
         <include refid="selJoin"/>
         <if test="partName != null  and partName != ''">and partName like concat('%', #{partName}, '%')</if>
         <if test="partNumber != null ">and partNumber = #{partNumber}</if>
-        <if test="personType != null ">and personType = #{personType}</if>
         <if test="partMoney != null ">and partMoney = #{partMoney}</if>
         <if test="type != null ">and ta.type = #{type}</if>
         <if test="opDoctorReceiveRecordId != null  and opDoctorReceiveRecordId != ''">and ta.opDoctorReceiveRecordId =
@@ -64,13 +62,17 @@
         where id = #{id}
     </select>
 
+    <select id="selectByOpDoctorReceiveRecordId" parameterType="String" resultMap="OutpatientdoctorActionResult">
+        <include refid="selJoin"/>
+        and ta.opDoctorReceiveRecordId = #{id}
+    </select>
+
     <insert id="insertOutpatientdoctorAction" parameterType="OutpatientdoctorAction">
         insert into t_medical_outpatientdoctor_action
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>
             <if test="partName != null">partName,</if>
             <if test="partNumber != null">partNumber,</if>
-            <if test="personType != null">personType,</if>
             <if test="partMoney != null">partMoney,</if>
             <if test="type != null">type,</if>
             <if test="opDoctorReceiveRecordId != null">opDoctorReceiveRecordId,</if>
@@ -79,7 +81,6 @@
             <if test="id != null">#{id},</if>
             <if test="partName != null">#{partName},</if>
             <if test="partNumber != null">#{partNumber},</if>
-            <if test="personType != null">#{personType},</if>
             <if test="partMoney != null">#{partMoney},</if>
             <if test="type != null">#{type},</if>
             <if test="opDoctorReceiveRecordId != null">#{opDoctorReceiveRecordId},</if>
@@ -91,7 +92,6 @@
         <trim prefix="SET" suffixOverrides=",">
             <if test="partName != null">partName = #{partName},</if>
             <if test="partNumber != null">partNumber = #{partNumber},</if>
-            <if test="personType != null">personType = #{personType},</if>
             <if test="partMoney != null">partMoney = #{partMoney},</if>
             <if test="type != null">type = #{type},</if>
             <if test="opDoctorReceiveRecordId != null">opDoctorReceiveRecordId = #{opDoctorReceiveRecordId},</if>

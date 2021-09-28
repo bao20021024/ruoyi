@@ -1,6 +1,9 @@
 package com.ruoyi.medical.controller;
 
 import java.util.List;
+
+import com.ruoyi.common.utils.SecurityUtils;
+import com.ruoyi.util.MyIdGenUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +25,13 @@ import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * 床位记录Controller
- * 
+ *
  * @author bao
  * @date 2021-09-23
  */
 @RestController
 @RequestMapping("/medical/bed")
-public class CpoeBedController extends BaseController
-{
+public class CpoeBedController extends BaseController {
     @Autowired
     private ICpoeBedService cpoeBedService;
 
@@ -38,8 +40,7 @@ public class CpoeBedController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:bed:list')")
     @GetMapping("/list")
-    public TableDataInfo list(CpoeBed cpoeBed)
-    {
+    public TableDataInfo list(CpoeBed cpoeBed) {
         startPage();
         List<CpoeBed> list = cpoeBedService.selectCpoeBedList(cpoeBed);
         return getDataTable(list);
@@ -51,8 +52,7 @@ public class CpoeBedController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:bed:export')")
     @Log(title = "床位记录", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(CpoeBed cpoeBed)
-    {
+    public AjaxResult export(CpoeBed cpoeBed) {
         List<CpoeBed> list = cpoeBedService.selectCpoeBedList(cpoeBed);
         ExcelUtil<CpoeBed> util = new ExcelUtil<CpoeBed>(CpoeBed.class);
         return util.exportExcel(list, "床位记录数据");
@@ -63,8 +63,7 @@ public class CpoeBedController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:bed:query')")
     @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") String id)
-    {
+    public AjaxResult getInfo(@PathVariable("id") String id) {
         return AjaxResult.success(cpoeBedService.selectCpoeBedById(id));
     }
 
@@ -74,8 +73,9 @@ public class CpoeBedController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:bed:add')")
     @Log(title = "床位记录", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody CpoeBed cpoeBed)
-    {
+    public AjaxResult add(@RequestBody CpoeBed cpoeBed) {
+        String id = MyIdGenUtils.ByPinyinAndTimestamp(SecurityUtils.getUsername());
+        cpoeBed.setId(id);
         return toAjax(cpoeBedService.insertCpoeBed(cpoeBed));
     }
 
@@ -85,8 +85,7 @@ public class CpoeBedController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:bed:edit')")
     @Log(title = "床位记录", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody CpoeBed cpoeBed)
-    {
+    public AjaxResult edit(@RequestBody CpoeBed cpoeBed) {
         return toAjax(cpoeBedService.updateCpoeBed(cpoeBed));
     }
 
@@ -95,9 +94,8 @@ public class CpoeBedController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:bed:remove')")
     @Log(title = "床位记录", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable String[] ids)
-    {
+    @DeleteMapping("/{ids}")
+    public AjaxResult remove(@PathVariable String[] ids) {
         return toAjax(cpoeBedService.deleteCpoeBedByIds(ids));
     }
 }

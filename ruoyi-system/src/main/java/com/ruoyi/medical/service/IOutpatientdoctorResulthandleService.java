@@ -58,4 +58,13 @@ public interface IOutpatientdoctorResulthandleService
      * @return 结果
      */
     public int deleteOutpatientdoctorResulthandleById(String id);
+
+
+    /**
+     * 根据看病结果id查询医生看病治疗方案列表
+     *
+     * @param id 看病结果id
+     * @return 医生看病治疗方案集合
+     */
+    public List<OutpatientdoctorResulthandle> selectByOpDoctorResultId(String id);
 }

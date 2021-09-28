@@ -219,7 +219,6 @@
       getList() {
         this.loading = true;
         this.queryParams.outpatientId = this.$route.params.outpatientId;
-        console.log(this.queryParams.outpatientId);
         listRecord(this.queryParams).then(response => {
           this.recordList = response.rows;
           this.total = response.total;

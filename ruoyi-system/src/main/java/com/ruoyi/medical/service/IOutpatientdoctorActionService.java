@@ -58,4 +58,12 @@ public interface IOutpatientdoctorActionService
      * @return 结果
      */
     public int deleteOutpatientdoctorActionById(String id);
+
+    /**
+     * 根据接诊记录id查询医生看病流程列表
+     *
+     * @param id 接诊记录id
+     * @return 医生看病流程集合
+     */
+    public List<OutpatientdoctorAction> selectByOpDoctorReceiveRecordId(String id);
 }

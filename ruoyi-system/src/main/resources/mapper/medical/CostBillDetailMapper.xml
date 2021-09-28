@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CostBillDetailMapper">
-    
+
     <resultMap type="CostBillDetail" id="CostBillDetailResult">
-        <result property="id"    column="id"    />
-        <result property="billid"    column="billid"    />
-        <result property="partName"    column="partName"    />
-        <result property="partNumber"    column="partNumber"    />
-        <result property="partMoney"    column="partMoney"    />
+        <result property="id" column="id"/>
+        <result property="billid" column="billid"/>
+        <result property="partName" column="partName"/>
+        <result property="partNumber" column="partNumber"/>
+        <result property="type" column="type"/>
+        <result property="partMoney" column="partMoney"/>
     </resultMap>
 
     <sql id="selectCostBillDetailVo">
-        select id, billid, partName, partNumber, partMoney from t_medical_cost_bill_detail
+        select id, billid, partName, partNumber,type, partMoney from t_medical_cost_bill_detail
     </sql>
 
     <select id="selectCostBillDetailList" parameterType="CostBillDetail" resultMap="CostBillDetailResult">
         <include refid="selectCostBillDetailVo"/>
-        <where>  
-            <if test="billid != null  and billid != ''"> and billid = #{billid}</if>
-            <if test="partName != null  and partName != ''"> and partName like concat('%', #{partName}, '%')</if>
-            <if test="partNumber != null "> and partNumber = #{partNumber}</if>
-            <if test="partMoney != null "> and partMoney = #{partMoney}</if>
+        <where>
+            <if test="billid != null  and billid != ''">and billid = #{billid}</if>
+            <if test="partName != null  and partName != ''">and partName like concat('%', #{partName}, '%')</if>
+            <if test="partNumber != null ">and partNumber = #{partNumber}</if>
+            <if test="partMoney != null ">and partMoney = #{partMoney}</if>
         </where>
     </select>
-    
+
     <select id="selectCostBillDetailById" parameterType="String" resultMap="CostBillDetailResult">
         <include refid="selectCostBillDetailVo"/>
         where id = #{id}
     </select>
-        
+
+    <select id="selectByBillid" parameterType="String" resultMap="CostBillDetailResult">
+        <include refid="selectCostBillDetailVo"/>
+        where billid = #{id}
+    </select>
+
     <insert id="insertCostBillDetail" parameterType="CostBillDetail">
         insert into t_medical_cost_bill_detail
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -38,15 +44,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="billid != null">billid,</if>
             <if test="partName != null">partName,</if>
             <if test="partNumber != null">partNumber,</if>
+            <if test="type != null">type,</if>
             <if test="partMoney != null">partMoney,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
             <if test="billid != null">#{billid},</if>
             <if test="partName != null">#{partName},</if>
             <if test="partNumber != null">#{partNumber},</if>
+            <if test="type != null">#{type},</if>
             <if test="partMoney != null">#{partMoney},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateCostBillDetail" parameterType="CostBillDetail">
@@ -55,6 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="billid != null">billid = #{billid},</if>
             <if test="partName != null">partName = #{partName},</if>
             <if test="partNumber != null">partNumber = #{partNumber},</if>
+            <if test="type != null">type = #{type},</if>
             <if test="partMoney != null">partMoney = #{partMoney},</if>
         </trim>
         where id = #{id}
@@ -65,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteCostBillDetailByIds" parameterType="String">
-        delete from t_medical_cost_bill_detail where id in 
+        delete from t_medical_cost_bill_detail where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

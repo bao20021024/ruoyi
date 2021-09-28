@@ -58,4 +58,12 @@ public interface ICostBillDetailService
      * @return 结果
      */
     public int deleteCostBillDetailById(String id);
+
+    /**
+     * 根据患者费用账单id查询患者费用明细列表
+     *
+     * @param id 患者费用账单id
+     * @return 患者费用明细集合
+     */
+    public List<CostBillDetail> selectByBillid(String id);
 }

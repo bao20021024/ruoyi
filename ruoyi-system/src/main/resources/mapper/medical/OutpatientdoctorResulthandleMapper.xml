@@ -1,60 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.OutpatientdoctorResulthandleMapper">
-    
-    <resultMap type="OutpatientdoctorResulthandle" id="OutpatientdoctorResulthandleResult">
-        <result property="id"    column="id"    />
-        <result property="partName"    column="partName"    />
-        <result property="partNumber"    column="partNumber"    />
-        <result property="partMoney"    column="partMoney"    />
-        <result property="opDoctorResultId"    column="opDoctorResultId"    />
+
+    <resultMap type="OutpatientdoctorResulthandle" id="base">
+        <result property="id" column="id"/>
+        <result property="drugsId" column="drugsId"/>
+        <result property="partNumber" column="partNumber"/>
+        <result property="opDoctorResultId" column="opDoctorResultId"/>
+    </resultMap>
+
+    <resultMap type="OutpatientdoctorResulthandle" extends="base" id="OutpatientdoctorResulthandleResult">
+        <association property="di" javaType="DrugsInfo">
+            <result property="id" column="diId"/>
+            <result property="name" column="name"/>
+            <result property="money" column="money"/>
+            <result property="Specifications" column="Specifications"/>
+            <result property="unit" column="unit"/>
+            <result property="description" column="description"/>
+        </association>
     </resultMap>
 
     <sql id="selectOutpatientdoctorResulthandleVo">
-        select id, partName, partNumber, partMoney, opDoctorResultId from t_medical_outpatientdoctor_resulthandle
+        select id, drugsId, partNumber, opDoctorResultId from t_medical_outpatientdoctor_resulthandle
     </sql>
 
-    <select id="selectOutpatientdoctorResulthandleList" parameterType="OutpatientdoctorResulthandle" resultMap="OutpatientdoctorResulthandleResult">
-        <include refid="selectOutpatientdoctorResulthandleVo"/>
-        <where>  
-            <if test="partName != null  and partName != ''"> and partName like concat('%', #{partName}, '%')</if>
-            <if test="partNumber != null "> and partNumber = #{partNumber}</if>
-            <if test="partMoney != null "> and partMoney = #{partMoney}</if>
-            <if test="opDoctorResultId != null  and opDoctorResultId != ''"> and opDoctorResultId = #{opDoctorResultId}</if>
-        </where>
+    <sql id="selJoin">
+        select th.id, th.drugsId, th.partNumber, th.opDoctorResultId,ti.id diId, ti.name,ti.money, ti.Specifications, ti.unit, ti.description
+        from t_medical_outpatientdoctor_resulthandle th,t_medical_drugs_info ti
+        where th.drugsId = ti.id
+    </sql>
+
+    <select id="selectOutpatientdoctorResulthandleList" parameterType="OutpatientdoctorResulthandle"
+            resultMap="OutpatientdoctorResulthandleResult">
+        <include refid="selJoin"/>
+        <if test="partNumber != null ">and partNumber = #{partNumber}</if>
+        <if test="drugsId != null ">and partMoney = #{drugsId}</if>
+        <if test="opDoctorResultId != null  and opDoctorResultId != ''">and opDoctorResultId = #{opDoctorResultId}
+        </if>
     </select>
-    
-    <select id="selectOutpatientdoctorResulthandleById" parameterType="String" resultMap="OutpatientdoctorResulthandleResult">
+
+    <select id="selectOutpatientdoctorResulthandleById" parameterType="String"
+            resultMap="OutpatientdoctorResulthandleResult">
         <include refid="selectOutpatientdoctorResulthandleVo"/>
         where id = #{id}
     </select>
-        
+
+    <select id="selectByOpDoctorResultId" parameterType="String"
+            resultMap="OutpatientdoctorResulthandleResult">
+        <include refid="selJoin"/>
+        and th.opDoctorResultId = #{id}
+    </select>
+
     <insert id="insertOutpatientdoctorResulthandle" parameterType="OutpatientdoctorResulthandle">
         insert into t_medical_outpatientdoctor_resulthandle
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>
-            <if test="partName != null">partName,</if>
+            <if test="drugsId != null">drugsId,</if>
             <if test="partNumber != null">partNumber,</if>
-            <if test="partMoney != null">partMoney,</if>
             <if test="opDoctorResultId != null">opDoctorResultId,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
-            <if test="partName != null">#{partName},</if>
+            <if test="drugsId != null">#{drugsId},</if>
             <if test="partNumber != null">#{partNumber},</if>
-            <if test="partMoney != null">#{partMoney},</if>
             <if test="opDoctorResultId != null">#{opDoctorResultId},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateOutpatientdoctorResulthandle" parameterType="OutpatientdoctorResulthandle">
         update t_medical_outpatientdoctor_resulthandle
         <trim prefix="SET" suffixOverrides=",">
-            <if test="partName != null">partName = #{partName},</if>
+            <if test="drugsId != null">drugsId = #{drugsId},</if>
             <if test="partNumber != null">partNumber = #{partNumber},</if>
-            <if test="partMoney != null">partMoney = #{partMoney},</if>
             <if test="opDoctorResultId != null">opDoctorResultId = #{opDoctorResultId},</if>
         </trim>
         where id = #{id}
@@ -65,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteOutpatientdoctorResulthandleByIds" parameterType="String">
-        delete from t_medical_outpatientdoctor_resulthandle where id in 
+        delete from t_medical_outpatientdoctor_resulthandle where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

@@ -58,4 +58,12 @@ public interface IOutpatientdoctorResultService
      * @return 结果
      */
     public int deleteOutpatientdoctorResultByOpDoctorResultId(String opDoctorResultId);
+
+    /**
+     * 根据门诊id查询医生看病结果
+     *
+     * @param id 门诊id
+     * @return 医生看病结果
+     */
+    public OutpatientdoctorResult selectByOpDoctorReceiveRecordId(String id);
 }

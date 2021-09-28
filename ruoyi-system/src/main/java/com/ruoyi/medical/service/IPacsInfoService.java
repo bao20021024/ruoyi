@@ -2,6 +2,7 @@ package com.ruoyi.medical.service;
 
 import java.util.List;
 import com.ruoyi.medical.domain.PacsInfo;
+import com.ruoyi.medical.modle.LisAndPacs;
 
 /**
  * PACS影像信息Service接口
@@ -58,4 +59,12 @@ public interface IPacsInfoService
      * @return 结果
      */
     public int deletePacsInfoById(String id);
+
+    /**
+     * 根据接诊记录id查询所有pacs影像
+     *
+     * @param id 接诊记录id
+     * @return pacs影像集合
+     */
+    public List<LisAndPacs> selByReceiveRecordId(String id);
 }

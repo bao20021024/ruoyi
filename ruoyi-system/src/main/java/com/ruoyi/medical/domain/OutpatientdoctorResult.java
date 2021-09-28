@@ -30,7 +30,7 @@ public class OutpatientdoctorResult extends BaseEntity
     @Excel(name = "门诊医生接诊记录id")
     private String opDoctorReceiveRecordId;
 
-    public void setOpDoctorResultId(String opDoctorResultId) 
+    public void setOpDoctorResultId(String opDoctorResultId)
     {
         this.opDoctorResultId = opDoctorResultId;
     }

@@ -1,6 +1,9 @@
 package com.ruoyi.medical.controller;
 
 import java.util.List;
+
+import com.ruoyi.medical.domain.EmrDoctorsorder;
+import com.ruoyi.medical.service.IEmrDoctorsorderService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,24 +25,25 @@ import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * Lis检验信息Controller
- * 
+ *
  * @author bao
  * @date 2021-09-23
  */
 @RestController
 @RequestMapping("/medical/lis")
-public class LisInfoController extends BaseController
-{
+public class LisInfoController extends BaseController {
     @Autowired
     private ILisInfoService lisInfoService;
+
+    @Autowired
+    private IEmrDoctorsorderService ieds;
 
     /**
      * 查询Lis检验信息列表
      */
     @PreAuthorize("@ss.hasPermi('medical:lis:list')")
     @GetMapping("/list")
-    public TableDataInfo list(LisInfo lisInfo)
-    {
+    public TableDataInfo list(LisInfo lisInfo) {
         startPage();
         List<LisInfo> list = lisInfoService.selectLisInfoList(lisInfo);
         return getDataTable(list);
@@ -51,8 +55,7 @@ public class LisInfoController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:lis:export')")
     @Log(title = "Lis检验信息", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(LisInfo lisInfo)
-    {
+    public AjaxResult export(LisInfo lisInfo) {
         List<LisInfo> list = lisInfoService.selectLisInfoList(lisInfo);
         ExcelUtil<LisInfo> util = new ExcelUtil<LisInfo>(LisInfo.class);
         return util.exportExcel(list, "Lis检验信息数据");
@@ -63,8 +66,7 @@ public class LisInfoController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:lis:query')")
     @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") String id)
-    {
+    public AjaxResult getInfo(@PathVariable("id") String id) {
         return AjaxResult.success(lisInfoService.selectLisInfoById(id));
     }
 
@@ -74,8 +76,7 @@ public class LisInfoController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:lis:add')")
     @Log(title = "Lis检验信息", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody LisInfo lisInfo)
-    {
+    public AjaxResult add(@RequestBody LisInfo lisInfo) {
         return toAjax(lisInfoService.insertLisInfo(lisInfo));
     }
 
@@ -85,9 +86,16 @@ public class LisInfoController extends BaseController
     @PreAuthorize("@ss.hasPermi('medical:lis:edit')")
     @Log(title = "Lis检验信息", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody LisInfo lisInfo)
-    {
-        return toAjax(lisInfoService.updateLisInfo(lisInfo));
+    public AjaxResult edit(@RequestBody LisInfo lisInfo) {
+        int code = 0;
+        EmrDoctorsorder ed = new EmrDoctorsorder();
+        ed.setId(lisInfo.getId());
+        ed.setType(3l);
+        code = ieds.updateEmrDoctorsorder(ed);
+        if (code > 0) {
+            code = lisInfoService.updateLisInfo(lisInfo);
+        }
+        return toAjax(code);
     }
 
     /**
@@ -95,9 +103,8 @@ public class LisInfoController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('medical:lis:remove')")
     @Log(title = "Lis检验信息", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable String[] ids)
-    {
+    @DeleteMapping("/{ids}")
+    public AjaxResult remove(@PathVariable String[] ids) {
         return toAjax(lisInfoService.deleteLisInfoByIds(ids));
     }
 }

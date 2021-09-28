@@ -1,6 +1,9 @@
 package com.ruoyi.medical.controller;
 
 import java.util.List;
+
+import com.ruoyi.common.utils.SecurityUtils;
+import com.ruoyi.util.MyIdGenUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +79,8 @@ public class CpoePrescriptiontotalController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody CpoePrescriptiontotal cpoePrescriptiontotal)
     {
+        String id = MyIdGenUtils.ByPinyinAndTimestamp(SecurityUtils.getUsername());
+        cpoePrescriptiontotal.setId(id);
         return toAjax(cpoePrescriptiontotalService.insertCpoePrescriptiontotal(cpoePrescriptiontotal));
     }
 

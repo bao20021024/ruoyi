@@ -7,60 +7,85 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 患者费用账单对象 t_medical_cost_bill
- * 
+ *
  * @author bao
  * @date 2021-09-23
  */
-public class CostBill extends BaseEntity
-{
+public class CostBill extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
-    /** 患者费用账单id */
+    /**
+     * 患者费用账单id
+     */
     private String id;
 
-    /** 门诊卡信息id */
+    /**
+     * 门诊卡信息id
+     */
     @Excel(name = "门诊卡信息id")
     private String outpatientId;
 
-    /** 金额 */
+    /**
+     * 金额
+     */
     @Excel(name = "金额")
-    private Long money;
+    private Float money;
 
-    public void setId(String id) 
-    {
+    /**
+     * 状态
+     */
+    @Excel(name = "状态")
+    private Integer status;
+
+    private CostOutpatientInfo coi;
+
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getId() 
-    {
+    public String getId() {
         return id;
     }
-    public void setOutpatientId(String outpatientId) 
-    {
+
+    public void setOutpatientId(String outpatientId) {
         this.outpatientId = outpatientId;
     }
 
-    public String getOutpatientId() 
-    {
+    public String getOutpatientId() {
         return outpatientId;
     }
-    public void setMoney(Long money) 
-    {
+
+    public Float getMoney() {
+        return money;
+    }
+
+    public void setMoney(Float money) {
         this.money = money;
     }
 
-    public Long getMoney() 
-    {
-        return money;
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("outpatientId", getOutpatientId())
-            .append("money", getMoney())
-            .append("createTime", getCreateTime())
-            .toString();
+        return "CostBill{" +
+                "id='" + id + '\'' +
+                ", outpatientId='" + outpatientId + '\'' +
+                ", money=" + money +
+                ", status=" + status +
+                '}';
+    }
+
+    public CostOutpatientInfo getCoi() {
+        return coi;
+    }
+
+    public void setCoi(CostOutpatientInfo coi) {
+        this.coi = coi;
     }
 }

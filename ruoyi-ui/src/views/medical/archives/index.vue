@@ -3,19 +3,19 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="姓名" prop="name">
         <el-input v-model="queryParams.name" placeholder="请输入姓名" clearable size="small"
-          @keyup.enter.native="handleQuery" />
+                  @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="操作人" prop="id">
         <el-input v-model="queryParams.id" placeholder="请输入操作人" clearable size="small"
-          @keyup.enter.native="handleQuery" />
+                  @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="身份证" prop="code">
         <el-input v-model="queryParams.code" placeholder="请输入身份证" clearable size="small"
-          @keyup.enter.native="handleQuery" />
+                  @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="性别" prop="sex">
         <el-select v-model="queryParams.sex" placeholder="请选择性别" clearable size="small">
-          <el-option v-for="dict in dict.type.sys_user_sex" :key="dict.value" :label="dict.label" :value="dict.value" />
+          <el-option v-for="dict in dict.type.sys_user_sex" :key="dict.value" :label="dict.label" :value="dict.value"/>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -27,60 +27,71 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleJd"
-          v-hasPermi="['medical:archives:add']">建档</el-button>
+                   v-hasPermi="['medical:archives:add']">建档
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="danger" plain icon="el-icon-plus" size="mini" :disabled="single" @click="handleBk"
-          v-hasPermi="['medical:archives:edit']">办卡</el-button>
+                   v-hasPermi="['medical:archives:edit']">办卡
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleUpdate"
-          v-hasPermi="['medical:archives:edit']">修改</el-button>
+                   v-hasPermi="['medical:archives:edit']">修改
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="warning" plain icon="el-icon-download" size="mini" :loading="exportLoading"
-          @click="handleExport" v-hasPermi="['medical:archives:export']">导出</el-button>
+                   @click="handleExport" v-hasPermi="['medical:archives:export']">导出
+        </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="archivesList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="个人档案id" align="center" prop="id" />
-      <el-table-column label="姓名" align="center" prop="name" />
-      <el-table-column label="年龄" align="center" prop="age" />
-      <el-table-column label="身份证" align="center" prop="code" />
-      <el-table-column label="性别" align="center" prop="sex">
+      <el-table-column type="selection" width="55" align="center"/>
+      <el-table-column label="姓名" align="center" prop="name">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_user_sex" :value="scope.row.sex" />
+          <router-link :to="'/medical/info-data/index/' + scope.row.id" class="link-type">
+            <span>{{ scope.row.name }}</span>
+          </router-link>
         </template>
       </el-table-column>
-      <el-table-column label="操作人" align="center" prop="tmd.doUser" />
-      <el-table-column label="建档日期" align="center" prop="tmd.doTime" />
+      <el-table-column label="年龄" align="center" prop="age"/>
+      <el-table-column label="身份证" align="center" prop="code"/>
+      <el-table-column label="性别" align="center" prop="sex">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.sys_user_sex" :value="scope.row.sex"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作人" align="center" prop="tmd.doUser"/>
+      <el-table-column label="建档日期" align="center" prop="tmd.doTime"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-            v-hasPermi="['medical:archives:edit']">修改</el-button>
+                     v-hasPermi="['medical:archives:edit']">修改
+          </el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleBk(scope.row)"
-            v-hasPermi="['medical:archives:edit']">办卡</el-button>
+                     v-hasPermi="['medical:archives:edit']">办卡
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
-      @pagination="getList" />
+                @pagination="getList"/>
 
     <!-- 添加或修改个人档案对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item v-show="show" label="姓名" prop="name">
-          <el-input v-model="form.name" placeholder="请输入姓名" />
+          <el-input v-model="form.name" placeholder="请输入姓名"/>
         </el-form-item>
         <el-form-item v-show="show" label="年龄" prop="age">
-          <el-input v-model="form.age" placeholder="请输入年龄" />
+          <el-input v-model="form.age" placeholder="请输入年龄"/>
         </el-form-item>
         <el-form-item v-show="show" label="身份证" prop="code">
-          <el-input v-model="form.code" placeholder="请输入身份证" :disabled="!pdMoney" />
+          <el-input v-model="form.code" placeholder="请输入身份证" :disabled="!pdMoney"/>
         </el-form-item>
         <el-form-item v-show="show" label="性别">
           <el-radio-group v-model="form.sex">
@@ -89,7 +100,10 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item v-show="pdMoney" label="金额" prop="money">
-          <el-input v-model="money" placeholder="请输入金额" />
+          <el-input v-model="money" placeholder="请输入金额"/>
+        </el-form-item>
+        <el-form-item v-show="pdMoney" label="押金">
+          <el-input value="10" disabled/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -277,12 +291,13 @@
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
-        }).then(function() {
+        }).then(function () {
           return delArchives(ids);
         }).then(() => {
           this.getList();
           this.msgSuccess("删除成功");
-        }).catch(() => {});
+        }).catch(() => {
+        });
       },
       /** 导出按钮操作 */
       handleExport() {
@@ -297,7 +312,8 @@
         }).then(response => {
           this.download(response.msg);
           this.exportLoading = false;
-        }).catch(() => {});
+        }).catch(() => {
+        });
       }
     }
   };

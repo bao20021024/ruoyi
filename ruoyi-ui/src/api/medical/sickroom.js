@@ -51,3 +51,12 @@ export function exportSickroom(query) {
     params: query
   })
 }
+
+// 分配床位
+export function addBedSickroom(data) {
+  return request({
+    url: '/medical/sickroom/addBed',
+    method: 'post',
+    data: data
+  })
+}

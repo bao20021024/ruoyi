@@ -90,4 +90,9 @@ public class OutpatientdoctorResulthandleServiceImpl implements IOutpatientdocto
     {
         return outpatientdoctorResulthandleMapper.deleteOutpatientdoctorResulthandleById(id);
     }
+
+    @Override
+    public List<OutpatientdoctorResulthandle> selectByOpDoctorResultId(String id) {
+        return outpatientdoctorResulthandleMapper.selectByOpDoctorResultId(id);
+    }
 }

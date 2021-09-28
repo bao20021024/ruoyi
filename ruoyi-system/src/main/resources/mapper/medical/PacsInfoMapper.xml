@@ -36,7 +36,7 @@
 
     <select id="selByReceiveRecordId" parameterType="String" resultMap="selAll">
         <include refid="selSql"/>
-        where tl.receiveRecordId = #{id}
+        and tl.receiveRecordId = #{id} order by tl.status,tl.receiveRecordId
     </select>
 
     <select id="selectPacsInfoList" parameterType="PacsInfo" resultMap="PacsInfoResult">

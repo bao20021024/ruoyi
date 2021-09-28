@@ -2,6 +2,7 @@ package com.ruoyi.medical.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.medical.modle.LisAndPacs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.medical.mapper.PacsInfoMapper;
@@ -91,5 +92,10 @@ public class PacsInfoServiceImpl implements IPacsInfoService
     public int deletePacsInfoById(String id)
     {
         return pacsInfoMapper.deletePacsInfoById(id);
+    }
+
+    @Override
+    public List<LisAndPacs> selByReceiveRecordId(String id) {
+        return pacsInfoMapper.selByReceiveRecordId(id);
     }
 }

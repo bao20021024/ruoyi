@@ -31,8 +31,8 @@
                      :value="dict.value"/>
         </el-select>
       </el-form-item>
-      <el-form-item label="操作人" prop="personid">
-        <el-input v-model="queryParams.personid" placeholder="请输入操作人" clearable size="small"
+      <el-form-item label="个人档案id" prop="personid">
+        <el-input v-model="queryParams.personid" placeholder="请输入个人档案id" clearable size="small"
                   @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item>
@@ -89,14 +89,15 @@
 
     <el-table v-loading="loading" :data="infoList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="门诊卡信息id" align="center" prop="id" :show-overflow-tooltip="true">
+      <el-table-column label="所属患者" align="center" prop="cpa.name">
         <template slot-scope="scope">
           <router-link :to="'/medical/record-data/index/' + scope.row.id" class="link-type">
-            <span>{{ scope.row.id }}</span>
+            <span>{{ scope.row.cpa.name }}</span>
           </router-link>
         </template>
       </el-table-column>
-      <el-table-column label="金额" align="center" prop="money"/>
+      <el-table-column label="患者身份证" align="center" prop="cpa.code"/>
+      <el-table-column label="余额" align="center" prop="money"/>
       <el-table-column label="启用日期" align="center" prop="enableTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.enableTime, '{y}-{m}-{d}') }}</span>
@@ -117,13 +118,11 @@
           <span>{{ parseTime(scope.row.returnTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="卡状态" align="center" prop="status">
+      <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.medical_outpatient_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="押金" align="center" prop="deposit"/>
-      <el-table-column label="个人档案id" align="center" prop="personid"/>
       <el-table-column label="操作人" align="center" prop="tmd.doUser"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -270,6 +269,7 @@
       /** 查询门诊卡信息列表 */
       getList() {
         this.loading = true;
+        this.queryParams.personid = this.$route.params.personid;
         listInfo(this.queryParams).then(response => {
           this.infoList = response.rows;
           this.total = response.total;

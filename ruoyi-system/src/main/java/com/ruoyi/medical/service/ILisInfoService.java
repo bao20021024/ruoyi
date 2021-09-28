@@ -2,6 +2,7 @@ package com.ruoyi.medical.service;
 
 import java.util.List;
 import com.ruoyi.medical.domain.LisInfo;
+import com.ruoyi.medical.modle.LisAndPacs;
 
 /**
  * Lis检验信息Service接口
@@ -58,4 +59,12 @@ public interface ILisInfoService
      * @return 结果
      */
     public int deleteLisInfoById(String id);
+
+    /**
+     * 根据接诊记录id查询所有lis检验
+     *
+     * @param id 接诊记录id
+     * @return lis检验集合
+     */
+    public List<LisAndPacs> selByReceiveRecordId(String id);
 }

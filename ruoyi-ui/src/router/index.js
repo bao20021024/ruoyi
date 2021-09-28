@@ -139,6 +139,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/medical/info-data',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'index/:personid([a-zA-Z]+_+\\d+)',
+        component: (resolve) => require(['@/views/medical/info'], resolve),
+        name: 'Info',
+        meta: {title: '门诊卡信息', activeMenu: '/medical/archives'}
+      }
+    ]
+  },
+  {
     path: '/monitor/job-log',
     component: Layout,
     hidden: true,
