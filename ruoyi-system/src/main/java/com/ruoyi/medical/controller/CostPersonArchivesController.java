@@ -95,7 +95,7 @@ public class CostPersonArchivesController extends BaseController {
     }
 
     /**
-     * 建档
+     * 建档/办卡
      */
     @PreAuthorize("@ss.hasPermi('medical:archives:add')")
     @Log(title = "个人档案", businessType = BusinessType.INSERT)
@@ -161,7 +161,7 @@ public class CostPersonArchivesController extends BaseController {
                     record.setMoney(money);
                     record.setType(1l);
                     record.setCreateTime(d);
-                    record.setOutpatientId(infoId+"");
+                    record.setOutpatientId(infoId + "");
 
                     code = icorrs.insertCostOutpatientRechargeRecord(record);
 

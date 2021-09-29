@@ -3,19 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CostPersonArchivesMapper">
-
-    <resultMap type="CostPersonArchives" id="CostPersonArchivesResult">
-        <result property="id" column="id" javaType="java.lang.String"/>
+    <resultMap type="CostPersonArchives" id="base">
+        <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="age" column="age"/>
         <result property="code" column="code"/>
         <result property="sex" column="sex"/>
+    </resultMap>
+
+    <resultMap type="CostPersonArchives" extends="base" id="CostPersonArchivesResult">
         <association property="tmd" javaType="TMedicalDo">
             <id column="myId" property="id"/>
             <result column="doUser" property="doUser"/>
             <result column="doTime" property="doTime"/>
             <result column="doId" property="doId"/>
             <result column="doType" property="doType"/>
+        </association>
+        <association property="cs" javaType="CpoeSplitbed">
+            <result property="id" column="csId"/>
+            <result property="personId" column="personId"/>
+            <result property="doctorId" column="doctorId"/>
+            <result property="bedId" column="bedId"/>
+            <result property="createTime" column="createTime"/>
+            <result property="remark" column="remark"/>
         </association>
     </resultMap>
 

@@ -59,4 +59,12 @@ public interface TMedicalOutpatientdoctorReceiverecordMapper {
      */
     public int deleteTMedicalOutpatientdoctorReceiverecordByOpDoctorReceiveRecordIds(String[] opDoctorReceiveRecordIds);
 
+    /**
+     * 查询所有住院类型的患者接诊记录
+     *
+     * @param tMedicalOutpatientdoctorReceiverecord 接诊记录
+     * @return 接诊记录集合
+     */
+    public List<TMedicalOutpatientdoctorReceiverecord> selectListAboutSickroom(TMedicalOutpatientdoctorReceiverecord tMedicalOutpatientdoctorReceiverecord);
+
 }

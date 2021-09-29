@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CpoeBedMapper">
-    
-    <resultMap type="CpoeBed" id="CpoeBedResult">
-        <result property="id"    column="id"    />
-        <result property="name"    column="name"    />
-        <result property="sickroomId"    column="sickroomId"    />
-        <result property="remark"    column="remark"    />
+
+    <resultMap type="CpoeBed" id="base">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sickroomId" column="sickroomId"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <resultMap type="CpoeBed" extends="base" id="CpoeBedResult">
+        <association property="cs" javaType="CpoeSickroom">
+            <result property="id" column="csId"/>
+            <result property="name" column="csName"/>
+            <result property="unit" column="unit"/>
+            <result property="attribute" column="attribute"/>
+            <result property="remark" column="csRemark"/>
+            <result property="status" column="status"/>
+        </association>
     </resultMap>
 
     <sql id="selectCpoeBedVo">
         select id, name, sickroomId, remark from t_medical_cpoe_bed
     </sql>
 
+    <sql id="selJoin">
+         select tb.id, tb.name, tb.sickroomId, tb.remark,ts.id csId, ts.name csName, ts.unit, ts.attribute, ts.remark csRemark ,ts.status
+         from t_medical_cpoe_bed tb,t_medical_cpoe_sickroom ts
+         where tb.sickroomId = ts.id
+    </sql>
+
     <select id="selectCpoeBedList" parameterType="CpoeBed" resultMap="CpoeBedResult">
-        <include refid="selectCpoeBedVo"/>
-        <where>  
-            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
-            <if test="sickroomId != null  and sickroomId != ''"> and sickroomId = #{sickroomId}</if>
-        </where>
+        <include refid="selJoin"/>
+        <if test="name != null  and name != ''">and name like concat('%', #{name}, '%')</if>
+        <if test="sickroomId != null  and sickroomId != ''">and ts.name like concat('%', #{sickroomId}, '%')</if>
+        <if test="remark != null">and ts.attribute = #{remark}</if>
     </select>
-    
+
     <select id="selectCpoeBedById" parameterType="String" resultMap="CpoeBedResult">
         <include refid="selectCpoeBedVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertCpoeBed" parameterType="CpoeBed">
         insert into t_medical_cpoe_bed
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -35,13 +51,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="name != null">name,</if>
             <if test="sickroomId != null">sickroomId,</if>
             <if test="remark != null">remark,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
             <if test="name != null">#{name},</if>
             <if test="sickroomId != null">#{sickroomId},</if>
             <if test="remark != null">#{remark},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateCpoeBed" parameterType="CpoeBed">
@@ -59,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteCpoeBedByIds" parameterType="String">
-        delete from t_medical_cpoe_bed where id in 
+        delete from t_medical_cpoe_bed where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

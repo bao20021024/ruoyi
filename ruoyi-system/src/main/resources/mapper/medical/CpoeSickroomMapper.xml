@@ -1,35 +1,73 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CpoeSickroomMapper">
-    
-    <resultMap type="CpoeSickroom" id="CpoeSickroomResult">
-        <result property="id"    column="id"    />
-        <result property="name"    column="name"    />
-        <result property="unit"    column="unit"    />
-        <result property="attribute"    column="attribute"    />
-        <result property="remark"    column="remark"    />
+
+    <resultMap type="CpoeSickroom" id="base">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="unit" column="unit"/>
+        <result property="attribute" column="attribute"/>
+        <result property="remark" column="remark"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <resultMap type="CpoeSickroom" extends="base" id="CpoeSickroomResult">
+        <association property="sdd" javaType="SysDictData">
+            <result property="dictCode" column="dict_code"/>
+            <result property="dictSort" column="dict_sort"/>
+            <result property="dictLabel" column="dict_label"/>
+            <result property="dictValue" column="dict_value"/>
+            <result property="dictType" column="dict_type"/>
+            <result property="cssClass" column="css_class"/>
+            <result property="listClass" column="list_class"/>
+            <result property="isDefault" column="is_default"/>
+            <result property="status" column="sddStatus"/>
+            <result property="createBy" column="create_by"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateBy" column="update_by"/>
+            <result property="updateTime" column="update_time"/>
+        </association>
+        <collection property="cbs" javaType="java.util.List" ofType="CpoeBed">
+            <result property="id" column="cbsId"/>
+            <result property="name" column="cbsName"/>
+            <result property="sickroomId" column="sickroomId"/>
+            <result property="remark" column="cbsRemark"/>
+        </collection>
     </resultMap>
 
     <sql id="selectCpoeSickroomVo">
-        select id, name, unit, attribute, remark from t_medical_cpoe_sickroom
+        select id, name, unit, attribute, remark ,status from t_medical_cpoe_sickroom
+    </sql>
+
+    <sql id="selJoin">
+        select ts.id, ts.name, ts.unit, ts.attribute,ts.status, ts.remark ,tb.id cbsId, tb.name cbsName, tb.sickroomId, tb.remark cbsRemark, sd.dict_label,sd.dict_value
+        from t_medical_cpoe_sickroom ts,t_medical_cpoe_bed tb,sys_dict_data sd
+        where ts.id = tb.sickroomId and sd.dict_value = ts.attribute and sd.dict_type = 'medical_sickroom_attribute'
+        and tb.id not in (select bedId from t_medical_cpoe_splitbed)
     </sql>
 
     <select id="selectCpoeSickroomList" parameterType="CpoeSickroom" resultMap="CpoeSickroomResult">
         <include refid="selectCpoeSickroomVo"/>
-        <where>  
-            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
-            <if test="unit != null  and unit != ''"> and unit = #{unit}</if>
-            <if test="attribute != null  and attribute != ''"> and attribute = #{attribute}</if>
+        <where>
+            <if test="name != null  and name != ''">and name like concat('%', #{name}, '%')</if>
+            <if test="unit != null  and unit != ''">and unit = #{unit}</if>
+            <if test="attribute != null  and attribute != ''">and attribute = #{attribute}</if>
+            <if test="status != null">and status = #{status}</if>
         </where>
     </select>
-    
+
     <select id="selectCpoeSickroomById" parameterType="String" resultMap="CpoeSickroomResult">
         <include refid="selectCpoeSickroomVo"/>
         where id = #{id}
     </select>
-        
+
+    <select id="selectList" parameterType="String" resultMap="CpoeSickroomResult">
+        <include refid="selJoin"/>
+        and sd.dict_value = #{value}
+    </select>
+
     <insert id="insertCpoeSickroom" parameterType="CpoeSickroom">
         insert into t_medical_cpoe_sickroom
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -38,14 +76,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="unit != null">unit,</if>
             <if test="attribute != null">attribute,</if>
             <if test="remark != null">remark,</if>
-         </trim>
+            <if test="status != null">status,</if>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
             <if test="name != null">#{name},</if>
             <if test="unit != null">#{unit},</if>
             <if test="attribute != null">#{attribute},</if>
             <if test="remark != null">#{remark},</if>
-         </trim>
+            <if test="status != null">#{status},</if>
+        </trim>
     </insert>
 
     <update id="updateCpoeSickroom" parameterType="CpoeSickroom">
@@ -55,6 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="unit != null">unit = #{unit},</if>
             <if test="attribute != null">attribute = #{attribute},</if>
             <if test="remark != null">remark = #{remark},</if>
+            <if test="status != null">status = #{status},</if>
         </trim>
         where id = #{id}
     </update>
@@ -64,7 +105,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteCpoeSickroomByIds" parameterType="String">
-        delete from t_medical_cpoe_sickroom where id in 
+        delete from t_medical_cpoe_sickroom where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

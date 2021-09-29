@@ -158,7 +158,7 @@ public class OutpatientdoctorResulthandleController extends BaseController {
     }
 
     /**
-     * 开药完毕
+     * 完成开药
      */
     @PreAuthorize("@ss.hasPermi('medical:resulthandle:edit')")
     @PostMapping("/wan")

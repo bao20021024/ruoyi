@@ -30,6 +30,10 @@ public class CpoeSplitbed extends BaseEntity
     @Excel(name = "床位id")
     private String bedId;
 
+    private CpoeBed cb;
+
+    private CostPersonArchives cpa;
+
     public void setId(String id) 
     {
         this.id = id;
@@ -77,5 +81,21 @@ public class CpoeSplitbed extends BaseEntity
             .append("createTime", getCreateTime())
             .append("remark", getRemark())
             .toString();
+    }
+
+    public CpoeBed getCb() {
+        return cb;
+    }
+
+    public void setCb(CpoeBed cb) {
+        this.cb = cb;
+    }
+
+    public CostPersonArchives getCpa() {
+        return cpa;
+    }
+
+    public void setCpa(CostPersonArchives cpa) {
+        this.cpa = cpa;
     }
 }

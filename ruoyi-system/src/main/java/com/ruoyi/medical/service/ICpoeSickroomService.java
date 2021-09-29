@@ -58,4 +58,11 @@ public interface ICpoeSickroomService
      * @return 结果
      */
     public int deleteCpoeSickroomById(String id);
+
+    /**
+     * 查询所有尚未分配的床铺
+     *
+     * @return 尚未分配的床铺集合
+     */
+    public List<CpoeSickroom> selectList(String value);
 }

@@ -51,3 +51,12 @@ export function exportSplitbed(query) {
     params: query
   })
 }
+
+// 退床
+export function tuiSplitbed(data) {
+  return request({
+    url: '/medical/splitbed/tui',
+    method: 'post',
+    data: data
+  })
+}

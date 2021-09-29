@@ -1,23 +1,9 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="门诊卡信息id" prop="outpatientId">
-        <el-input
-          v-model="queryParams.outpatientId"
-          placeholder="请输入门诊卡信息id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="医生id" prop="doctorId">
-        <el-input
-          v-model="queryParams.doctorId"
-          placeholder="请输入医生id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+      <el-form-item label="患者姓名" prop="personId">
+        <el-input v-model="queryParams.personId" placeholder="请输入患者姓名" clearable size="small"
+                  @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="类型" prop="type">
         <el-select v-model="queryParams.type" placeholder="请选择类型" clearable size="small">
@@ -39,12 +25,12 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item label="接诊时间" prop="createTime">
         <el-date-picker clearable size="small"
                         v-model="queryParams.createTime"
                         type="date"
                         value-format="yyyy-MM-dd"
-                        placeholder="选择创建时间">
+                        placeholder="选择接诊时间">
         </el-date-picker>
       </el-form-item>
       <el-form-item>
@@ -54,42 +40,6 @@
     </el-form>
 
     <el-row :gutter="10" class="mb8">
-
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['medical:receiverecord:add']"
-        >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['medical:receiverecord:edit']"
-        >修改
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:receiverecord:remove']"
-        >删除
-        </el-button>
-      </el-col>
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -107,7 +57,6 @@
 
     <el-table v-loading="loading" :data="receiverecordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="接诊记录id" align="center" prop="opDoctorReceiveRecordId"/>
       <el-table-column label="患者姓名" align="center" prop="coi.cpa.name"/>
       <el-table-column label="接诊医生" align="center" prop="user.nickName"/>
       <el-table-column label="患者类型" align="center" prop="type">
@@ -132,9 +81,9 @@
             <el-button
               size="mini"
               type="text"
-              icon="el-icon-edit"
+              icon="el-icon-plus"
               @click="handleJie(scope.row)"
-              v-hasPermi="['medical:receiverecord:edit']"
+              v-hasPermi="['medical:receiverecord:jie']"
             >接诊
             </el-button>
           </template>
@@ -142,9 +91,9 @@
             <el-button
               size="mini"
               type="text"
-              icon="el-icon-edit"
+              icon="el-icon-plus"
               @click="handleCheck(scope.row)"
-              v-hasPermi="['medical:receiverecord:edit']"
+              v-hasPermi="['medical:receiverecord:jian']"
             >需做检查
             </el-button>
           </template>
@@ -152,9 +101,9 @@
             <el-button
               size="mini"
               type="text"
-              icon="el-icon-edit"
+              icon="el-icon-search"
               @click="handleAll(scope.row)"
-              v-hasPermi="['medical:receiverecord:edit']"
+              v-hasPermi="['medical:receiverecord:jianxq']"
             >检查详情
             </el-button>
           </template>
@@ -164,7 +113,7 @@
               type="text"
               icon="el-icon-edit"
               @click="handleZhen(scope.row)"
-              v-hasPermi="['medical:receiverecord:edit']"
+              v-hasPermi="['medical:receiverecord:zhen']"
             >诊断
             </el-button>
           </template>
@@ -172,19 +121,27 @@
             <el-button
               size="mini"
               type="text"
-              icon="el-icon-edit"
+              icon="el-icon-plus"
               @click="handleKai(scope.row)"
-              v-hasPermi="['medical:receiverecord:edit']"
+              v-hasPermi="['medical:receiverecord:kai']"
             >开药
+            </el-button>
+            <el-button
+              size="mini"
+              type="text"
+              icon="el-icon-edit"
+              @click="handleWan(scope.row)"
+              v-hasPermi="['medical:receiverecord:wan']"
+            >完成开药
             </el-button>
           </template>
           <template v-if="scope.row.status > 4 && scope.row.type == 1">
             <el-button
               size="mini"
               type="text"
-              icon="el-icon-edit"
+              icon="el-icon-search"
               @click="handleYao(scope.row)"
-              v-hasPermi="['medical:receiverecord:edit']"
+              v-hasPermi="['medical:receiverecord:kaixq']"
             >用药详情
             </el-button>
           </template>
@@ -214,7 +171,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="事项数量" prop="partNumber">
-          <el-input v-model="form.partNumber" placeholder="请输入事项数量"/>
+          <el-input v-model.number="form.partNumber" placeholder="请输入事项数量"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -236,7 +193,7 @@
         v-hasPermi="['medical:receiverecord:add']"
       >新增
       </el-button>
-      <br/>
+
       <el-table v-loading="loading" :data="all">
         <el-table-column label="名称" align="center" prop="name">
           <template slot-scope="scope">
@@ -307,7 +264,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="数量" prop="partNumber">
-          <el-input v-model="yao.partNumber" placeholder="请输入药品数量"/>
+          <el-input v-model.number="yao.partNumber" placeholder="请输入药品数量"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -319,25 +276,6 @@
     <!-- 用药详情 -->
     <el-dialog title="用药详情" :visible.sync="allYaoOpen" width="800px" append-to-body>
 
-      <el-button
-        type="primary"
-        plain
-        icon="el-icon-plus"
-        size="mini"
-        @click="handleKai(yao)"
-        v-hasPermi="['medical:receiverecord:add']"
-      >新增
-      </el-button>
-      <el-button
-        type="primary"
-        plain
-        icon="el-icon-plus"
-        size="mini"
-        @click="handleWan(yao)"
-        v-hasPermi="['medical:receiverecord:add']"
-      >完成接诊
-      </el-button>
-      <br/>
       <el-table v-loading="loading" :data="allYao">
         <el-table-column label="药品名称" align="center" prop="di.name"/>
         <el-table-column label="药品规格" align="center" prop="di.specifications"/>
@@ -415,16 +353,28 @@
         // 表单参数
         form: {},
         // 表单校验
-        rules: {},
+        rules: {
+          partName: [{required: true, message: '请选择事项', trigger: 'blur'}],
+          partNumber: [{required: true, message: '数量不能为空', trigger: 'blur'},
+            {type: 'number', message: '数量必须为正数'}]
+        },
         all: [],
         allOpen: false,
         flag: true,
         duan: {},
         duanOpen: false,
-        duanRules: {},
+        duanRules: {
+          name: [{required: true, message: '请输入病名称', trigger: 'blur'}],
+          description: [{required: true, message: '请输入描述症状', trigger: 'blur'}],
+          opDoctorResultId: [{required: true, message: '请选择患者类型', trigger: 'blur'}]
+        },
         yao: {},
         yaoOpen: false,
-        yaoRules: {},
+        yaoRules: {
+          drugsId: [{required: true, message: '请选择药名', trigger: 'blur'}],
+          partNumber: [{required: true, message: '数量不能为空', trigger: 'blur'},
+            {type: 'number', message: '数量必须为正数'}]
+        },
         yaoList: [],
         allYaoOpen: false,
         allYao: []
@@ -608,10 +558,14 @@
         });
       },
       submitYao() {
-        kaiResultHandle(this.yao).then(resp => {
-          this.msgSuccess("开药成功!");
-          this.yaoOpen = false;
-          this.getList();
+        this.$refs["yao"].validate(valid => {
+          if (valid) {
+            kaiResultHandle(this.yao).then(resp => {
+              this.msgSuccess("开药成功!");
+              this.yaoOpen = false;
+              this.getList();
+            });
+          }
         });
       },
       handleYao(row) {
@@ -623,17 +577,19 @@
             this.allYaoOpen = true;
           });
         });
-      },
+      }
+      ,
       handleWan(row) {
         getInfoResult(row.opDoctorReceiveRecordId).then(resp => {
           let opDoctorResultId = resp.data.opDoctorResultId;
           wanResultHandle(opDoctorResultId).then(resp => {
-            this.msgSuccess("接诊已完成!");
+            this.msgSuccess("完成开药!");
             this.allYaoOpen = false;
             this.getList();
           });
         });
-      },
+      }
+      ,
       /** 提交按钮 */
       submitForm() {
         this.$refs["form"].validate(valid => {
@@ -647,7 +603,8 @@
 
           }
         });
-      },
+      }
+      ,
       /** 删除按钮操作 */
       handleDelete(row) {
         const opDoctorReceiveRecordIds = row.opDoctorReceiveRecordId || this.ids;
@@ -662,7 +619,8 @@
           this.msgSuccess("删除成功");
         }).catch(() => {
         });
-      },
+      }
+      ,
       /** 导出按钮操作 */
       handleExport() {
         const queryParams = this.queryParams;

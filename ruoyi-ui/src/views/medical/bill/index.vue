@@ -1,21 +1,22 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="门诊卡信息id" prop="outpatientId">
-        <el-input
-          v-model="queryParams.outpatientId"
-          placeholder="请输入门诊卡信息id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+      <el-form-item label="患者姓名" prop="outpatientId">
+        <el-input v-model="queryParams.outpatientId" placeholder="请输入患者姓名" clearable size="small"
+                  @keyup.enter.native="handleQuery"/>
+      </el-form-item>
+      <el-form-item label="状态" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择状态" clearable size="small">
+          <el-option v-for="dict in dict.type.medical_bill_status" :key="dict.value" :label="dict.label"
+                     :value="dict.value"/>
+        </el-select>
       </el-form-item>
       <el-form-item label="付款日期" prop="createTime">
         <el-date-picker clearable size="small"
                         v-model="queryParams.createTime"
                         type="date"
                         value-format="yyyy-MM-dd"
-                        placeholder="选择充值取现日期">
+                        placeholder="选择付款日期">
         </el-date-picker>
       </el-form-item>
       <el-form-item>
@@ -25,41 +26,6 @@
     </el-form>
 
     <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['medical:bill:add']"
-        >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['medical:bill:edit']"
-        >修改
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:bill:remove']"
-        >删除
-        </el-button>
-      </el-col>
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -96,7 +62,7 @@
             <el-button
               size="mini"
               type="text"
-              icon="el-icon-edit"
+              icon="el-icon-plus"
               @click="handleFu(scope.row)"
               v-hasPermi="['medical:bill:edit']"
             >付款
@@ -105,7 +71,7 @@
           <el-button
             size="mini"
             type="text"
-            icon="el-icon-edit"
+            icon="el-icon-search"
             @click="handleDan(scope.row)"
             v-hasPermi="['medical:bill:edit']"
           >账单明细

@@ -31,10 +31,6 @@
                      :value="dict.value"/>
         </el-select>
       </el-form-item>
-      <el-form-item label="个人档案id" prop="personid">
-        <el-input v-model="queryParams.personid" placeholder="请输入个人档案id" clearable size="small"
-                  @keyup.enter.native="handleQuery"/>
-      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -43,7 +39,7 @@
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleGua"
+        <el-button type="success" plain icon="el-icon-plus" size="mini" :disabled="single" @click="handleGua"
                    v-hasPermi="['medical:info:edit']">挂号
         </el-button>
       </el-col>
@@ -69,12 +65,12 @@
       </el-col>
 
       <el-col :span="1.5">
-        <el-button type="danger" plain icon="el-icon-delete" size="mini" :disabled="single" @click="handleChong"
+        <el-button type="danger" plain icon="el-icon-plus" size="mini" :disabled="single" @click="handleChong"
                    v-hasPermi="['medical:info:remove']">充值
         </el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="danger" plain icon="el-icon-delete" size="mini" :disabled="single" @click="handleQu"
+        <el-button type="danger" plain icon="el-icon-remove" size="mini" :disabled="single" @click="handleQu"
                    v-hasPermi="['medical:info:remove']">取现
         </el-button>
       </el-col>
@@ -126,26 +122,26 @@
       <el-table-column label="操作人" align="center" prop="tmd.doUser"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleGua(scope.row)"
-                     v-hasPermi="['medical:info:remove']">挂号
-          </el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(1,scope.row)"
-                     v-hasPermi="['medical:info:remove']">启用
+                     v-hasPermi="['medical:info:edit']">启用
           </el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(2,scope.row)"
-                     v-hasPermi="['medical:info:remove']">挂失
+                     v-hasPermi="['medical:info:edit']">挂失
           </el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(3,scope.row)"
-                     v-hasPermi="['medical:info:remove']">作废
+                     v-hasPermi="['medical:info:edit']">作废
           </el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(4,scope.row)"
                      v-hasPermi="['medical:info:remove']">退卡
           </el-button>
-          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleChong(scope.row)"
+          <el-button size="mini" type="text" icon="el-icon-plus" @click="handleChong(scope.row)"
                      v-hasPermi="['medical:info:remove']">充值
           </el-button>
-          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleQu(scope.row)"
+          <el-button size="mini" type="text" icon="el-icon-remove" @click="handleQu(scope.row)"
                      v-hasPermi="['medical:info:remove']">取现
+          </el-button>
+          <el-button size="mini" type="text" icon="el-icon-plus" @click="handleGua(scope.row)"
+                     v-hasPermi="['medical:info:edit']">挂号
           </el-button>
         </template>
       </el-table-column>
@@ -158,7 +154,7 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="金额" prop="money">
-          <el-input v-model="form.money" placeholder="请输入金额"/>
+          <el-input v-model.number="form.money" placeholder="请输入金额"/>
         </el-form-item>
         <el-form-item v-show="show" label="启用日期" prop="enableTime">
           <el-date-picker clearable size="small" v-model="form.enableTime" type="date" value-format="yyyy-MM-dd"
@@ -257,7 +253,10 @@
         // 表单参数
         form: {},
         // 表单校验
-        rules: {},
+        rules: {
+          money: [{required: true, message: '请输入金额'},
+            {type: 'number', message: '金额必须为正数'}]
+        },
         show: false,
         money: null
       };

@@ -1,10 +1,14 @@
 package com.ruoyi.medical.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.ruoyi.common.core.domain.entity.SysDictData;
 import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.medical.domain.CpoeBed;
+import com.ruoyi.medical.modle.Option;
 import com.ruoyi.medical.service.ICpoeBedService;
+import com.ruoyi.system.service.ISysDictDataService;
 import com.ruoyi.util.MyIdGenUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +43,10 @@ public class CpoeSickroomController extends BaseController {
 
     @Autowired
     private ICpoeBedService icbs;
+
+    @Autowired
+    private ISysDictDataService isdd;
+
 
     /**
      * 查询病房记录列表
@@ -81,6 +89,7 @@ public class CpoeSickroomController extends BaseController {
     public AjaxResult add(@RequestBody CpoeSickroom cpoeSickroom) {
         String id = MyIdGenUtils.ByPinyinAndTimestamp(SecurityUtils.getUsername());
         cpoeSickroom.setId(id);
+        cpoeSickroom.setStatus(1l);
         return toAjax(cpoeSickroomService.insertCpoeSickroom(cpoeSickroom));
     }
 
@@ -127,6 +136,60 @@ public class CpoeSickroomController extends BaseController {
             code = icbs.insertCpoeBed(cb);
         }
 
+        CpoeSickroom cs = new CpoeSickroom();
+        cs.setId(cpoeSickroom.getId());
+        cs.setStatus(2l);
+
+        code = cpoeSickroomService.updateCpoeSickroom(cs);
+
         return toAjax(code);
+    }
+
+    /**
+     * 查询病房记录列表
+     */
+    @PreAuthorize("@ss.hasPermi('medical:sickroom:list')")
+    @GetMapping("/getList")
+    public TableDataInfo getList() {
+        List<Option> l = new ArrayList<>();
+        List<Option> la = null;
+        List<Option> lb = null;
+        Option o = null;
+
+        SysDictData sdd = new SysDictData();
+        sdd.setDictType("medical_sickroom_attribute");
+        List<SysDictData> sdds = isdd.selectDictDataList(sdd);
+
+        for (SysDictData dd : sdds) {
+            List<CpoeSickroom> list = cpoeSickroomService.selectList(dd.getDictValue());
+            la = new ArrayList<>();
+
+            for (CpoeSickroom cs : list) {
+                List<CpoeBed> cbs = cs.getCbs();
+                lb = new ArrayList<>();
+                for (CpoeBed cb : cbs) {
+                    o = new Option();
+                    o.setLabel(cb.getName());
+                    o.setValue(cb.getId());
+                    o.setChildren(null);
+                    lb.add(o);
+                }
+
+                o = new Option();
+                o.setLabel(cs.getName());
+                o.setValue(cs.getId());
+                o.setChildren(lb);
+                la.add(o);
+            }
+
+            o = new Option();
+            o.setLabel(dd.getDictLabel());
+            o.setValue(dd.getDictValue());
+            o.setChildren(la);
+
+            l.add(o);
+        }
+
+        return getDataTable(l);
     }
 }

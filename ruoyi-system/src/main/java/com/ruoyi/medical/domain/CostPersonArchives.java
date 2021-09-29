@@ -47,6 +47,8 @@ public class CostPersonArchives extends BaseEntity {
 
     private TMedicalDo tmd;
 
+    private CpoeSplitbed cs;
+
     public void setId(String id) {
         this.id = id;
     }
@@ -105,5 +107,13 @@ public class CostPersonArchives extends BaseEntity {
 
     public void setTmd(TMedicalDo tmd) {
         this.tmd = tmd;
+    }
+
+    public CpoeSplitbed getCs() {
+        return cs;
+    }
+
+    public void setCs(CpoeSplitbed cs) {
+        this.cs = cs;
     }
 }

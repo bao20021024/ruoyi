@@ -103,4 +103,15 @@ public class TMedicalOutpatientdoctorReceiverecordController extends BaseControl
         return toAjax(tMedicalOutpatientdoctorReceiverecordService.deleteTMedicalOutpatientdoctorReceiverecordByOpDoctorReceiveRecordIds(opDoctorReceiveRecordIds));
     }
 
+    /**
+     * 查询接诊记录列表
+     */
+    @PreAuthorize("@ss.hasPermi('medical:receiverecord:list')")
+    @GetMapping("/listSickroom")
+    public TableDataInfo listSickroom(TMedicalOutpatientdoctorReceiverecord tMedicalOutpatientdoctorReceiverecord) {
+        startPage();
+        List<TMedicalOutpatientdoctorReceiverecord> list = tMedicalOutpatientdoctorReceiverecordService.selectListAboutSickroom(tMedicalOutpatientdoctorReceiverecord);
+        return getDataTable(list);
+    }
+
 }

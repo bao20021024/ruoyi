@@ -1,28 +1,10 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="消费事项" prop="name">
+      <el-form-item label="患者姓名" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入消费事项"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="患者id" prop="personId">
-        <el-input
-          v-model="queryParams.personId"
-          placeholder="请输入患者id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="医生id" prop="doctorid">
-        <el-input
-          v-model="queryParams.doctorid"
-          placeholder="请输入医生id"
+          placeholder="请输入患者姓名"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -46,15 +28,6 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="门诊医生接诊记录id" prop="receiveRecordId">
-        <el-input
-          v-model="queryParams.receiveRecordId"
-          placeholder="请输入门诊医生接诊记录id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -77,41 +50,6 @@
 
       <el-col :span="1.5">
         <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['medical:lis:add']"
-        >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['medical:lis:edit']"
-        >修改
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:lis:remove']"
-        >删除
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
           type="warning"
           plain
           icon="el-icon-download"
@@ -127,10 +65,18 @@
 
     <el-table v-loading="loading" :data="lisList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="Lis检验信息id" align="center" prop="id"/>
-      <el-table-column label="消费事项" align="center" prop="name"/>
-      <el-table-column label="患者id" align="center" prop="personId"/>
-      <el-table-column label="医生id" align="center" prop="doctorid"/>
+      <el-table-column label="患者姓名" align="center" prop="cpa.name"/>
+      <el-table-column label="患者身份证" align="center" prop="cpa.code"/>
+      <el-table-column label="患者性别" align="center" prop="cpa.sex">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.sys_user_sex" :value="scope.row.cpa.sex"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="消费事项" align="center" prop="name">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.medical_money_item" :value="scope.row.name"/>
+        </template>
+      </el-table-column>
       <el-table-column label="生成时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
@@ -141,7 +87,6 @@
           <dict-tag :options="dict.type.medical_money_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="门诊医生接诊记录id" align="center" prop="receiveRecordId"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <template v-if="scope.row.status == 1">
@@ -155,22 +100,6 @@
             </el-button>
           </template>
 
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['medical:lis:edit']"
-          >修改
-          </el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['medical:lis:remove']"
-          >删除
-          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -222,7 +151,7 @@
 
   export default {
     name: "Lis",
-    dicts: ['medical_money_status'],
+    dicts: ['medical_money_status', 'medical_money_item', 'sys_user_sex'],
     data() {
       return {
         // 遮罩层

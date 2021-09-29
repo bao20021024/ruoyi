@@ -1,24 +1,6 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="患者费用账单id" prop="billid">
-        <el-input
-          v-model="queryParams.billid"
-          placeholder="请输入患者费用账单id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="消费事项" prop="partName">
-        <el-input
-          v-model="queryParams.partName"
-          placeholder="请输入消费事项"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item label="事项数量" prop="partNumber">
         <el-input
           v-model="queryParams.partNumber"
@@ -44,41 +26,6 @@
     </el-form>
 
     <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['medical:detail:add']"
-        >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['medical:detail:edit']"
-        >修改
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:detail:remove']"
-        >删除
-        </el-button>
-      </el-col>
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -109,26 +56,6 @@
       <el-table-column label="小计" align="center">
         <template slot-scope="scope">
           <span>{{sum(scope.row.partMoney,scope.row.partNumber)}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['medical:detail:edit']"
-          >修改
-          </el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['medical:detail:remove']"
-          >删除
-          </el-button>
         </template>
       </el-table-column>
     </el-table>

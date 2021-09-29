@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 26/09/2021 10:24:38
+ Date: 29/09/2021 15:17:06
 */
 
 SET NAMES utf8mb4;
@@ -43,7 +43,7 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 118 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 119 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table
@@ -70,11 +70,11 @@ INSERT INTO `gen_table` VALUES (110, 't_medical_emr_doctorsorder', '医嘱记录
 INSERT INTO `gen_table` VALUES (111, 't_medical_lis_info', 'Lis检验信息表', NULL, NULL, 'LisInfo', 'crud', 'com.ruoyi.medical', 'medical', 'lis', 'Lis检验信息', 'bao', '0', '/', '{}', 'admin', '2021-09-23 11:37:32', '', '2021-09-23 19:37:41', NULL);
 INSERT INTO `gen_table` VALUES (112, 't_medical_outpatientdoctor_action', '医生看病流程表', NULL, NULL, 'OutpatientdoctorAction', 'crud', 'com.ruoyi.medical', 'medical', 'action', '医生看病流程', 'bao', '0', '/', '{}', 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:20:57', NULL);
 INSERT INTO `gen_table` VALUES (113, 't_medical_outpatientdoctor_medicalrecord', '门诊病历表', NULL, NULL, 'OutpatientdoctorMedicalrecord', 'crud', 'com.ruoyi.medical', 'medical', 'medicalrecord', '门诊病历', 'bao', '0', '/', NULL, 'admin', '2021-09-23 11:37:32', '', NULL, NULL);
-INSERT INTO `gen_table` VALUES (114, 't_medical_outpatientdoctor_receiverecord', '接诊记录表', NULL, NULL, 'OutpatientdoctorReceiverecord', 'crud', 'com.ruoyi.medical', 'medical', 'receiverecord', '接诊记录', 'bao', '0', '/', '{}', 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:21:48', NULL);
 INSERT INTO `gen_table` VALUES (115, 't_medical_outpatientdoctor_result', '医生看病结果表', NULL, NULL, 'OutpatientdoctorResult', 'crud', 'com.ruoyi.medical', 'medical', 'result', '医生看病结果', 'bao', '0', '/', NULL, 'admin', '2021-09-23 11:37:32', '', NULL, NULL);
 INSERT INTO `gen_table` VALUES (116, 't_medical_outpatientdoctor_resulthandle', '医生看病治疗方案表', NULL, NULL, 'OutpatientdoctorResulthandle', 'crud', 'com.ruoyi.medical', 'medical', 'resulthandle', '医生看病治疗方案', 'bao', '0', '/', NULL, 'admin', '2021-09-23 11:37:32', '', NULL, NULL);
 INSERT INTO `gen_table` VALUES (117, 't_medical_pacs_info', 'PACS影像信息表', NULL, NULL, 'PacsInfo', 'crud', 'com.ruoyi.medical', 'medical', 'pacs', 'PACS影像信息', 'bao', '0', '/', '{}', 'admin', '2021-09-23 11:37:32', '', '2021-09-23 19:36:58', NULL);
 INSERT INTO `gen_table` VALUES (118, 't_medical_do', '操作记录表', NULL, NULL, 'TMedicalDo', 'crud', 'com.ruoyi.medical', 'medical', 'do', '操作记录', 'bao', '0', '/', NULL, 'bao', '2021-09-24 15:30:39', '', NULL, NULL);
+INSERT INTO `gen_table` VALUES (119, 't_medical_outpatientdoctor_receiverecord', '接诊记录表', NULL, NULL, 'TMedicalOutpatientdoctorReceiverecord', 'crud', 'com.ruoyi.medical', 'medical', 'receiverecord', '接诊记录', 'bao', '0', '/', '{}', 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09', NULL);
 
 -- ----------------------------
 -- Table structure for gen_table_column
@@ -104,7 +104,7 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 749 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 755 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table_column
@@ -240,11 +240,6 @@ INSERT INTO `gen_table_column` VALUES (719, '112', 'opDoctorReceiveRecordId', '�
 INSERT INTO `gen_table_column` VALUES (720, '113', 'id', '门诊记录id', 'varchar(50)', 'String', 'id', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2021-09-23 11:37:32', '', NULL);
 INSERT INTO `gen_table_column` VALUES (721, '113', 'outpatientId', '门诊卡信息id', 'varchar(50)', 'String', 'outpatientId', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2021-09-23 11:37:32', '', NULL);
 INSERT INTO `gen_table_column` VALUES (722, '113', 'medicalRecordURL', '病历URL', 'varchar(50)', 'String', 'medicalRecordURL', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2021-09-23 11:37:32', '', NULL);
-INSERT INTO `gen_table_column` VALUES (723, '114', 'opDoctorReceiveRecordId', '接诊记录id', 'varchar(50)', 'String', 'opDoctorReceiveRecordId', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:21:48');
-INSERT INTO `gen_table_column` VALUES (724, '114', 'outpatientId', '门诊卡信息id', 'varchar(50)', 'String', 'outpatientId', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:21:48');
-INSERT INTO `gen_table_column` VALUES (725, '114', 'doctorId', '医生id', 'varchar(50)', 'String', 'doctorId', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:21:48');
-INSERT INTO `gen_table_column` VALUES (726, '114', 'status', '状态', 'int', 'Long', 'status', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'radio', 'medical_bill_type', 4, 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:21:48');
-INSERT INTO `gen_table_column` VALUES (727, '114', 'createTime', '创建时间', 'date', 'Date', 'createTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 5, 'admin', '2021-09-23 11:37:32', '', '2021-09-23 18:21:48');
 INSERT INTO `gen_table_column` VALUES (728, '115', 'opDoctorResultId', '医生看病结果id', 'varchar(50)', 'String', 'opDoctorResultId', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2021-09-23 11:37:32', '', NULL);
 INSERT INTO `gen_table_column` VALUES (729, '115', 'name', '病名称', 'varchar(50)', 'String', 'name', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2021-09-23 11:37:32', '', NULL);
 INSERT INTO `gen_table_column` VALUES (730, '115', 'description', '描述症状', 'varchar(200)', 'String', 'description', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2021-09-23 11:37:32', '', NULL);
@@ -267,6 +262,12 @@ INSERT INTO `gen_table_column` VALUES (746, '118', 'doUser', '操作人', 'varch
 INSERT INTO `gen_table_column` VALUES (747, '118', 'doTime', '操作时间', 'datetime', 'Date', 'doTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 3, 'bao', '2021-09-24 15:30:39', '', NULL);
 INSERT INTO `gen_table_column` VALUES (748, '118', 'doId', '操作对象id', 'varchar(50)', 'String', 'doId', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 4, 'bao', '2021-09-24 15:30:39', '', NULL);
 INSERT INTO `gen_table_column` VALUES (749, '118', 'doType', '操作对象类型', 'int', 'Long', 'doType', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', '', 5, 'bao', '2021-09-24 15:30:39', '', NULL);
+INSERT INTO `gen_table_column` VALUES (750, '119', 'opDoctorReceiveRecordId', '接诊记录id', 'varchar(50)', 'String', 'opDoctorReceiveRecordId', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09');
+INSERT INTO `gen_table_column` VALUES (751, '119', 'outpatientId', '门诊卡信息id', 'varchar(50)', 'String', 'outpatientId', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 2, 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09');
+INSERT INTO `gen_table_column` VALUES (752, '119', 'doctorId', '医生id', 'varchar(50)', 'String', 'doctorId', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09');
+INSERT INTO `gen_table_column` VALUES (753, '119', 'type', '类型', 'int', 'Long', 'type', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'radio', 'medical_bill_type', 4, 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09');
+INSERT INTO `gen_table_column` VALUES (754, '119', 'status', '状态', 'int', 'Long', 'status', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'medical_receiveRecord_status', 5, 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09');
+INSERT INTO `gen_table_column` VALUES (755, '119', 'createTime', '创建时间', 'date', 'Date', 'createTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 6, 'bao', '2021-09-26 12:25:25', '', '2021-09-26 12:30:09');
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -416,7 +417,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'DESKTOP-BR1UG501632573620916', 1632574256959, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'DESKTOP-BR1UG501632899194106', 1632899709515, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -493,9 +494,9 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1632573630000, -1, 5, 'PAUSED', 'CRON', 1632573621000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1632573630000, -1, 5, 'PAUSED', 'CRON', 1632573621000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1632573640000, -1, 5, 'PAUSED', 'CRON', 1632573621000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1632899200000, -1, 5, 'PAUSED', 'CRON', 1632899194000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1632899205000, -1, 5, 'PAUSED', 'CRON', 1632899194000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1632899200000, -1, 5, 'PAUSED', 'CRON', 1632899194000, 0, NULL, 2, '');
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -513,7 +514,7 @@ CREATE TABLE `sys_config`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_config
@@ -544,7 +545,7 @@ CREATE TABLE `sys_dept`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 203 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 204 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -575,7 +576,7 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 145 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 167 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -613,46 +614,66 @@ INSERT INTO `sys_dict_data` VALUES (102, 3, '作废', '3', 'medical_outpatient_s
 INSERT INTO `sys_dict_data` VALUES (103, 4, '退卡', '4', 'medical_outpatient_status', NULL, 'info', 'N', '0', 'admin', '2021-09-23 10:48:43', 'bao', '2021-09-25 20:49:06', NULL);
 INSERT INTO `sys_dict_data` VALUES (104, 1, '充值', '1', 'medical_recharge_record_type', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 10:50:52', 'bao', '2021-09-25 20:49:32', NULL);
 INSERT INTO `sys_dict_data` VALUES (105, 2, '取现', '2', 'medical_recharge_record_type', NULL, 'info', 'N', '0', 'admin', '2021-09-23 10:51:00', 'bao', '2021-09-25 20:49:39', NULL);
-INSERT INTO `sys_dict_data` VALUES (106, 1, '检查', '1', 'medical_money_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 10:57:08', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (107, 4, '药品', '4', 'medical_money_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 10:57:16', 'admin', '2021-09-23 11:07:24', NULL);
-INSERT INTO `sys_dict_data` VALUES (108, 5, '住院', '5', 'medical_money_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 10:57:24', 'admin', '2021-09-23 11:07:35', NULL);
-INSERT INTO `sys_dict_data` VALUES (109, 1, '门诊', '1', 'medical_bill_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 10:58:50', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (110, 2, '住院', '2', 'medical_bill_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 10:59:00', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (111, 2, '检验', '2', 'medical_money_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:07:48', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (112, 3, '处置', '3', 'medical_money_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:07:57', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (113, 1, '已做', '1', 'medical_money_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:14:51', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (114, 2, '未做', '2', 'medical_money_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:14:58', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (115, 1, '支', '1', 'medical_drugs_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:17:29', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (116, 2, '盒', '2', 'medical_drugs_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:17:39', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (117, 3, '粒', '3', 'medical_drugs_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:17:53', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (118, 4, '瓶', '4', 'medical_drugs_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:18:01', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (119, 5, '片', '5', 'medical_drugs_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:18:09', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (120, 1, 'VIP单人房', '1', 'medical_sickroom_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:21:51', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (121, 2, '双人房', '2', 'medical_sickroom_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:22:18', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (122, 3, '三人房', '3', 'medical_sickroom_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:22:25', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (123, 4, '四人房', '4', 'medical_sickroom_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:22:36', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (124, 5, '五人房', '5', 'medical_sickroom_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:22:45', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (125, 6, '六人房', '6', 'medical_sickroom_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:22:52', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (126, 1, '儿童科', '1', 'medical_sickroom_attribute', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:26:32', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (127, 2, '耳鼻科', '2', 'medical_sickroom_attribute', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:26:41', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (128, 3, '妇科', '3', 'medical_sickroom_attribute', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:26:48', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (129, 4, '男科', '4', 'medical_sickroom_attribute', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:26:56', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (130, 1, '正常', '1', 'medical_do_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:28:27', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (131, 2, '异常', '2', 'medical_do_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:28:33', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (132, 6, '克', '6', 'medical_drugs_unit', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:29:13', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (133, 1, '长期', '1', 'medical_doctorsOrder_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:31:58', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (134, 2, '临时', '2', 'medical_doctorsOrder_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:32:04', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (135, 3, '出院', '3', 'medical_doctorsOrder_type', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:32:13', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (136, 1, '未执行', '1', 'medical_doctorsOrder_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:35:08', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (137, 2, '执行中', '2', 'medical_doctorsOrder_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:35:19', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (138, 3, '执行完成', '3', 'medical_doctorsOrder_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:35:27', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (139, 4, '暂停', '4', 'medical_doctorsOrder_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:35:34', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (140, 5, '废弃', '5', 'medical_doctorsOrder_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 11:35:42', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (141, 1, '草稿', '1', 'medical_prescriptionTotal_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 18:09:01', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (142, 2, '已发送', '2', 'medical_prescriptionTotal_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 18:09:08', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (143, 3, '已撤回', '3', 'medical_prescriptionTotal_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 18:09:32', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (144, 4, '已退回', '4', 'medical_prescriptionTotal_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 18:09:42', '', NULL, NULL);
-INSERT INTO `sys_dict_data` VALUES (145, 5, '完成认领', '5', 'medical_prescriptionTotal_status', NULL, 'default', 'N', '0', 'admin', '2021-09-23 18:09:55', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (106, 1, '检查', '1', 'medical_money_type', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 10:57:08', 'bao', '2021-09-27 14:32:27', NULL);
+INSERT INTO `sys_dict_data` VALUES (107, 4, '药品', '4', 'medical_money_type', NULL, 'info', 'N', '0', 'admin', '2021-09-23 10:57:16', 'bao', '2021-09-27 14:32:52', NULL);
+INSERT INTO `sys_dict_data` VALUES (108, 5, '住院', '5', 'medical_money_type', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 10:57:24', 'bao', '2021-09-27 14:32:58', NULL);
+INSERT INTO `sys_dict_data` VALUES (109, 1, '门诊', '1', 'medical_bill_type', NULL, 'success', 'N', '0', 'admin', '2021-09-23 10:58:50', 'bao', '2021-09-26 14:32:50', NULL);
+INSERT INTO `sys_dict_data` VALUES (110, 2, '住院', '2', 'medical_bill_type', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 10:59:00', 'bao', '2021-09-26 14:32:55', NULL);
+INSERT INTO `sys_dict_data` VALUES (111, 2, '检验', '2', 'medical_money_type', NULL, 'warning', 'N', '0', 'admin', '2021-09-23 11:07:48', 'bao', '2021-09-27 14:32:36', NULL);
+INSERT INTO `sys_dict_data` VALUES (112, 3, '处置', '3', 'medical_money_type', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:07:57', 'bao', '2021-09-27 14:32:46', NULL);
+INSERT INTO `sys_dict_data` VALUES (113, 1, '未做', '1', 'medical_money_status', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:14:51', 'bao', '2021-09-27 14:31:38', NULL);
+INSERT INTO `sys_dict_data` VALUES (114, 2, '已做', '2', 'medical_money_status', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:14:58', 'bao', '2021-09-27 14:31:49', NULL);
+INSERT INTO `sys_dict_data` VALUES (115, 1, '支', '1', 'medical_drugs_unit', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 11:17:29', 'bao', '2021-09-27 19:28:35', NULL);
+INSERT INTO `sys_dict_data` VALUES (116, 2, '盒', '2', 'medical_drugs_unit', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:17:39', 'bao', '2021-09-27 19:28:40', NULL);
+INSERT INTO `sys_dict_data` VALUES (117, 3, '粒', '3', 'medical_drugs_unit', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:17:53', 'bao', '2021-09-27 19:28:45', NULL);
+INSERT INTO `sys_dict_data` VALUES (118, 4, '瓶', '4', 'medical_drugs_unit', NULL, 'info', 'N', '0', 'admin', '2021-09-23 11:18:01', 'bao', '2021-09-27 19:28:51', NULL);
+INSERT INTO `sys_dict_data` VALUES (119, 5, '片', '5', 'medical_drugs_unit', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:18:09', 'bao', '2021-09-27 19:28:58', NULL);
+INSERT INTO `sys_dict_data` VALUES (120, 1, 'VIP单人房', '1', 'medical_sickroom_unit', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:21:51', 'bao', '2021-09-27 19:29:38', NULL);
+INSERT INTO `sys_dict_data` VALUES (121, 2, '双人房', '2', 'medical_sickroom_unit', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 11:22:18', 'bao', '2021-09-27 19:29:43', NULL);
+INSERT INTO `sys_dict_data` VALUES (122, 3, '三人房', '3', 'medical_sickroom_unit', NULL, 'info', 'N', '0', 'admin', '2021-09-23 11:22:25', 'bao', '2021-09-27 19:29:52', NULL);
+INSERT INTO `sys_dict_data` VALUES (123, 4, '四人房', '4', 'medical_sickroom_unit', NULL, 'warning', 'N', '0', 'admin', '2021-09-23 11:22:36', 'bao', '2021-09-27 19:29:56', NULL);
+INSERT INTO `sys_dict_data` VALUES (124, 5, '五人房', '5', 'medical_sickroom_unit', NULL, 'warning', 'N', '0', 'admin', '2021-09-23 11:22:45', 'bao', '2021-09-27 19:30:01', NULL);
+INSERT INTO `sys_dict_data` VALUES (125, 6, '六人房', '6', 'medical_sickroom_unit', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:22:52', 'bao', '2021-09-27 19:30:05', NULL);
+INSERT INTO `sys_dict_data` VALUES (126, 1, '儿童科', '1', 'medical_sickroom_attribute', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:26:32', 'bao', '2021-09-28 18:38:54', NULL);
+INSERT INTO `sys_dict_data` VALUES (127, 2, '耳鼻科', '2', 'medical_sickroom_attribute', NULL, 'warning', 'N', '0', 'admin', '2021-09-23 11:26:41', 'bao', '2021-09-28 18:38:48', NULL);
+INSERT INTO `sys_dict_data` VALUES (128, 3, '妇科', '3', 'medical_sickroom_attribute', NULL, 'info', 'N', '0', 'admin', '2021-09-23 11:26:48', 'bao', '2021-09-28 18:38:40', NULL);
+INSERT INTO `sys_dict_data` VALUES (129, 4, '男科', '4', 'medical_sickroom_attribute', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:26:56', 'bao', '2021-09-28 18:38:30', NULL);
+INSERT INTO `sys_dict_data` VALUES (130, 1, '正常', '1', 'medical_do_status', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:28:27', 'bao', '2021-09-27 19:28:06', NULL);
+INSERT INTO `sys_dict_data` VALUES (131, 2, '异常', '2', 'medical_do_status', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:28:33', 'bao', '2021-09-27 19:28:11', NULL);
+INSERT INTO `sys_dict_data` VALUES (132, 6, '克', '6', 'medical_drugs_unit', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 11:29:13', 'bao', '2021-09-27 19:29:04', NULL);
+INSERT INTO `sys_dict_data` VALUES (133, 1, '长期', '1', 'medical_doctorsOrder_type', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 11:31:58', 'bao', '2021-09-27 19:20:40', NULL);
+INSERT INTO `sys_dict_data` VALUES (134, 2, '临时', '2', 'medical_doctorsOrder_type', NULL, 'info', 'N', '0', 'admin', '2021-09-23 11:32:04', 'bao', '2021-09-27 19:20:46', NULL);
+INSERT INTO `sys_dict_data` VALUES (135, 3, '出院', '3', 'medical_doctorsOrder_type', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:32:13', 'bao', '2021-09-27 19:20:52', NULL);
+INSERT INTO `sys_dict_data` VALUES (136, 1, '未执行', '1', 'medical_doctorsOrder_status', NULL, 'warning', 'N', '0', 'admin', '2021-09-23 11:35:08', 'bao', '2021-09-27 19:23:32', NULL);
+INSERT INTO `sys_dict_data` VALUES (137, 2, '执行中', '2', 'medical_doctorsOrder_status', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 11:35:19', 'bao', '2021-09-27 19:23:39', NULL);
+INSERT INTO `sys_dict_data` VALUES (138, 3, '执行完成', '3', 'medical_doctorsOrder_status', NULL, 'success', 'N', '0', 'admin', '2021-09-23 11:35:27', 'bao', '2021-09-27 19:23:44', NULL);
+INSERT INTO `sys_dict_data` VALUES (139, 4, '暂停', '4', 'medical_doctorsOrder_status', NULL, 'info', 'N', '0', 'admin', '2021-09-23 11:35:34', 'bao', '2021-09-27 19:23:52', NULL);
+INSERT INTO `sys_dict_data` VALUES (140, 5, '废弃', '5', 'medical_doctorsOrder_status', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 11:35:42', 'bao', '2021-09-27 19:27:46', NULL);
+INSERT INTO `sys_dict_data` VALUES (141, 1, '草稿', '1', 'medical_prescriptionTotal_status', NULL, 'warning', 'N', '0', 'admin', '2021-09-23 18:09:01', 'bao', '2021-09-27 19:30:43', NULL);
+INSERT INTO `sys_dict_data` VALUES (142, 2, '已发送', '2', 'medical_prescriptionTotal_status', NULL, 'success', 'N', '0', 'admin', '2021-09-23 18:09:08', 'bao', '2021-09-27 19:30:50', NULL);
+INSERT INTO `sys_dict_data` VALUES (143, 3, '已撤回', '3', 'medical_prescriptionTotal_status', NULL, 'info', 'N', '0', 'admin', '2021-09-23 18:09:32', 'bao', '2021-09-27 19:31:02', NULL);
+INSERT INTO `sys_dict_data` VALUES (144, 4, '已退回', '4', 'medical_prescriptionTotal_status', NULL, 'danger', 'N', '0', 'admin', '2021-09-23 18:09:42', 'bao', '2021-09-27 19:31:08', NULL);
+INSERT INTO `sys_dict_data` VALUES (145, 5, '完成认领', '5', 'medical_prescriptionTotal_status', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 18:09:55', 'bao', '2021-09-27 19:31:13', NULL);
+INSERT INTO `sys_dict_data` VALUES (146, 3, '消费', '3', 'medical_recharge_record_type', NULL, 'danger', 'N', '0', 'bao', '2021-09-26 11:45:03', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (147, 1, '未接诊', '1', 'medical_receiveRecord_status', NULL, 'danger', 'N', '0', 'bao', '2021-09-26 12:28:30', 'bao', '2021-09-26 20:31:32', NULL);
+INSERT INTO `sys_dict_data` VALUES (148, 2, '已接诊', '2', 'medical_receiveRecord_status', NULL, 'primary', 'N', '0', 'bao', '2021-09-26 12:28:45', 'bao', '2021-09-26 20:31:45', NULL);
+INSERT INTO `sys_dict_data` VALUES (150, 3, '检查中', '3', 'medical_receiveRecord_status', NULL, 'info', 'N', '0', 'bao', '2021-09-26 20:31:05', 'bao', '2021-09-26 20:31:25', NULL);
+INSERT INTO `sys_dict_data` VALUES (151, 5, '诊断完毕', '5', 'medical_receiveRecord_status', NULL, 'primary', 'N', '0', 'bao', '2021-09-26 20:32:07', 'bao', '2021-09-28 16:11:11', NULL);
+INSERT INTO `sys_dict_data` VALUES (152, 4, '检查完毕', '4', 'medical_receiveRecord_status', NULL, 'warning', 'N', '0', 'bao', '2021-09-26 20:38:07', 'bao', '2021-09-26 20:38:14', NULL);
+INSERT INTO `sys_dict_data` VALUES (153, 1, '血常规', '1001', 'medical_money_item', NULL, 'primary', 'N', '0', 'bao', '2021-09-27 08:57:36', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (154, 2, '尿检', '1002', 'medical_money_item', NULL, 'primary', 'N', '0', 'bao', '2021-09-27 08:57:50', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (155, 3, 'B超', '2001', 'medical_money_item', NULL, 'primary', 'N', '0', 'bao', '2021-09-27 08:58:10', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (156, 4, 'CT', '2002', 'medical_money_item', NULL, 'primary', 'N', '0', 'bao', '2021-09-27 08:58:24', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (157, 6, '开药中', '6', 'medical_receiveRecord_status', NULL, 'info', 'N', '0', 'bao', '2021-09-28 11:39:42', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (158, 7, '开药完成', '7', 'medical_receiveRecord_status', NULL, 'success', 'N', '0', 'bao', '2021-09-28 11:40:00', 'bao', '2021-09-29 09:32:42', NULL);
+INSERT INTO `sys_dict_data` VALUES (159, 1, '未付款', '1', 'medical_bill_status', NULL, 'danger', 'N', '0', 'bao', '2021-09-28 15:53:47', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (160, 2, '已付款', '2', 'medical_bill_status', NULL, 'success', 'N', '0', 'bao', '2021-09-28 15:54:00', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (161, 5, '内科', '5', 'medical_sickroom_attribute', NULL, 'primary', 'N', '0', 'bao', '2021-09-28 18:38:05', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (162, 6, '外科', '6', 'medical_sickroom_attribute', NULL, 'success', 'N', '0', 'bao', '2021-09-28 18:38:21', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (163, 8, '分床完成', '8', 'medical_receiveRecord_status', NULL, 'danger', 'N', '0', 'bao', '2021-09-28 21:45:57', 'bao', '2021-09-28 21:46:06', NULL);
+INSERT INTO `sys_dict_data` VALUES (164, 1, '未分配', '1', 'medical_sickroom_status', NULL, 'danger', 'N', '0', 'bao', '2021-09-29 10:12:42', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (165, 2, '已分配', '2', 'medical_sickroom_status', NULL, 'success', 'N', '0', 'bao', '2021-09-29 10:13:00', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (166, 9, '已出院', '9', 'medical_receiveRecord_status', NULL, 'primary', 'N', '0', 'bao', '2021-09-29 13:10:28', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_type
@@ -670,7 +691,7 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 111 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 117 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -692,11 +713,16 @@ INSERT INTO `sys_dict_type` VALUES (103, '患者类型', 'medical_bill_type', '0
 INSERT INTO `sys_dict_type` VALUES (104, '消费事项状态', 'medical_money_status', '0', 'admin', '2021-09-23 11:14:41', '', NULL, '1已做2未做');
 INSERT INTO `sys_dict_type` VALUES (105, '药品单位', 'medical_drugs_unit', '0', 'admin', '2021-09-23 11:17:13', 'admin', '2021-09-23 11:29:03', '1支2盒3粒4瓶5片6克');
 INSERT INTO `sys_dict_type` VALUES (106, '病房规格', 'medical_sickroom_unit', '0', 'admin', '2021-09-23 11:21:15', 'admin', '2021-09-23 11:22:03', '1VIP单人房2双人房3三人房4四人房5五人房6六人房');
-INSERT INTO `sys_dict_type` VALUES (107, '病房属性', 'medical_sickroom_attribute', '0', 'admin', '2021-09-23 11:26:15', '', NULL, '1儿童科2耳鼻科3妇科4男科');
+INSERT INTO `sys_dict_type` VALUES (107, '病房属性', 'medical_sickroom_attribute', '0', 'admin', '2021-09-23 11:26:15', 'bao', '2021-09-28 18:37:41', '1儿童科2耳鼻科3妇科4男科5内科6外科');
 INSERT INTO `sys_dict_type` VALUES (108, '执行状态', 'medical_do_status', '0', 'admin', '2021-09-23 11:28:16', 'admin', '2021-09-23 11:30:29', '1正常2异常');
 INSERT INTO `sys_dict_type` VALUES (109, '医嘱类型', 'medical_doctorsOrder_type', '0', 'admin', '2021-09-23 11:31:44', '', NULL, '1长期2临时3出院');
 INSERT INTO `sys_dict_type` VALUES (110, '医嘱状态', 'medical_doctorsOrder_status', '0', 'admin', '2021-09-23 11:34:34', 'admin', '2021-09-23 11:34:50', '1未执行2执行中3执行完成4暂停5废弃');
 INSERT INTO `sys_dict_type` VALUES (111, '处方状态', 'medical_prescriptionTotal_status', '0', 'admin', '2021-09-23 18:08:39', '', NULL, '1草稿2已发送3已撤回4已退回5完成认领');
+INSERT INTO `sys_dict_type` VALUES (112, '医疗操作记录类型', 'medical_doList_type', '0', 'bao', '2021-09-26 11:48:56', 'bao', '2021-09-26 11:51:06', '0个人档案1门诊卡信息2门诊卡充值取现记录3患者账单明细');
+INSERT INTO `sys_dict_type` VALUES (113, '接诊状态', 'medical_receiveRecord_status', '0', 'bao', '2021-09-26 12:26:41', 'bao', '2021-09-29 01:37:05', '1未接诊2已接诊3检查中4检查完毕5诊断完毕6开药中7接诊完成8分床完成');
+INSERT INTO `sys_dict_type` VALUES (114, '消费事项', 'medical_money_item', '0', 'bao', '2021-09-27 08:54:15', 'bao', '2021-09-27 08:58:40', '1001血常规1002尿检2001B超2002CT');
+INSERT INTO `sys_dict_type` VALUES (115, '患者账单状态', 'medical_bill_status', '0', 'bao', '2021-09-28 15:53:14', '', NULL, '1未付款2已付款');
+INSERT INTO `sys_dict_type` VALUES (116, '病房状态', 'medical_sickroom_status', '0', 'bao', '2021-09-29 10:12:22', '', NULL, '1未分配2已分配');
 
 -- ----------------------------
 -- Table structure for sys_job
@@ -717,7 +743,7 @@ CREATE TABLE `sys_job`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_job
@@ -761,34 +787,31 @@ CREATE TABLE `sys_logininfor`  (
   `msg` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '提示消息',
   `login_time` datetime NULL DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
 -- ----------------------------
-INSERT INTO `sys_logininfor` VALUES (1, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 15:30:13');
-INSERT INTO `sys_logininfor` VALUES (2, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 15:58:17');
-INSERT INTO `sys_logininfor` VALUES (3, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 16:59:53');
-INSERT INTO `sys_logininfor` VALUES (4, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 18:31:41');
-INSERT INTO `sys_logininfor` VALUES (5, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 18:51:54');
-INSERT INTO `sys_logininfor` VALUES (6, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 18:59:22');
-INSERT INTO `sys_logininfor` VALUES (7, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 19:05:15');
-INSERT INTO `sys_logininfor` VALUES (8, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 19:55:40');
-INSERT INTO `sys_logininfor` VALUES (9, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 20:00:58');
-INSERT INTO `sys_logininfor` VALUES (10, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-24 20:04:10');
-INSERT INTO `sys_logininfor` VALUES (11, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 14:51:53');
-INSERT INTO `sys_logininfor` VALUES (12, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '1', '验证码错误', '2021-09-25 15:44:24');
-INSERT INTO `sys_logininfor` VALUES (13, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 15:44:29');
-INSERT INTO `sys_logininfor` VALUES (14, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 16:39:11');
-INSERT INTO `sys_logininfor` VALUES (15, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 19:24:50');
-INSERT INTO `sys_logininfor` VALUES (16, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-25 20:15:14');
-INSERT INTO `sys_logininfor` VALUES (17, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 20:15:27');
-INSERT INTO `sys_logininfor` VALUES (18, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-25 20:15:51');
-INSERT INTO `sys_logininfor` VALUES (19, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 20:15:57');
-INSERT INTO `sys_logininfor` VALUES (20, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-25 20:17:16');
-INSERT INTO `sys_logininfor` VALUES (21, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 20:17:52');
-INSERT INTO `sys_logininfor` VALUES (22, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-25 20:45:41');
-INSERT INTO `sys_logininfor` VALUES (23, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-25 20:45:47');
+INSERT INTO `sys_logininfor` VALUES (1, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-28 23:13:47');
+INSERT INTO `sys_logininfor` VALUES (2, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 00:32:52');
+INSERT INTO `sys_logininfor` VALUES (3, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 02:57:41');
+INSERT INTO `sys_logininfor` VALUES (4, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 02:57:55');
+INSERT INTO `sys_logininfor` VALUES (5, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 02:58:13');
+INSERT INTO `sys_logininfor` VALUES (6, 'hong', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 02:58:23');
+INSERT INTO `sys_logininfor` VALUES (7, 'hong', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 03:01:18');
+INSERT INTO `sys_logininfor` VALUES (8, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 08:33:17');
+INSERT INTO `sys_logininfor` VALUES (9, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 13:48:11');
+INSERT INTO `sys_logininfor` VALUES (10, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 13:48:29');
+INSERT INTO `sys_logininfor` VALUES (11, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 13:50:44');
+INSERT INTO `sys_logininfor` VALUES (12, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 13:50:51');
+INSERT INTO `sys_logininfor` VALUES (13, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 13:55:26');
+INSERT INTO `sys_logininfor` VALUES (14, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '1', '验证码错误', '2021-09-29 13:55:39');
+INSERT INTO `sys_logininfor` VALUES (15, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '1', '验证码错误', '2021-09-29 13:55:42');
+INSERT INTO `sys_logininfor` VALUES (16, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 13:55:48');
+INSERT INTO `sys_logininfor` VALUES (17, 'yang', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '退出成功', '2021-09-29 13:56:07');
+INSERT INTO `sys_logininfor` VALUES (18, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 13:56:16');
+INSERT INTO `sys_logininfor` VALUES (19, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '1', '验证码已失效', '2021-09-29 14:29:25');
+INSERT INTO `sys_logininfor` VALUES (20, 'bao', '127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-09-29 14:29:28');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -815,7 +838,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2143 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2268 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -824,6 +847,8 @@ INSERT INTO `sys_menu` VALUES (1, '系统管理', 0, 1, 'system', NULL, '', 1, 0
 INSERT INTO `sys_menu` VALUES (2, '系统监控', 0, 2, 'monitor', NULL, '', 1, 0, 'M', '0', '0', '', 'monitor', 'admin', '2021-09-18 15:03:00', '', NULL, '系统监控目录');
 INSERT INTO `sys_menu` VALUES (3, '系统工具', 0, 3, 'tool', NULL, '', 1, 0, 'M', '0', '0', '', 'tool', 'admin', '2021-09-18 15:03:00', '', NULL, '系统工具目录');
 INSERT INTO `sys_menu` VALUES (4, '门诊管理', 0, 4, 'medical', NULL, NULL, 1, 0, 'M', '0', '0', '', 'textarea', 'bao', '2021-09-23 19:03:00', 'admin', '2021-09-23 20:16:44', '门诊管理目录');
+INSERT INTO `sys_menu` VALUES (5, '住院管理', 0, 7, 'home', NULL, NULL, 1, 0, 'M', '0', '0', NULL, 'people', 'bao', '2021-09-28 17:27:09', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (6, '库房管理', 0, 6, 'drugs', NULL, NULL, 1, 0, 'M', '0', '0', '', 'table', 'bao', '2021-09-28 11:04:47', 'bao', '2021-09-28 18:28:56', '');
 INSERT INTO `sys_menu` VALUES (100, '用户管理', 1, 1, 'user', 'system/user/index', '', 1, 0, 'C', '0', '0', 'system:user:list', 'user', 'admin', '2021-09-18 15:03:00', '', NULL, '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (101, '角色管理', 1, 2, 'role', 'system/role/index', '', 1, 0, 'C', '0', '0', 'system:role:list', 'peoples', 'admin', '2021-09-18 15:03:00', '', NULL, '角色管理菜单');
 INSERT INTO `sys_menu` VALUES (102, '菜单管理', 1, 3, 'menu', 'system/menu/index', '', 1, 0, 'C', '0', '0', 'system:menu:list', 'tree-table', 'admin', '2021-09-18 15:03:00', '', NULL, '菜单管理菜单');
@@ -903,11 +928,11 @@ INSERT INTO `sys_menu` VALUES (1057, '生成删除', 115, 3, '#', '', '', 1, 0, 
 INSERT INTO `sys_menu` VALUES (1058, '导入代码', 115, 2, '#', '', '', 1, 0, 'F', '0', '0', 'tool:gen:import', '#', 'admin', '2021-09-18 15:03:00', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1059, '预览代码', 115, 4, '#', '', '', 1, 0, 'F', '0', '0', 'tool:gen:preview', '#', 'admin', '2021-09-18 15:03:00', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1060, '生成代码', 115, 5, '#', '', '', 1, 0, 'F', '0', '0', 'tool:gen:code', '#', 'admin', '2021-09-18 15:03:00', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2126, '个人档案', 4, 1, 'archives', 'medical/archives/index', NULL, 1, 0, 'C', '0', '0', 'medical:archives:list', 'clipboard', 'bao', '2021-09-23 19:58:48', 'admin', '2021-09-23 20:17:23', '个人档案菜单');
+INSERT INTO `sys_menu` VALUES (2126, '个人档案', 4, 1, 'archives', 'medical/archives/index', NULL, 1, 0, 'C', '0', '0', 'nurse', 'clipboard', 'bao', '2021-09-23 19:58:48', 'bao', '2021-09-29 14:00:04', '个人档案菜单');
 INSERT INTO `sys_menu` VALUES (2127, '个人档案查询', 2126, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:query', '#', 'admin', '2021-09-23 19:58:48', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2128, '个人档案新增', 2126, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:add', '#', 'admin', '2021-09-23 19:58:48', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2129, '个人档案修改', 2126, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:edit', '#', 'admin', '2021-09-23 19:58:48', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2130, '个人档案删除', 2126, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:remove', '#', 'admin', '2021-09-23 19:58:48', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2128, '个人档案修改', 2126, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:edit', '#', 'admin', '2021-09-23 19:58:48', 'bao', '2021-09-29 13:31:46', '');
+INSERT INTO `sys_menu` VALUES (2129, '个人档案建档', 2126, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:jian', '#', 'admin', '2021-09-23 19:58:48', 'bao', '2021-09-29 13:30:59', '');
+INSERT INTO `sys_menu` VALUES (2130, '个人档案办卡', 2126, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:ban', '#', 'admin', '2021-09-23 19:58:48', 'bao', '2021-09-29 13:31:15', '');
 INSERT INTO `sys_menu` VALUES (2131, '个人档案导出', 2126, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:archives:export', '#', 'admin', '2021-09-23 19:58:48', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2132, '门诊卡信息', 4, 2, 'info', 'medical/info/index', NULL, 1, 0, 'C', '0', '0', 'medical:info:list', 'bug', 'admin', '2021-09-24 14:36:02', 'bao', '2021-09-24 15:50:12', '门诊卡信息菜单');
 INSERT INTO `sys_menu` VALUES (2133, '门诊卡信息查询', 2132, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:info:query', '#', 'admin', '2021-09-24 14:36:02', '', NULL, '');
@@ -915,18 +940,108 @@ INSERT INTO `sys_menu` VALUES (2134, '门诊卡信息新增', 2132, 2, '#', '', 
 INSERT INTO `sys_menu` VALUES (2135, '门诊卡信息修改', 2132, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:info:edit', '#', 'admin', '2021-09-24 14:36:02', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2136, '门诊卡信息删除', 2132, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:info:remove', '#', 'admin', '2021-09-24 14:36:02', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2137, '门诊卡信息导出', 2132, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:info:export', '#', 'admin', '2021-09-24 14:36:02', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2138, '操作记录', 4, 3, 'do', 'medical/do/index', NULL, 1, 0, 'C', '0', '0', 'medical:do:list', 'build', 'admin', '2021-09-24 15:49:19', 'bao', '2021-09-24 15:54:37', '操作记录菜单');
+INSERT INTO `sys_menu` VALUES (2138, '操作记录', 4, 3, 'do', 'medical/do/index', NULL, 1, 0, 'C', '1', '0', 'medical:do:list', 'build', 'admin', '2021-09-24 15:49:19', 'bao', '2021-09-29 13:29:47', '操作记录菜单');
 INSERT INTO `sys_menu` VALUES (2139, '操作记录查询', 2138, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:do:query', '#', 'admin', '2021-09-24 15:49:19', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2140, '操作记录新增', 2138, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:do:add', '#', 'admin', '2021-09-24 15:49:19', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2141, '操作记录修改', 2138, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:do:edit', '#', 'admin', '2021-09-24 15:49:19', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2142, '操作记录删除', 2138, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:do:remove', '#', 'admin', '2021-09-24 15:49:19', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2143, '操作记录导出', 2138, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:do:export', '#', 'admin', '2021-09-24 15:49:19', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2144, '门诊卡充值记录', 4, 1, 'record', 'medical/record/index', NULL, 1, 0, 'C', '0', '0', 'medical:record:list', '#', 'admin', '2021-09-25 14:29:49', '', NULL, '门诊卡充值记录菜单');
+INSERT INTO `sys_menu` VALUES (2144, '门诊卡充值记录', 4, 1, 'record', 'medical/record/index', NULL, 1, 0, 'C', '1', '0', 'nurse', 'dict', 'admin', '2021-09-25 14:29:49', 'bao', '2021-09-29 14:00:16', '门诊卡充值记录菜单');
 INSERT INTO `sys_menu` VALUES (2145, '门诊卡充值记录查询', 2144, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:record:query', '#', 'admin', '2021-09-25 14:29:49', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2146, '门诊卡充值记录新增', 2144, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:record:add', '#', 'admin', '2021-09-25 14:29:49', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2147, '门诊卡充值记录修改', 2144, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:record:edit', '#', 'admin', '2021-09-25 14:29:49', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2148, '门诊卡充值记录删除', 2144, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:record:remove', '#', 'admin', '2021-09-25 14:29:49', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2149, '门诊卡充值记录导出', 2144, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:record:export', '#', 'admin', '2021-09-25 14:29:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2150, '接诊管理', 4, 1, 'receiverecord', 'medical/receiverecord/index', NULL, 1, 0, 'C', '0', '0', 'doctor', 'user', 'admin', '2021-09-26 12:35:12', 'bao', '2021-09-29 13:59:31', '接诊记录菜单');
+INSERT INTO `sys_menu` VALUES (2151, '接诊记录查询', 2150, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:query', '#', 'admin', '2021-09-26 12:35:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2152, '接诊记录接诊', 2150, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:jie', '#', 'admin', '2021-09-26 12:35:12', 'bao', '2021-09-29 13:32:31', '');
+INSERT INTO `sys_menu` VALUES (2153, '接诊记录需做检查', 2150, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:jian', '#', 'admin', '2021-09-26 12:35:12', 'bao', '2021-09-29 13:32:49', '');
+INSERT INTO `sys_menu` VALUES (2154, '接诊记录检查详情', 2150, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:jianxq', '#', 'admin', '2021-09-26 12:35:12', 'bao', '2021-09-29 13:33:10', '');
+INSERT INTO `sys_menu` VALUES (2155, '接诊记录导出', 2150, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:export', '#', 'admin', '2021-09-26 12:35:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2156, '检查管理', 2168, 1, 'lis', 'medical/lis/index', NULL, 1, 0, 'C', '0', '0', 'medical:lis:list', 'job', 'admin', '2021-09-27 14:51:28', 'bao', '2021-09-29 02:55:06', 'Lis检验信息菜单');
+INSERT INTO `sys_menu` VALUES (2157, 'Lis检验信息查询', 2156, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:lis:query', '#', 'admin', '2021-09-27 14:51:28', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2158, 'Lis检验信息新增', 2156, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:lis:add', '#', 'admin', '2021-09-27 14:51:28', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2159, 'Lis检验信息修改', 2156, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:lis:edit', '#', 'admin', '2021-09-27 14:51:28', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2160, 'Lis检验信息删除', 2156, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:lis:remove', '#', 'admin', '2021-09-27 14:51:28', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2161, 'Lis检验信息导出', 2156, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:lis:export', '#', 'admin', '2021-09-27 14:51:28', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2162, '检验管理', 2168, 1, 'pacs', 'medical/pacs/index', NULL, 1, 0, 'C', '0', '0', 'medical:pacs:list', 'online', 'admin', '2021-09-27 14:51:56', 'bao', '2021-09-27 14:55:05', 'PACS影像信息菜单');
+INSERT INTO `sys_menu` VALUES (2163, 'PACS影像信息查询', 2162, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pacs:query', '#', 'admin', '2021-09-27 14:51:56', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2164, 'PACS影像信息新增', 2162, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pacs:add', '#', 'admin', '2021-09-27 14:51:56', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2165, 'PACS影像信息修改', 2162, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pacs:edit', '#', 'admin', '2021-09-27 14:51:56', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2166, 'PACS影像信息删除', 2162, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pacs:remove', '#', 'admin', '2021-09-27 14:51:56', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2167, 'PACS影像信息导出', 2162, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pacs:export', '#', 'admin', '2021-09-27 14:51:56', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2168, '事项管理', 0, 5, 'action', NULL, NULL, 1, 0, 'M', '0', '0', '', 'component', 'bao', '2021-09-27 14:53:27', 'bao', '2021-09-29 02:54:48', '');
+INSERT INTO `sys_menu` VALUES (2169, '医嘱记录', 4, 1, 'doctorsorder', 'medical/doctorsorder/index', NULL, 1, 0, 'C', '1', '0', 'medical:doctorsorder:list', 'build', 'admin', '2021-09-27 19:11:42', 'bao', '2021-09-29 13:29:37', '医嘱记录菜单');
+INSERT INTO `sys_menu` VALUES (2170, '医嘱记录查询', 2169, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:doctorsorder:query', '#', 'admin', '2021-09-27 19:11:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2171, '医嘱记录新增', 2169, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:doctorsorder:add', '#', 'admin', '2021-09-27 19:11:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2172, '医嘱记录修改', 2169, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:doctorsorder:edit', '#', 'admin', '2021-09-27 19:11:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2173, '医嘱记录删除', 2169, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:doctorsorder:remove', '#', 'admin', '2021-09-27 19:11:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2174, '医嘱记录导出', 2169, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:doctorsorder:export', '#', 'admin', '2021-09-27 19:11:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2176, '药品管理', 6, 1, 'drugs', 'medical/drugs/index', NULL, 1, 0, 'C', '0', '0', 'medical:drugs:list', 'color', 'admin', '2021-09-28 11:05:21', 'bao', '2021-09-29 02:55:29', '药品菜单');
+INSERT INTO `sys_menu` VALUES (2177, '药品查询', 2176, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:drugs:query', '#', 'admin', '2021-09-28 11:05:21', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2178, '药品新增', 2176, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:drugs:add', '#', 'admin', '2021-09-28 11:05:21', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2179, '药品修改', 2176, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:drugs:edit', '#', 'admin', '2021-09-28 11:05:21', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2180, '药品删除', 2176, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:drugs:remove', '#', 'admin', '2021-09-28 11:05:21', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2181, '药品导出', 2176, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:drugs:export', '#', 'admin', '2021-09-28 11:05:21', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2182, '患者费用账单', 4, 1, 'bill', 'medical/bill/index', NULL, 1, 0, 'C', '0', '0', 'medical:bill:list', 'money', 'admin', '2021-09-28 13:20:14', 'bao', '2021-09-29 02:53:57', '患者费用账单菜单');
+INSERT INTO `sys_menu` VALUES (2183, '患者费用账单查询', 2182, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bill:query', '#', 'admin', '2021-09-28 13:20:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2184, '患者费用账单新增', 2182, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bill:add', '#', 'admin', '2021-09-28 13:20:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2185, '患者费用账单修改', 2182, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bill:edit', '#', 'admin', '2021-09-28 13:20:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2186, '患者费用账单删除', 2182, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bill:remove', '#', 'admin', '2021-09-28 13:20:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2187, '患者费用账单导出', 2182, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bill:export', '#', 'admin', '2021-09-28 13:20:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2188, '患者费用明细', 4, 1, 'detail', 'medical/detail/index', NULL, 1, 0, 'C', '1', '0', 'medical:detail:list', 'documentation', 'admin', '2021-09-28 13:20:40', 'bao', '2021-09-29 13:29:42', '患者费用明细菜单');
+INSERT INTO `sys_menu` VALUES (2189, '患者费用明细查询', 2188, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:detail:query', '#', 'admin', '2021-09-28 13:20:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2190, '患者费用明细新增', 2188, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:detail:add', '#', 'admin', '2021-09-28 13:20:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2191, '患者费用明细修改', 2188, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:detail:edit', '#', 'admin', '2021-09-28 13:20:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2192, '患者费用明细删除', 2188, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:detail:remove', '#', 'admin', '2021-09-28 13:20:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2193, '患者费用明细导出', 2188, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:detail:export', '#', 'admin', '2021-09-28 13:20:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2195, '病房记录', 5, 1, 'sickroom', 'medical/sickroom/index', NULL, 1, 0, 'C', '0', '0', 'medical:sickroom:list', 'chart', 'admin', '2021-09-28 18:21:12', 'bao', '2021-09-29 02:56:44', '病房记录菜单');
+INSERT INTO `sys_menu` VALUES (2196, '病房记录查询', 2195, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:sickroom:query', '#', 'admin', '2021-09-28 18:21:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2197, '病房记录新增', 2195, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:sickroom:add', '#', 'admin', '2021-09-28 18:21:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2198, '病房记录修改', 2195, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:sickroom:edit', '#', 'admin', '2021-09-28 18:21:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2199, '病房记录删除', 2195, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:sickroom:remove', '#', 'admin', '2021-09-28 18:21:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2200, '病房记录导出', 2195, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:sickroom:export', '#', 'admin', '2021-09-28 18:21:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2201, '床位记录', 5, 1, 'bed', 'medical/bed/index', NULL, 1, 0, 'C', '0', '0', 'medical:bed:list', 'clipboard', 'admin', '2021-09-28 18:21:47', 'bao', '2021-09-29 02:56:52', '床位记录菜单');
+INSERT INTO `sys_menu` VALUES (2202, '床位记录查询', 2201, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bed:query', '#', 'admin', '2021-09-28 18:21:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2203, '床位记录新增', 2201, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bed:add', '#', 'admin', '2021-09-28 18:21:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2204, '床位记录修改', 2201, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bed:edit', '#', 'admin', '2021-09-28 18:21:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2205, '床位记录删除', 2201, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bed:remove', '#', 'admin', '2021-09-28 18:21:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2206, '床位记录导出', 2201, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:bed:export', '#', 'admin', '2021-09-28 18:21:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2207, '分床记录', 5, 1, 'splitbed', 'medical/splitbed/index', NULL, 1, 0, 'C', '0', '0', 'medical:splitbed:list', 'education', 'admin', '2021-09-28 18:22:15', 'bao', '2021-09-29 02:57:00', '分床记录菜单');
+INSERT INTO `sys_menu` VALUES (2208, '分床记录查询', 2207, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:splitbed:query', '#', 'admin', '2021-09-28 18:22:15', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2209, '分床记录新增', 2207, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:splitbed:add', '#', 'admin', '2021-09-28 18:22:15', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2210, '分床记录修改', 2207, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:splitbed:edit', '#', 'admin', '2021-09-28 18:22:15', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2211, '分床记录删除', 2207, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:splitbed:remove', '#', 'admin', '2021-09-28 18:22:15', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2212, '分床记录导出', 2207, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:splitbed:export', '#', 'admin', '2021-09-28 18:22:15', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2237, '药品采购信息', 6, 1, 'purchase', 'medical/purchase/index', NULL, 1, 0, 'C', '1', '0', 'medical:purchase:list', 'monitor', 'admin', '2021-09-28 18:25:49', 'bao', '2021-09-29 13:46:13', '药品采购信息菜单');
+INSERT INTO `sys_menu` VALUES (2238, '药品采购信息查询', 2237, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:purchase:query', '#', 'admin', '2021-09-28 18:25:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2239, '药品采购信息新增', 2237, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:purchase:add', '#', 'admin', '2021-09-28 18:25:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2240, '药品采购信息修改', 2237, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:purchase:edit', '#', 'admin', '2021-09-28 18:25:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2241, '药品采购信息删除', 2237, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:purchase:remove', '#', 'admin', '2021-09-28 18:25:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2242, '药品采购信息导出', 2237, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:purchase:export', '#', 'admin', '2021-09-28 18:25:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2243, '药库库存', 6, 1, 'storage', 'medical/storage/index', NULL, 1, 0, 'C', '1', '0', 'medical:storage:list', 'dict', 'admin', '2021-09-28 18:26:11', 'bao', '2021-09-29 13:46:19', '药库库存菜单');
+INSERT INTO `sys_menu` VALUES (2244, '药库库存查询', 2243, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:storage:query', '#', 'admin', '2021-09-28 18:26:11', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2245, '药库库存新增', 2243, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:storage:add', '#', 'admin', '2021-09-28 18:26:11', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2246, '药库库存修改', 2243, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:storage:edit', '#', 'admin', '2021-09-28 18:26:11', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2247, '药库库存删除', 2243, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:storage:remove', '#', 'admin', '2021-09-28 18:26:11', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2248, '药库库存导出', 2243, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:storage:export', '#', 'admin', '2021-09-28 18:26:11', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2249, '药房库存', 6, 1, 'pharmacy', 'medical/pharmacy/index', NULL, 1, 0, 'C', '1', '0', 'medical:pharmacy:list', 'input', 'admin', '2021-09-28 18:26:38', 'bao', '2021-09-29 13:46:24', '药房库存菜单');
+INSERT INTO `sys_menu` VALUES (2250, '药房库存查询', 2249, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pharmacy:query', '#', 'admin', '2021-09-28 18:26:38', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2251, '药房库存新增', 2249, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pharmacy:add', '#', 'admin', '2021-09-28 18:26:38', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2252, '药房库存修改', 2249, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pharmacy:edit', '#', 'admin', '2021-09-28 18:26:38', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2253, '药房库存删除', 2249, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pharmacy:remove', '#', 'admin', '2021-09-28 18:26:38', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2254, '药房库存导出', 2249, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:pharmacy:export', '#', 'admin', '2021-09-28 18:26:38', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2255, '盘点记录', 6, 1, 'inventory', 'medical/inventory/index', NULL, 1, 0, 'C', '1', '0', 'medical:inventory:list', 'redis', 'admin', '2021-09-28 18:27:16', 'bao', '2021-09-29 13:46:28', '盘点记录菜单');
+INSERT INTO `sys_menu` VALUES (2256, '盘点记录查询', 2255, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:inventory:query', '#', 'admin', '2021-09-28 18:27:16', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2257, '盘点记录新增', 2255, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:inventory:add', '#', 'admin', '2021-09-28 18:27:16', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2258, '盘点记录修改', 2255, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:inventory:edit', '#', 'admin', '2021-09-28 18:27:16', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2259, '盘点记录删除', 2255, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:inventory:remove', '#', 'admin', '2021-09-28 18:27:16', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2260, '盘点记录导出', 2255, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'medical:inventory:export', '#', 'admin', '2021-09-28 18:27:16', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2261, '分床管理', 5, 0, 'sickroomRecord', 'medical/sickroomRecord/index', NULL, 1, 0, 'C', '0', '0', 'medical:splitbed:list', 'date-range', 'bao', '2021-09-28 21:05:37', 'bao', '2021-09-28 21:08:16', '');
+INSERT INTO `sys_menu` VALUES (2268, '接诊记录开药', 2150, 6, '', NULL, NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:kai', '#', 'bao', '2021-09-29 13:34:10', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2269, '接诊记录用药详情', 2150, 7, '', NULL, NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:kaixq', '#', 'bao', '2021-09-29 13:34:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2270, '接诊记录完成开药', 2150, 8, '', NULL, NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:wan', '#', 'bao', '2021-09-29 13:35:20', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2271, '接诊记录诊断', 2150, 9, '', NULL, NULL, 1, 0, 'F', '0', '0', 'medical:receiverecord:zhen', '#', 'bao', '2021-09-29 13:51:42', '', NULL, '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -949,8 +1064,6 @@ CREATE TABLE `sys_notice`  (
 -- ----------------------------
 -- Records of sys_notice
 -- ----------------------------
-INSERT INTO `sys_notice` VALUES (1, '温馨提醒：2018-07-01 若依新版本发布啦', '2', 0xE696B0E78988E69CACE58685E5AEB9, '0', 'admin', '2021-09-18 15:03:00', '', NULL, '管理员');
-INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 若依系统凌晨维护', '1', 0xE7BBB4E68AA4E58685E5AEB9, '0', 'admin', '2021-09-18 15:03:00', '', NULL, '管理员');
 
 -- ----------------------------
 -- Table structure for sys_oper_log
@@ -974,81 +1087,200 @@ CREATE TABLE `sys_oper_log`  (
   `error_msg` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime NULL DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 190 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
 -- ----------------------------
-INSERT INTO `sys_oper_log` VALUES (1, '操作日志', 9, 'com.ruoyi.web.controller.monitor.SysOperlogController.clean()', 'DELETE', 1, 'bao', NULL, '/monitor/operlog/clean', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 14:02:34');
-INSERT INTO `sys_oper_log` VALUES (2, '登录日志', 9, 'com.ruoyi.web.controller.monitor.SysLogininforController.clean()', 'DELETE', 1, 'bao', NULL, '/monitor/logininfor/clean', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 14:02:44');
-INSERT INTO `sys_oper_log` VALUES (3, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"bug\",\"orderNum\":\"1\",\"menuName\":\"门诊卡信息\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"info\",\"component\":\"medical/info/index\",\"children\":[],\"createTime\":1632465362000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2132,\"menuType\":\"C\",\"perms\":\"medical:info:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 14:40:38');
-INSERT INTO `sys_oper_log` VALUES (4, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'bao', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', 't_medical_do', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 15:30:39');
-INSERT INTO `sys_oper_log` VALUES (5, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'bao', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{}', NULL, 0, NULL, '2021-09-24 15:33:29');
-INSERT INTO `sys_oper_log` VALUES (6, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"build\",\"orderNum\":\"1\",\"menuName\":\"操作记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"do\",\"component\":\"medical/do/index\",\"children\":[],\"createTime\":1632469759000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2138,\"menuType\":\"C\",\"perms\":\"medical:do:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 15:50:01');
-INSERT INTO `sys_oper_log` VALUES (7, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"bug\",\"orderNum\":\"2\",\"menuName\":\"门诊卡信息\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"info\",\"component\":\"medical/info/index\",\"children\":[],\"createTime\":1632465362000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2132,\"menuType\":\"C\",\"perms\":\"medical:info:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 15:50:12');
-INSERT INTO `sys_oper_log` VALUES (8, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"build\",\"orderNum\":\"3\",\"menuName\":\"操作记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"do\",\"component\":\"medical/do/index\",\"children\":[],\"createTime\":1632469759000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2138,\"menuType\":\"C\",\"perms\":\"medical:do:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 15:50:23');
-INSERT INTO `sys_oper_log` VALUES (9, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"build\",\"orderNum\":\"3\",\"menuName\":\"操作记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"do\",\"component\":\"medical/do/index\",\"children\":[],\"createTime\":1632469759000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2138,\"menuType\":\"C\",\"perms\":\"medical:do:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 15:54:37');
-INSERT INTO `sys_oper_log` VALUES (10, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"name\":\"李四\",\"age\":\"27\",\"code\":\"438484838383838\",\"sex\":\"0\"},\"money\":\"200\"}', NULL, 1, 'java.util.LinkedHashMap cannot be cast to com.ruoyi.medical.domain.CostPersonArchives', '2021-09-24 18:32:17');
-INSERT INTO `sys_oper_log` VALUES (11, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"name\":\"李四\",\"age\":\"20\",\"code\":\"132424\",\"sex\":\"0\"},\"money\":\"200\"}', NULL, 1, 'java.util.LinkedHashMap cannot be cast to com.ruoyi.medical.domain.CostPersonArchives', '2021-09-24 18:37:29');
-INSERT INTO `sys_oper_log` VALUES (12, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"params\":{}}', NULL, 1, '', '2021-09-24 19:01:53');
-INSERT INTO `sys_oper_log` VALUES (13, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"params\":{}}', NULL, 1, '', '2021-09-24 19:06:07');
-INSERT INTO `sys_oper_log` VALUES (14, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"35235235\",\"sex\":\"0\",\"params\":{},\"name\":\"李四\",\"id\":\"LiSi_1632482239116\",\"age\":27},\"money\":200.0}', NULL, 1, '\r\n### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'id\' at row 1\r\n### The error may exist in file [D:\\myry\\ruoyi\\ruoyi-system\\target\\classes\\mapper\\medical\\CostOutpatientInfoMapper.xml]\r\n### The error may involve com.ruoyi.medical.mapper.CostOutpatientInfoMapper.insertCostOutpatientInfo-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into t_medical_cost_outpatient_info          ( id,             money,             enableTime,                                                    status,             deposit,             personid )           values ( ?,             ?,             ?,                                                    ?,             ?,             ? )\r\n### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'id\' at row 1\n; Data truncation: Out of range value for column \'id\' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'id\' at row 1', '2021-09-24 19:17:19');
-INSERT INTO `sys_oper_log` VALUES (15, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"4242452523523\",\"sex\":\"0\",\"params\":{},\"name\":\"张四\",\"id\":\"ZhangSi_1632482357641\",\"age\":27},\"money\":200.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 19:19:17');
-INSERT INTO `sys_oper_log` VALUES (16, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632487982223,\"params\":{},\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-24 20:53:02');
-INSERT INTO `sys_oper_log` VALUES (17, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488115515,\"params\":{},\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-24 20:55:15');
-INSERT INTO `sys_oper_log` VALUES (18, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488258986,\"params\":{},\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-24 20:57:39');
-INSERT INTO `sys_oper_log` VALUES (19, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488294026,\"params\":{},\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-24 20:58:14');
-INSERT INTO `sys_oper_log` VALUES (20, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488306124,\"params\":{},\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-24 20:58:26');
-INSERT INTO `sys_oper_log` VALUES (21, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488387777,\"params\":{},\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-24 20:59:47');
-INSERT INTO `sys_oper_log` VALUES (22, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632412800000,\"tmd\":{\"doTime\":1632412800000,\"doId\":\"1\",\"id\":\"1\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"deposit\":10,\"personid\":\"1\",\"id\":1,\"lossTime\":1632488451488,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 21:00:51');
-INSERT INTO `sys_oper_log` VALUES (23, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632412800000,\"tmd\":{\"doTime\":1632412800000,\"doId\":\"1632482357658\",\"id\":\"1632482357658\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"returnTime\":1632488492565,\"money\":200.0,\"deposit\":10,\"personid\":\"ZhangSi_1632482357641\",\"id\":1632482357658,\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 21:01:32');
-INSERT INTO `sys_oper_log` VALUES (24, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488663067,\"tmd\":{\"doTime\":1632412800000,\"doId\":\"1\",\"id\":\"1\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"deposit\":10,\"personid\":\"1\",\"id\":1,\"lossTime\":1632412800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 21:04:23');
-INSERT INTO `sys_oper_log` VALUES (25, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632412800000,\"tmd\":{\"doTime\":1632412800000,\"doId\":\"1\",\"id\":\"1\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"deposit\":10,\"personid\":\"1\",\"id\":1,\"lossTime\":1632488848463,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 21:07:28');
-INSERT INTO `sys_oper_log` VALUES (26, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632488851345,\"tmd\":{\"doTime\":1632412800000,\"doId\":\"1\",\"id\":\"1\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"deposit\":10,\"personid\":\"1\",\"id\":1,\"lossTime\":1632412800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-24 21:07:31');
-INSERT INTO `sys_oper_log` VALUES (27, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"43053424353433\",\"sex\":\"0\",\"params\":{},\"name\":\"张三\",\"id\":\"ZhangSan_1632552753979\",\"age\":27},\"money\":200.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:52:34');
-INSERT INTO `sys_oper_log` VALUES (28, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"424353636464\",\"sex\":\"1\",\"params\":{},\"name\":\"李四\",\"id\":\"LiSi_1632552814794\",\"age\":39},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:53:34');
-INSERT INTO `sys_oper_log` VALUES (29, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"35344534634634\",\"sex\":\"0\",\"params\":{},\"name\":\"黑虎\",\"id\":\"HeiHu_1632552923179\",\"age\":78},\"money\":20000.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:55:23');
-INSERT INTO `sys_oper_log` VALUES (30, '字典类型', 3, 'com.ruoyi.web.controller.system.SysDictDataController.remove()', 'DELETE', 1, 'bao', NULL, '/system/dict/data/3', '127.0.0.1', '内网IP', '{dictCodes=3}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:55:41');
-INSERT INTO `sys_oper_log` VALUES (31, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632552754004\",\"id\":\"1632552754004\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":200.0,\"deposit\":10,\"personid\":\"ZhangSan_1632552753979\",\"id\":1632552754004,\"lossTime\":1632552992531,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:56:32');
-INSERT INTO `sys_oper_log` VALUES (32, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"deadTime\":1632552996208,\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632552814813\",\"id\":\"1632552814813\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632552814794\",\"id\":1632552814813,\"status\":3}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:56:36');
-INSERT INTO `sys_oper_log` VALUES (33, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632552923196\",\"id\":\"1632552923196\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"returnTime\":1632553009557,\"money\":20000.0,\"deposit\":10,\"personid\":\"HeiHu_1632552923179\",\"id\":1632552923196,\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 14:56:49');
-INSERT INTO `sys_oper_log` VALUES (34, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"deadTime\":1632499200000,\"enableTime\":1632553419283,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632552814813\",\"id\":\"1632552814813\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632552814794\",\"id\":1632552814813,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 15:03:39');
-INSERT INTO `sys_oper_log` VALUES (35, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"2352535363634\",\"sex\":\"1\",\"params\":{},\"name\":\"梦彦\",\"id\":\"MengYan_1632562568469\",\"age\":29},\"money\":400.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 17:36:08');
-INSERT INTO `sys_oper_log` VALUES (36, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"sex\":\"0\",\"params\":{},\"id\":\"HeiHu_1632552923179\"},\"money\":500.0}', NULL, 1, '', '2021-09-25 17:37:34');
-INSERT INTO `sys_oper_log` VALUES (37, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"sex\":\"0\",\"params\":{},\"id\":\"HeiHu_1632552923179\"},\"money\":900.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 17:40:58');
-INSERT INTO `sys_oper_log` VALUES (38, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632562858628\",\"id\":\"1632562858628\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":900.0,\"deposit\":10,\"personid\":\"HeiHu_1632552923179\",\"id\":1632562858628,\"lossTime\":1632563926153,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 17:58:46');
-INSERT INTO `sys_oper_log` VALUES (39, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'bao', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":200.0,\"type\":\"充值\",\"info\":{\"deadTime\":1632499200000,\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632570884781,\"doId\":\"bao_1632570884781\",\"id\":\"bao_1632570884814\",\"params\":{},\"doType\":2,\"doUser\":\"bao\"},\"params\":{},\"money\":700.0,\"deposit\":10,\"personid\":\"LiSi_1632552814794\",\"id\":1632552814813,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 19:54:44');
-INSERT INTO `sys_oper_log` VALUES (40, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'bao', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":200.0,\"type\":\"提现\",\"info\":{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632571421504,\"doId\":\"bao_1632571421504\",\"id\":\"bao_1632571421520\",\"params\":{},\"doType\":2,\"doUser\":\"bao\"},\"params\":{},\"money\":0.0,\"deposit\":10,\"personid\":\"ZhangSan_1632552753979\",\"id\":1632552754004,\"lossTime\":1632499200000,\"status\":2}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:03:41');
-INSERT INTO `sys_oper_log` VALUES (41, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"2535336464\",\"sex\":\"0\",\"params\":{},\"name\":\"李四\",\"id\":\"LiSi_1632571715664\",\"age\":27},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:08:35');
-INSERT INTO `sys_oper_log` VALUES (42, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"235353535\",\"sex\":\"0\",\"params\":{},\"name\":\"黑马河\",\"id\":\"HeiMaHe_1632571768359\",\"age\":43},\"money\":2000.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:09:28');
-INSERT INTO `sys_oper_log` VALUES (43, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"423535345\",\"sex\":\"1\",\"params\":{},\"name\":\"如花\",\"id\":\"RuHua_1632571783773\",\"age\":18},\"money\":30000.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:09:43');
-INSERT INTO `sys_oper_log` VALUES (44, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632571768379\",\"id\":\"1632571768379\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":2000.0,\"deposit\":10,\"personid\":\"HeiMaHe_1632571768359\",\"id\":1632571768379,\"lossTime\":1632571819457,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:10:19');
-INSERT INTO `sys_oper_log` VALUES (45, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'bao', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":500.0,\"type\":\"提现\",\"info\":{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632572050443,\"doId\":\"bao_1632572050443\",\"id\":\"bao_1632572050459\",\"params\":{},\"doType\":2,\"doUser\":\"bao\"},\"params\":{},\"money\":1500.0,\"deposit\":10,\"personid\":\"HeiMaHe_1632571768359\",\"id\":1632571768379,\"lossTime\":1632499200000,\"status\":2}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:14:10');
-INSERT INTO `sys_oper_log` VALUES (46, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'bao', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"roles\":[{\"flag\":false,\"roleId\":2,\"admin\":false,\"dataScope\":\"2\",\"params\":{},\"roleSort\":\"2\",\"deptCheckStrictly\":false,\"menuCheckStrictly\":false,\"roleKey\":\"doctor\",\"roleName\":\"医生\",\"status\":\"0\"}],\"phonenumber\":\"13634566432\",\"admin\":false,\"loginDate\":1632572128000,\"delFlag\":\"0\",\"password\":\"\",\"updateBy\":\"bao\",\"postIds\":[2],\"loginIp\":\"127.0.0.1\",\"email\":\"yang@qq.com\",\"nickName\":\"小扬\",\"sex\":\"0\",\"deptId\":201,\"avatar\":\"\",\"dept\":{\"deptName\":\"住院部\",\"leader\":\"宝哥\",\"deptId\":201,\"orderNum\":\"2\",\"params\":{},\"parentId\":1,\"children\":[],\"status\":\"0\"},\"params\":{},\"userName\":\"yang\",\"userId\":101,\"createBy\":\"bao\",\"roleIds\":[2],\"createTime\":1632463050000,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:16:11');
-INSERT INTO `sys_oper_log` VALUES (47, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'bao', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"flag\":false,\"roleId\":2,\"admin\":false,\"remark\":\"医生\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"params\":{},\"roleSort\":\"2\",\"deptCheckStrictly\":true,\"createTime\":1631948580000,\"updateBy\":\"bao\",\"menuCheckStrictly\":true,\"roleKey\":\"doctor\",\"roleName\":\"医生\",\"menuIds\":[4,2126,2127,2128,2129,2130,2131,2144,2145,2146,2147,2148,2149,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143],\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:16:37');
-INSERT INTO `sys_oper_log` VALUES (48, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'yang', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"53523535\",\"sex\":\"1\",\"params\":{},\"name\":\"大婶\",\"id\":\"DaShen_1632572316063\",\"age\":27},\"money\":300.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:18:36');
-INSERT INTO `sys_oper_log` VALUES (49, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632572378269,\"doId\":\"1632571715688\",\"id\":\"1632571715688\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632572378269,\"status\":2}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-25 20:19:38');
-INSERT INTO `sys_oper_log` VALUES (50, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632572428004,\"tmd\":{\"doTime\":1632572428004,\"doId\":\"1632571715688\",\"id\":\"1632571715688\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632499200000,\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-25 20:20:28');
-INSERT INTO `sys_oper_log` VALUES (51, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632572491014,\"doId\":\"1632571715688\",\"id\":\"1632571715688\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632572491014,\"status\":2}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-25 20:22:44');
-INSERT INTO `sys_oper_log` VALUES (52, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632572803972,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632571715688\",\"id\":\"1632571715688\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632499200000,\"status\":1}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-25 20:26:44');
-INSERT INTO `sys_oper_log` VALUES (53, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632573328048,\"doId\":\"1632571715688\",\"id\":\"1632571715688\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632573328048,\"status\":2}', '{\"msg\":\"操作失败\",\"code\":500}', 0, NULL, '2021-09-25 20:35:28');
-INSERT INTO `sys_oper_log` VALUES (54, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632573505545,\"tmd\":{\"doTime\":1632573505545,\"doId\":\"1632571715688\",\"id\":\"bao_1632571715701\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632499200000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:38:25');
-INSERT INTO `sys_oper_log` VALUES (55, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'yang', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":1000.0,\"type\":\"充值\",\"info\":{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632573666368,\"doId\":\"yang_1632573666368\",\"id\":\"yang_1632573666393\",\"params\":{},\"doType\":2,\"doUser\":\"yang\"},\"params\":{},\"money\":1500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632499200000,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:41:06');
-INSERT INTO `sys_oper_log` VALUES (56, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'yang', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":10000.0,\"type\":\"提现\",\"info\":{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632573696615,\"doId\":\"yang_1632573696615\",\"id\":\"yang_1632573696643\",\"params\":{},\"doType\":2,\"doUser\":\"yang\"},\"params\":{},\"money\":20000.0,\"deposit\":10,\"personid\":\"RuHua_1632571783773\",\"id\":1632571783796,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:41:36');
-INSERT INTO `sys_oper_log` VALUES (57, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'yang', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"sex\":\"0\",\"params\":{},\"id\":\"HeiMaHe_1632571768359\"},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:42:44');
-INSERT INTO `sys_oper_log` VALUES (58, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'yang', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":500.0,\"type\":\"提现\",\"info\":{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632573803267,\"doId\":\"yang_1632573803267\",\"id\":\"yang_1632573803283\",\"params\":{},\"doType\":2,\"doUser\":\"yang\"},\"params\":{},\"money\":0.0,\"deposit\":10,\"personid\":\"HeiMaHe_1632571768359\",\"id\":1632573764302,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:43:23');
-INSERT INTO `sys_oper_log` VALUES (59, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"deadTime\":1632573807529,\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632499200000,\"doId\":\"1632573764302\",\"id\":\"yang_1632573764311\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":0.0,\"deposit\":10,\"personid\":\"HeiMaHe_1632571768359\",\"id\":1632573764302,\"status\":3}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:43:27');
-INSERT INTO `sys_oper_log` VALUES (60, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'yang', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632573822860,\"tmd\":{\"doTime\":1632573822860,\"doId\":\"1632571768379\",\"id\":\"bao_1632571768389\",\"params\":{},\"doType\":1,\"doUser\":\"yang\"},\"params\":{},\"money\":1500.0,\"deposit\":10,\"personid\":\"HeiMaHe_1632571768359\",\"id\":1632571768379,\"lossTime\":1632499200000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:43:42');
-INSERT INTO `sys_oper_log` VALUES (61, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'yang', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":50000.0,\"type\":\"充值\",\"info\":{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632573829833,\"doId\":\"yang_1632573829833\",\"id\":\"yang_1632573829849\",\"params\":{},\"doType\":2,\"doUser\":\"yang\"},\"params\":{},\"money\":51500.0,\"deposit\":10,\"personid\":\"HeiMaHe_1632571768359\",\"id\":1632571768379,\"lossTime\":1632499200000,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:43:49');
-INSERT INTO `sys_oper_log` VALUES (62, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632573966680,\"doId\":\"1632571715688\",\"id\":\"bao_1632571715701\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":1500.0,\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632573966680,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:46:06');
-INSERT INTO `sys_oper_log` VALUES (63, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"1\",\"listClass\":\"success\",\"dictSort\":1,\"params\":{},\"dictType\":\"medical_outpatient_status\",\"dictLabel\":\"启用\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632365289000,\"dictCode\":100,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:48:43');
-INSERT INTO `sys_oper_log` VALUES (64, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"2\",\"listClass\":\"warning\",\"dictSort\":2,\"params\":{},\"dictType\":\"medical_outpatient_status\",\"dictLabel\":\"挂失\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632365300000,\"dictCode\":101,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:48:50');
-INSERT INTO `sys_oper_log` VALUES (65, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"3\",\"listClass\":\"danger\",\"dictSort\":3,\"params\":{},\"dictType\":\"medical_outpatient_status\",\"dictLabel\":\"作废\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632365315000,\"dictCode\":102,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:48:58');
-INSERT INTO `sys_oper_log` VALUES (66, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"4\",\"listClass\":\"info\",\"dictSort\":4,\"params\":{},\"dictType\":\"medical_outpatient_status\",\"dictLabel\":\"退卡\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632365323000,\"dictCode\":103,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:49:06');
-INSERT INTO `sys_oper_log` VALUES (67, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"1\",\"listClass\":\"primary\",\"dictSort\":1,\"params\":{},\"dictType\":\"medical_recharge_record_type\",\"dictLabel\":\"充值\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632365452000,\"dictCode\":104,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:49:32');
-INSERT INTO `sys_oper_log` VALUES (68, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"2\",\"listClass\":\"info\",\"dictSort\":2,\"params\":{},\"dictType\":\"medical_recharge_record_type\",\"dictLabel\":\"取现\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632365460000,\"dictCode\":105,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:49:39');
-INSERT INTO `sys_oper_log` VALUES (69, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"0\",\"listClass\":\"danger\",\"dictSort\":1,\"remark\":\"性别男\",\"params\":{},\"dictType\":\"sys_user_sex\",\"dictLabel\":\"男\",\"createBy\":\"admin\",\"default\":true,\"isDefault\":\"Y\",\"cssClass\":\"\",\"createTime\":1631948580000,\"dictCode\":1,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:50:27');
-INSERT INTO `sys_oper_log` VALUES (70, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"1\",\"listClass\":\"success\",\"dictSort\":2,\"remark\":\"性别女\",\"params\":{},\"dictType\":\"sys_user_sex\",\"dictLabel\":\"女\",\"createBy\":\"admin\",\"default\":false,\"isDefault\":\"N\",\"cssClass\":\"\",\"createTime\":1631948580000,\"dictCode\":2,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-25 20:50:33');
+INSERT INTO `sys_oper_log` VALUES (1, '操作日志', 9, 'com.ruoyi.web.controller.monitor.SysOperlogController.clean()', 'DELETE', 1, 'bao', NULL, '/monitor/operlog/clean', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 20:36:40');
+INSERT INTO `sys_oper_log` VALUES (2, '登录日志', 9, 'com.ruoyi.web.controller.monitor.SysLogininforController.clean()', 'DELETE', 1, 'bao', NULL, '/monitor/logininfor/clean', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 20:36:45');
+INSERT INTO `sys_oper_log` VALUES (3, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"orderNum\":\"0\",\"menuName\":\"分床管理\",\"params\":{},\"parentId\":5,\"isCache\":\"0\",\"path\":\"home\",\"component\":\"medical/sickroomRecord/index\",\"createBy\":\"bao\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"C\",\"perms\":\"medical:splitbed:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 21:05:37');
+INSERT INTO `sys_oper_log` VALUES (4, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"date-range\",\"orderNum\":\"0\",\"menuName\":\"分床管理\",\"params\":{},\"parentId\":5,\"isCache\":\"0\",\"path\":\"home\",\"component\":\"medical/sickroomRecord/index\",\"children\":[],\"createTime\":1632834337000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2261,\"menuType\":\"C\",\"perms\":\"medical:splitbed:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 21:07:41');
+INSERT INTO `sys_oper_log` VALUES (5, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"date-range\",\"orderNum\":\"0\",\"menuName\":\"分床管理\",\"params\":{},\"parentId\":5,\"isCache\":\"0\",\"path\":\"sickroomRecord\",\"component\":\"medical/sickroomRecord/index\",\"children\":[],\"createTime\":1632834337000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2261,\"menuType\":\"C\",\"perms\":\"medical:splitbed:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 21:08:16');
+INSERT INTO `sys_oper_log` VALUES (6, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"8\",\"listClass\":\"success\",\"dictSort\":8,\"params\":{},\"dictType\":\"medical_receiveRecord_status\",\"dictLabel\":\"分床完成\",\"createBy\":\"bao\",\"default\":false,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 21:45:57');
+INSERT INTO `sys_oper_log` VALUES (7, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"8\",\"listClass\":\"danger\",\"dictSort\":8,\"params\":{},\"dictType\":\"medical_receiveRecord_status\",\"dictLabel\":\"分床完成\",\"createBy\":\"bao\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632836757000,\"dictCode\":163,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-28 21:46:06');
+INSERT INTO `sys_oper_log` VALUES (8, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"createTime\":1632849700647,\"doctorId\":\"1\",\"bedId\":\"bao_1632827981332\",\"personId\":\"LiSi_1632571715664\",\"remark\":\"方式辅导费\",\"id\":\"bao_1632849694417\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:21:40');
+INSERT INTO `sys_oper_log` VALUES (9, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"createTime\":1632850182628,\"doctorId\":\"1\",\"bedId\":\"bao_1632827981332\",\"personId\":\"LiSi_1632571715664\",\"remark\":\"fasf\",\"id\":\"bao_1632850182624\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:29:42');
+INSERT INTO `sys_oper_log` VALUES (10, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"createTime\":1632850227862,\"doctorId\":\"1\",\"bedId\":\"bao_1632827981341\",\"personId\":\"DaShen_1632572316063\",\"remark\":\"哈嘎啊\",\"id\":\"bao_1632850227862\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:30:27');
+INSERT INTO `sys_oper_log` VALUES (11, '字典类型', 2, 'com.ruoyi.web.controller.system.SysDictTypeController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"bao\",\"createTime\":1632630401000,\"updateBy\":\"bao\",\"dictName\":\"接诊状态\",\"remark\":\"1未接诊2已接诊3检查中4检查完毕5诊断完毕6开药中7接诊完成8分床完成\",\"dictId\":113,\"params\":{},\"dictType\":\"medical_receiveRecord_status\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:37:05');
+INSERT INTO `sys_oper_log` VALUES (12, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":2,\"id\":\"bao_1632851397302\",\"opDoctorResultId\":\"bao_1632746789552\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:49:57');
+INSERT INTO `sys_oper_log` VALUES (13, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632798980503\",\"partNumber\":1,\"id\":\"bao_1632851475069\",\"opDoctorResultId\":\"bao_1632746789552\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:51:15');
+INSERT INTO `sys_oper_log` VALUES (14, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632798980503\",\"partNumber\":2,\"id\":\"bao_1632851486135\",\"opDoctorResultId\":\"bao_1632746789552\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:51:26');
+INSERT INTO `sys_oper_log` VALUES (15, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632821340511\",\"params\":{},\"createTime\":1632851822555,\"opDoctorReceiveRecordId\":\"bao_1632851822555\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:57:02');
+INSERT INTO `sys_oper_log` VALUES (16, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632851834911,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632851822555\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:57:14');
+INSERT INTO `sys_oper_log` VALUES (17, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"伽师瓜\",\"description\":\"法法发\",\"remark\":\"电话的实施\",\"opDoctorResultId\":\"bao_1632851857299\",\"opDoctorReceiveRecordId\":\"bao_1632851822555\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:57:37');
+INSERT INTO `sys_oper_log` VALUES (18, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":2,\"id\":\"bao_1632851885287\",\"opDoctorResultId\":\"bao_1632851857299\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 01:58:05');
+INSERT INTO `sys_oper_log` VALUES (19, '患者费用账单', 2, 'com.ruoyi.medical.controller.CostBillController.edit()', 'PUT', 1, 'bao', NULL, '/medical/bill', '127.0.0.1', '内网IP', '{\"money\":80.0,\"createTime\":1632852209654,\"outpatientId\":\"1632821340511\",\"id\":\"bao_1632852117984\",\"coi\":{\"params\":{},\"money\":500.0,\"cpa\":{\"params\":{},\"name\":\"麻球\"},\"id\":1632821340511,\"status\":1},\"params\":{},\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:03:29');
+INSERT INTO `sys_oper_log` VALUES (20, '药品', 2, 'com.ruoyi.medical.controller.DrugsInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/drugs', '127.0.0.1', '内网IP', '{\"description\":\"治疗感冒\",\"params\":{},\"specifications\":\"0.25g*4片\",\"unit\":\"2\",\"money\":20.0,\"name\":\"九九感冒灵\",\"id\":\"bao_1632798980503\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:35:33');
+INSERT INTO `sys_oper_log` VALUES (21, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"#\",\"orderNum\":\"1\",\"menuName\":\"门诊卡充值记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"record\",\"component\":\"medical/record/index\",\"children\":[],\"createTime\":1632551389000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2144,\"menuType\":\"C\",\"perms\":\"medical:record:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:48:18');
+INSERT INTO `sys_oper_log` VALUES (22, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"1\",\"menuName\":\"接诊管理\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"receiverecord\",\"component\":\"medical/receiverecord/index\",\"children\":[],\"createTime\":1632630912000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2150,\"menuType\":\"C\",\"perms\":\"medical:receiverecord:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:48:52');
+INSERT INTO `sys_oper_log` VALUES (23, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"#\",\"orderNum\":\"1\",\"menuName\":\"患者费用明细\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"detail\",\"component\":\"medical/detail/index\",\"children\":[],\"createTime\":1632806440000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2188,\"menuType\":\"C\",\"perms\":\"medical:detail:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:49:39');
+INSERT INTO `sys_oper_log` VALUES (24, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"build\",\"orderNum\":\"3\",\"menuName\":\"操作记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"do\",\"component\":\"medical/do/index\",\"children\":[],\"createTime\":1632469759000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2138,\"menuType\":\"C\",\"perms\":\"medical:do:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:50:12');
+INSERT INTO `sys_oper_log` VALUES (25, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'bao', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"flag\":false,\"roleId\":2,\"admin\":false,\"remark\":\"医生\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"params\":{},\"roleSort\":\"2\",\"deptCheckStrictly\":true,\"createTime\":1631948580000,\"updateBy\":\"bao\",\"menuCheckStrictly\":true,\"roleKey\":\"doctor\",\"roleName\":\"医生\",\"menuIds\":[4,2150,2151,2152,2153,2154,2155],\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:51:53');
+INSERT INTO `sys_oper_log` VALUES (26, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'bao', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"flag\":false,\"roleId\":100,\"admin\":false,\"remark\":\"护士\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"params\":{},\"roleSort\":\"3\",\"deptCheckStrictly\":true,\"createTime\":1632400292000,\"updateBy\":\"bao\",\"menuCheckStrictly\":true,\"roleKey\":\"nurse\",\"roleName\":\"护士\",\"menuIds\":[4,2126,2127,2128,2129,2130,2131,2182,2183,2184,2185,2186,2187,2132,2133,2134,2135,2136,2137,2168,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,6,2176,2177,2178,2179,2180,2181,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260],\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:52:30');
+INSERT INTO `sys_oper_log` VALUES (27, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"dict\",\"orderNum\":\"1\",\"menuName\":\"门诊卡充值记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"record\",\"component\":\"medical/record/index\",\"children\":[],\"createTime\":1632551389000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2144,\"menuType\":\"C\",\"perms\":\"medical:record:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:53:19');
+INSERT INTO `sys_oper_log` VALUES (28, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"user\",\"orderNum\":\"1\",\"menuName\":\"接诊管理\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"receiverecord\",\"component\":\"medical/receiverecord/index\",\"children\":[],\"createTime\":1632630912000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2150,\"menuType\":\"C\",\"perms\":\"medical:receiverecord:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:53:30');
+INSERT INTO `sys_oper_log` VALUES (29, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"build\",\"orderNum\":\"1\",\"menuName\":\"医嘱记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"doctorsorder\",\"component\":\"medical/doctorsorder/index\",\"children\":[],\"createTime\":1632741102000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2169,\"menuType\":\"C\",\"perms\":\"medical:doctorsorder:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:53:37');
+INSERT INTO `sys_oper_log` VALUES (30, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"money\",\"orderNum\":\"1\",\"menuName\":\"患者费用账单\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"bill\",\"component\":\"medical/bill/index\",\"children\":[],\"createTime\":1632806414000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2182,\"menuType\":\"C\",\"perms\":\"medical:bill:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:53:57');
+INSERT INTO `sys_oper_log` VALUES (31, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"documentation\",\"orderNum\":\"1\",\"menuName\":\"患者费用明细\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"detail\",\"component\":\"medical/detail/index\",\"children\":[],\"createTime\":1632806440000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2188,\"menuType\":\"C\",\"perms\":\"medical:detail:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:54:31');
+INSERT INTO `sys_oper_log` VALUES (32, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"component\",\"orderNum\":\"5\",\"menuName\":\"事项管理\",\"params\":{},\"parentId\":0,\"isCache\":\"0\",\"path\":\"action\",\"children\":[],\"createTime\":1632725607000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2168,\"menuType\":\"M\",\"perms\":\"\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:54:48');
+INSERT INTO `sys_oper_log` VALUES (33, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"job\",\"orderNum\":\"1\",\"menuName\":\"检查管理\",\"params\":{},\"parentId\":2168,\"isCache\":\"0\",\"path\":\"lis\",\"component\":\"medical/lis/index\",\"children\":[],\"createTime\":1632725488000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2156,\"menuType\":\"C\",\"perms\":\"medical:lis:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:55:06');
+INSERT INTO `sys_oper_log` VALUES (34, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"color\",\"orderNum\":\"1\",\"menuName\":\"药品管理\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"drugs\",\"component\":\"medical/drugs/index\",\"children\":[],\"createTime\":1632798321000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2176,\"menuType\":\"C\",\"perms\":\"medical:drugs:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:55:29');
+INSERT INTO `sys_oper_log` VALUES (35, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"monitor\",\"orderNum\":\"1\",\"menuName\":\"药品采购信息\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"purchase\",\"component\":\"medical/purchase/index\",\"children\":[],\"createTime\":1632824749000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2237,\"menuType\":\"C\",\"perms\":\"medical:purchase:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:55:46');
+INSERT INTO `sys_oper_log` VALUES (36, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"dict\",\"orderNum\":\"1\",\"menuName\":\"药库库存\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"storage\",\"component\":\"medical/storage/index\",\"children\":[],\"createTime\":1632824771000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2243,\"menuType\":\"C\",\"perms\":\"medical:storage:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:55:55');
+INSERT INTO `sys_oper_log` VALUES (37, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"input\",\"orderNum\":\"1\",\"menuName\":\"药房库存\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"pharmacy\",\"component\":\"medical/pharmacy/index\",\"children\":[],\"createTime\":1632824798000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2249,\"menuType\":\"C\",\"perms\":\"medical:pharmacy:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:56:09');
+INSERT INTO `sys_oper_log` VALUES (38, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"redis\",\"orderNum\":\"1\",\"menuName\":\"盘点记录\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"inventory\",\"component\":\"medical/inventory/index\",\"children\":[],\"createTime\":1632824836000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2255,\"menuType\":\"C\",\"perms\":\"medical:inventory:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:56:32');
+INSERT INTO `sys_oper_log` VALUES (39, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"chart\",\"orderNum\":\"1\",\"menuName\":\"病房记录\",\"params\":{},\"parentId\":5,\"isCache\":\"0\",\"path\":\"sickroom\",\"component\":\"medical/sickroom/index\",\"children\":[],\"createTime\":1632824472000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2195,\"menuType\":\"C\",\"perms\":\"medical:sickroom:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:56:44');
+INSERT INTO `sys_oper_log` VALUES (40, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"clipboard\",\"orderNum\":\"1\",\"menuName\":\"床位记录\",\"params\":{},\"parentId\":5,\"isCache\":\"0\",\"path\":\"bed\",\"component\":\"medical/bed/index\",\"children\":[],\"createTime\":1632824507000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2201,\"menuType\":\"C\",\"perms\":\"medical:bed:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:56:52');
+INSERT INTO `sys_oper_log` VALUES (41, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"education\",\"orderNum\":\"1\",\"menuName\":\"分床记录\",\"params\":{},\"parentId\":5,\"isCache\":\"0\",\"path\":\"splitbed\",\"component\":\"medical/splitbed/index\",\"children\":[],\"createTime\":1632824535000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2207,\"menuType\":\"C\",\"perms\":\"medical:splitbed:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:57:00');
+INSERT INTO `sys_oper_log` VALUES (42, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'hong', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632499200000,\"tmd\":{\"doTime\":1632855564309,\"doId\":\"1632572316079\",\"id\":\"yang_1632572316086\",\"params\":{},\"doType\":1,\"doUser\":\"hong\"},\"params\":{},\"money\":300.0,\"cpa\":{\"code\":\"53523535\",\"params\":{},\"name\":\"大婶\"},\"deposit\":10,\"personid\":\"DaShen_1632572316063\",\"id\":1632572316079,\"lossTime\":1632855564309,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:59:24');
+INSERT INTO `sys_oper_log` VALUES (43, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'hong', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632855567661,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632572316079\",\"id\":\"yang_1632572316086\",\"params\":{},\"doType\":1,\"doUser\":\"hong\"},\"params\":{},\"money\":300.0,\"cpa\":{\"code\":\"53523535\",\"params\":{},\"name\":\"大婶\"},\"deposit\":10,\"personid\":\"DaShen_1632572316063\",\"id\":1632572316079,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 02:59:27');
+INSERT INTO `sys_oper_log` VALUES (44, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'hong', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632585600000,\"tmd\":{\"doTime\":1632855658467,\"doId\":\"1632571715688\",\"id\":\"bao_1632571715701\",\"params\":{},\"doType\":1,\"doUser\":\"hong\"},\"params\":{},\"money\":1500.0,\"cpa\":{\"code\":\"2535336464\",\"params\":{},\"name\":\"李四\"},\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632855658467,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 03:00:58');
+INSERT INTO `sys_oper_log` VALUES (45, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'hong', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632855660736,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632571715688\",\"id\":\"bao_1632571715701\",\"params\":{},\"doType\":1,\"doUser\":\"hong\"},\"params\":{},\"money\":1500.0,\"cpa\":{\"code\":\"2535336464\",\"params\":{},\"name\":\"李四\"},\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 03:01:00');
+INSERT INTO `sys_oper_log` VALUES (46, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'bao', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":100.0,\"type\":\"充值\",\"info\":{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632876420985,\"doId\":\"bao_1632876420985\",\"id\":\"bao_1632876421044\",\"params\":{},\"doType\":2,\"doUser\":\"bao\"},\"params\":{},\"money\":1600.0,\"cpa\":{\"code\":\"2535336464\",\"params\":{},\"name\":\"李四\"},\"deposit\":10,\"personid\":\"LiSi_1632571715664\",\"id\":1632571715688,\"lossTime\":1632844800000,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 08:47:01');
+INSERT INTO `sys_oper_log` VALUES (47, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"43052320021024431X\",\"sex\":\"0\",\"params\":{},\"name\":\"张斯\",\"id\":\"ZhangSi_1632877727227\",\"age\":29}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:08:47');
+INSERT INTO `sys_oper_log` VALUES (48, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632877727244\",\"params\":{},\"createTime\":1632878255962,\"opDoctorReceiveRecordId\":\"bao_1632878255962\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:17:35');
+INSERT INTO `sys_oper_log` VALUES (49, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632878267569,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632878255962\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:17:47');
+INSERT INTO `sys_oper_log` VALUES (50, '医生看病流程', 1, 'com.ruoyi.medical.controller.OutpatientdoctorActionController.add()', 'POST', 1, 'bao', NULL, '/medical/action', '127.0.0.1', '内网IP', '{\"partMoney\":50.0,\"tmor\":{\"outpatientId\":\"1632877727244\",\"params\":{},\"createTime\":1632844800000,\"doctorId\":\"1\",\"coi\":{\"params\":{},\"cpa\":{\"params\":{},\"cs\":{\"doctorId\":\"1\",\"personId\":\"ZhangSi_1632877727227\",\"params\":{}},\"name\":\"张斯\"},\"personid\":\"ZhangSi_1632877727227\"},\"opDoctorReceiveRecordId\":\"bao_1632878255962\",\"user\":{\"admin\":false,\"nickName\":\"宝哥\",\"params\":{}},\"status\":2},\"params\":{},\"type\":1,\"partName\":\"1001\",\"partNumber\":1,\"id\":\"bao_1632878494457\",\"opDoctorReceiveRecordId\":\"bao_1632878255962\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:21:34');
+INSERT INTO `sys_oper_log` VALUES (51, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632878494457\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:22:00');
+INSERT INTO `sys_oper_log` VALUES (52, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632878524428,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632878255962\",\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:22:04');
+INSERT INTO `sys_oper_log` VALUES (53, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"感冒\",\"description\":\"发烧\",\"remark\":\"实施股份的\",\"opDoctorResultId\":\"bao_1632878758886\",\"opDoctorReceiveRecordId\":\"bao_1632878255962\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:25:58');
+INSERT INTO `sys_oper_log` VALUES (54, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"id\":\"bao_1632878848197\",\"opDoctorResultId\":\"bao_1632878758886\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:27:28');
+INSERT INTO `sys_oper_log` VALUES (55, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632798980503\",\"partNumber\":2,\"id\":\"bao_1632879033247\",\"opDoctorResultId\":\"bao_1632878758886\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:30:33');
+INSERT INTO `sys_oper_log` VALUES (56, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"7\",\"listClass\":\"success\",\"dictSort\":7,\"params\":{},\"dictType\":\"medical_receiveRecord_status\",\"dictLabel\":\"账单生成\",\"createBy\":\"bao\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632800400000,\"dictCode\":158,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:32:26');
+INSERT INTO `sys_oper_log` VALUES (57, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"7\",\"listClass\":\"success\",\"dictSort\":7,\"params\":{},\"dictType\":\"medical_receiveRecord_status\",\"dictLabel\":\"开药完成\",\"createBy\":\"bao\",\"default\":false,\"isDefault\":\"N\",\"createTime\":1632800400000,\"dictCode\":158,\"updateBy\":\"bao\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:32:42');
+INSERT INTO `sys_oper_log` VALUES (58, '药品', 1, 'com.ruoyi.medical.controller.DrugsInfoController.add()', 'POST', 1, 'bao', NULL, '/medical/drugs', '127.0.0.1', '内网IP', '{\"description\":\"抗生素\",\"params\":{},\"specifications\":\"0.6g*3片\",\"unit\":\"3\",\"money\":90.0,\"name\":\"青霉素\",\"id\":\"bao_1632879703419\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:41:43');
+INSERT INTO `sys_oper_log` VALUES (59, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632879703419\",\"partNumber\":2,\"id\":\"bao_1632879974336\",\"opDoctorResultId\":\"bao_1632747215570\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:46:14');
+INSERT INTO `sys_oper_log` VALUES (60, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632572316079\",\"params\":{},\"createTime\":1632880281987,\"opDoctorReceiveRecordId\":\"bao_1632880281987\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:51:22');
+INSERT INTO `sys_oper_log` VALUES (61, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632880290194,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632880281987\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:51:30');
+INSERT INTO `sys_oper_log` VALUES (62, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"肝癌\",\"description\":\"肝痛\",\"opDoctorResultId\":\"bao_1632880336366\",\"opDoctorReceiveRecordId\":\"bao_1632880281987\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:52:16');
+INSERT INTO `sys_oper_log` VALUES (63, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632571768379\",\"params\":{},\"createTime\":1632880539665,\"opDoctorReceiveRecordId\":\"bao_1632880539665\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:55:39');
+INSERT INTO `sys_oper_log` VALUES (64, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632880547329,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632880539665\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:55:47');
+INSERT INTO `sys_oper_log` VALUES (65, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"肝癌\",\"description\":\"肝痛\",\"remark\":\"方法是否是\",\"opDoctorResultId\":\"bao_1632880564390\",\"opDoctorReceiveRecordId\":\"bao_1632880539665\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 09:56:04');
+INSERT INTO `sys_oper_log` VALUES (66, '字典类型', 1, 'com.ruoyi.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'bao', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"bao\",\"dictName\":\"病房状态\",\"remark\":\"1未分配2已分配\",\"params\":{},\"dictType\":\"medical_sickroom_status\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:12:22');
+INSERT INTO `sys_oper_log` VALUES (67, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"1\",\"listClass\":\"danger\",\"dictSort\":1,\"params\":{},\"dictType\":\"medical_sickroom_status\",\"dictLabel\":\"未分配\",\"createBy\":\"bao\",\"default\":false,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:12:43');
+INSERT INTO `sys_oper_log` VALUES (68, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"2\",\"listClass\":\"success\",\"dictSort\":2,\"params\":{},\"dictType\":\"medical_sickroom_status\",\"dictLabel\":\"已分配\",\"createBy\":\"bao\",\"default\":false,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:13:00');
+INSERT INTO `sys_oper_log` VALUES (69, '病房记录', 1, 'com.ruoyi.medical.controller.CpoeSickroomController.add()', 'POST', 1, 'bao', NULL, '/medical/sickroom', '127.0.0.1', '内网IP', '{\"remark\":\"法法发\",\"params\":{},\"unit\":\"1\",\"name\":\"宝哥\",\"attribute\":\"1\",\"id\":\"bao_1632881717156\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:15:17');
+INSERT INTO `sys_oper_log` VALUES (70, '床位记录', 2, 'com.ruoyi.medical.controller.CpoeBedController.edit()', 'PUT', 1, 'bao', NULL, '/medical/bed', '127.0.0.1', '内网IP', '{\"sickroomId\":\"bao_1632825651980\",\"name\":\"sickroom_1_001_bed_001\",\"remark\":\"bao分配了床位:bao_sickroom_1_001_bed_001\",\"id\":\"bao_1632827957755\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:20:47');
+INSERT INTO `sys_oper_log` VALUES (71, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"build\",\"orderNum\":\"1\",\"menuName\":\"医嘱记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"doctorsorder\",\"component\":\"medical/doctorsorder/index\",\"children\":[],\"createTime\":1632741102000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2169,\"menuType\":\"C\",\"perms\":\"medical:doctorsorder:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:22:26');
+INSERT INTO `sys_oper_log` VALUES (72, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632571783796\",\"params\":{},\"createTime\":1632883523864,\"opDoctorReceiveRecordId\":\"bao_1632883523861\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:45:23');
+INSERT INTO `sys_oper_log` VALUES (73, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632883529544,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632883523861\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:45:29');
+INSERT INTO `sys_oper_log` VALUES (74, '医生看病流程', 1, 'com.ruoyi.medical.controller.OutpatientdoctorActionController.add()', 'POST', 1, 'bao', NULL, '/medical/action', '127.0.0.1', '内网IP', '{\"partMoney\":20.0,\"tmor\":{\"outpatientId\":\"1632571783796\",\"params\":{},\"createTime\":1632844800000,\"doctorId\":\"1\",\"coi\":{\"params\":{},\"cpa\":{\"params\":{},\"cs\":{\"doctorId\":\"1\",\"personId\":\"RuHua_1632571783773\",\"params\":{}},\"name\":\"如花\"},\"personid\":\"RuHua_1632571783773\"},\"opDoctorReceiveRecordId\":\"bao_1632883523861\",\"user\":{\"admin\":false,\"nickName\":\"宝哥\",\"params\":{}},\"status\":2},\"params\":{},\"type\":1,\"partName\":\"1002\",\"partNumber\":2,\"id\":\"bao_1632883542980\",\"opDoctorReceiveRecordId\":\"bao_1632883523861\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:45:43');
+INSERT INTO `sys_oper_log` VALUES (75, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632883542980\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:46:00');
+INSERT INTO `sys_oper_log` VALUES (76, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632883543003\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:46:01');
+INSERT INTO `sys_oper_log` VALUES (77, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632883566382,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632883523861\",\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:46:06');
+INSERT INTO `sys_oper_log` VALUES (78, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"花柳病\",\"description\":\"广东省放多少天\",\"remark\":\"萨法\",\"opDoctorResultId\":\"bao_1632883583519\",\"opDoctorReceiveRecordId\":\"bao_1632883523861\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:46:23');
+INSERT INTO `sys_oper_log` VALUES (79, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632879703419\",\"partNumber\":2,\"id\":\"bao_1632883604378\",\"opDoctorResultId\":\"bao_1632883583519\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:46:44');
+INSERT INTO `sys_oper_log` VALUES (80, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799616936\",\"partNumber\":1,\"id\":\"bao_1632883616520\",\"opDoctorResultId\":\"bao_1632883583519\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:46:56');
+INSERT INTO `sys_oper_log` VALUES (81, '患者费用账单', 2, 'com.ruoyi.medical.controller.CostBillController.edit()', 'PUT', 1, 'bao', NULL, '/medical/bill', '127.0.0.1', '内网IP', '{\"money\":300.0,\"createTime\":1632883654407,\"outpatientId\":\"1632571783796\",\"id\":\"bao_1632883621894\",\"coi\":{\"params\":{},\"money\":20000.0,\"cpa\":{\"params\":{},\"name\":\"如花\"},\"id\":1632571783796,\"status\":1},\"params\":{},\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:47:34');
+INSERT INTO `sys_oper_log` VALUES (82, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"createTime\":1632883693729,\"doctorId\":\"1\",\"bedId\":\"bao_1632827988245\",\"personId\":\"HeiMaHe_1632571768359\",\"remark\":\"萨法\",\"id\":\"bao_1632883693729\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:48:13');
+INSERT INTO `sys_oper_log` VALUES (83, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":1,\"id\":\"bao_1632883700063\",\"opDoctorResultId\":\"bao_1632880564390\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 10:48:20');
+INSERT INTO `sys_oper_log` VALUES (84, '病房记录', 1, 'com.ruoyi.medical.controller.CpoeSickroomController.add()', 'POST', 1, 'bao', NULL, '/medical/sickroom', '127.0.0.1', '内网IP', '{\"remark\":\"今年的方法很多\",\"params\":{},\"unit\":\"2\",\"name\":\"二号病房\",\"attribute\":\"2\",\"id\":\"bao_1632887633102\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 11:53:53');
+INSERT INTO `sys_oper_log` VALUES (85, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430523200210254321\",\"sex\":\"0\",\"params\":{},\"name\":\"李四\",\"id\":\"LiSi_1632888878115\",\"age\":27},\"money\":200.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:14:38');
+INSERT INTO `sys_oper_log` VALUES (86, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430456200310234326\",\"sex\":\"1\",\"params\":{},\"name\":\"张三\",\"id\":\"ZhangSan_1632888928222\",\"age\":32},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:15:28');
+INSERT INTO `sys_oper_log` VALUES (87, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"43254320031214432X\",\"sex\":\"0\",\"params\":{},\"name\":\"王五\",\"id\":\"WangWu_1632888954934\",\"age\":15},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:15:55');
+INSERT INTO `sys_oper_log` VALUES (88, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'bao', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":450.0,\"type\":\"提现\",\"info\":{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632888995433,\"doId\":\"bao_1632888995433\",\"id\":\"bao_1632888995449\",\"params\":{},\"doType\":2,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"cpa\":{\"code\":\"430456200310234326\",\"params\":{},\"name\":\"张三\"},\"deposit\":10,\"personid\":\"ZhangSan_1632888928222\",\"id\":1632888928238,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:16:35');
+INSERT INTO `sys_oper_log` VALUES (89, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632888878133\",\"params\":{},\"createTime\":1632889008709,\"opDoctorReceiveRecordId\":\"bao_1632889008709\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:16:48');
+INSERT INTO `sys_oper_log` VALUES (90, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632888928238\",\"params\":{},\"createTime\":1632889026082,\"opDoctorReceiveRecordId\":\"bao_1632889026082\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:06');
+INSERT INTO `sys_oper_log` VALUES (91, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632889034945,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632889008709\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:14');
+INSERT INTO `sys_oper_log` VALUES (92, '医生看病流程', 1, 'com.ruoyi.medical.controller.OutpatientdoctorActionController.add()', 'POST', 1, 'bao', NULL, '/medical/action', '127.0.0.1', '内网IP', '{\"partMoney\":20.0,\"tmor\":{\"outpatientId\":\"1632888878133\",\"params\":{},\"createTime\":1632844800000,\"doctorId\":\"1\",\"coi\":{\"params\":{},\"cpa\":{\"params\":{},\"cs\":{\"params\":{},\"doctorId\":\"1\",\"personId\":\"LiSi_1632888878115\"},\"name\":\"李四\"},\"personid\":\"LiSi_1632888878115\"},\"opDoctorReceiveRecordId\":\"bao_1632889008709\",\"user\":{\"admin\":false,\"nickName\":\"宝哥\",\"params\":{}},\"status\":2},\"params\":{},\"type\":1,\"partName\":\"1002\",\"partNumber\":2,\"id\":\"bao_1632889042215\",\"opDoctorReceiveRecordId\":\"bao_1632889008709\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:22');
+INSERT INTO `sys_oper_log` VALUES (93, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632889042215\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:33');
+INSERT INTO `sys_oper_log` VALUES (94, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632889042234\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:34');
+INSERT INTO `sys_oper_log` VALUES (95, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632889059265,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632889008709\",\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:39');
+INSERT INTO `sys_oper_log` VALUES (96, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632889061811,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632889026082\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:17:41');
+INSERT INTO `sys_oper_log` VALUES (97, '医生看病流程', 1, 'com.ruoyi.medical.controller.OutpatientdoctorActionController.add()', 'POST', 1, 'bao', NULL, '/medical/action', '127.0.0.1', '内网IP', '{\"partMoney\":100.0,\"tmor\":{\"outpatientId\":\"1632888928238\",\"params\":{},\"createTime\":1632844800000,\"doctorId\":\"1\",\"coi\":{\"params\":{},\"cpa\":{\"params\":{},\"cs\":{\"params\":{},\"doctorId\":\"1\",\"personId\":\"ZhangSan_1632888928222\"},\"name\":\"张三\"},\"personid\":\"ZhangSan_1632888928222\"},\"opDoctorReceiveRecordId\":\"bao_1632889026082\",\"user\":{\"admin\":false,\"nickName\":\"宝哥\",\"params\":{}},\"status\":2},\"params\":{},\"type\":2,\"partName\":\"2002\",\"partNumber\":1,\"id\":\"bao_1632889080776\",\"opDoctorReceiveRecordId\":\"bao_1632889026082\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:18:00');
+INSERT INTO `sys_oper_log` VALUES (98, 'PACS影像信息', 2, 'com.ruoyi.medical.controller.PacsInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/pacs', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632889080776\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:18:10');
+INSERT INTO `sys_oper_log` VALUES (99, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632889093906,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632889026082\",\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:18:13');
+INSERT INTO `sys_oper_log` VALUES (100, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"感冒\",\"description\":\"头疼\",\"remark\":\"多喝热水\",\"opDoctorResultId\":\"bao_1632889119695\",\"opDoctorReceiveRecordId\":\"bao_1632889008709\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:18:39');
+INSERT INTO `sys_oper_log` VALUES (101, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"肝癌\",\"description\":\"肝痛\",\"remark\":\"住院治疗\",\"opDoctorResultId\":\"bao_1632889142847\",\"opDoctorReceiveRecordId\":\"bao_1632889026082\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:19:02');
+INSERT INTO `sys_oper_log` VALUES (102, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":2,\"id\":\"bao_1632889166544\",\"opDoctorResultId\":\"bao_1632889119695\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:19:26');
+INSERT INTO `sys_oper_log` VALUES (103, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632798980503\",\"partNumber\":1,\"id\":\"bao_1632889174759\",\"opDoctorResultId\":\"bao_1632889119695\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:19:34');
+INSERT INTO `sys_oper_log` VALUES (104, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"bedId\":\"bao_1632881725217\",\"remark\":\"好房\",\"params\":{},\"createTime\":1632890173848,\"doctorId\":\"1\",\"personId\":\"ZhangSan_1632888928222\",\"id\":\"bao_1632890173848\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:36:13');
+INSERT INTO `sys_oper_log` VALUES (105, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632879703419\",\"partNumber\":2,\"id\":\"bao_1632890344392\",\"opDoctorResultId\":\"bao_1632889142847\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:39:04');
+INSERT INTO `sys_oper_log` VALUES (106, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":1,\"id\":\"bao_1632890359536\",\"opDoctorResultId\":\"bao_1632889142847\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:39:19');
+INSERT INTO `sys_oper_log` VALUES (107, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799616936\",\"partNumber\":2,\"id\":\"bao_1632890614074\",\"opDoctorResultId\":\"bao_1632889119695\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:43:34');
+INSERT INTO `sys_oper_log` VALUES (108, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632888954953\",\"params\":{},\"createTime\":1632891176649,\"opDoctorReceiveRecordId\":\"bao_1632891176649\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:52:56');
+INSERT INTO `sys_oper_log` VALUES (109, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632891183574,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632891176649\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:53:03');
+INSERT INTO `sys_oper_log` VALUES (110, '医生看病流程', 1, 'com.ruoyi.medical.controller.OutpatientdoctorActionController.add()', 'POST', 1, 'bao', NULL, '/medical/action', '127.0.0.1', '内网IP', '{\"partMoney\":70.0,\"tmor\":{\"outpatientId\":\"1632888954953\",\"params\":{},\"createTime\":1632844800000,\"doctorId\":\"1\",\"coi\":{\"params\":{},\"cpa\":{\"params\":{},\"cs\":{\"params\":{},\"doctorId\":\"1\",\"personId\":\"WangWu_1632888954934\"},\"name\":\"王五\"},\"personid\":\"WangWu_1632888954934\"},\"opDoctorReceiveRecordId\":\"bao_1632891176649\",\"user\":{\"admin\":false,\"nickName\":\"宝哥\",\"params\":{}},\"status\":2},\"params\":{},\"type\":2,\"partName\":\"2001\",\"partNumber\":1,\"id\":\"bao_1632891191013\",\"opDoctorReceiveRecordId\":\"bao_1632891176649\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:53:11');
+INSERT INTO `sys_oper_log` VALUES (111, 'PACS影像信息', 2, 'com.ruoyi.medical.controller.PacsInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/pacs', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632891191013\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:53:20');
+INSERT INTO `sys_oper_log` VALUES (112, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632891206586,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632891176649\",\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:53:26');
+INSERT INTO `sys_oper_log` VALUES (113, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"肾虚\",\"description\":\"晚上睡不着\",\"remark\":\"多喝热水\",\"opDoctorResultId\":\"bao_1632891259685\",\"opDoctorReceiveRecordId\":\"bao_1632891176649\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:54:19');
+INSERT INTO `sys_oper_log` VALUES (114, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":2,\"id\":\"bao_1632891274190\",\"opDoctorResultId\":\"bao_1632891259685\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:54:34');
+INSERT INTO `sys_oper_log` VALUES (115, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":3,\"id\":\"bao_1632891285812\",\"opDoctorResultId\":\"bao_1632891259685\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:54:45');
+INSERT INTO `sys_oper_log` VALUES (116, '患者费用账单', 2, 'com.ruoyi.medical.controller.CostBillController.edit()', 'PUT', 1, 'bao', NULL, '/medical/bill', '127.0.0.1', '内网IP', '{\"money\":270.0,\"createTime\":1632891318670,\"outpatientId\":\"1632888954953\",\"id\":\"bao_1632891293341\",\"coi\":{\"params\":{},\"money\":500.0,\"cpa\":{\"params\":{},\"name\":\"王五\"},\"id\":1632888954953,\"status\":1},\"params\":{},\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:55:18');
+INSERT INTO `sys_oper_log` VALUES (117, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430523200412214321\",\"sex\":\"1\",\"params\":{},\"name\":\"黑虎\",\"id\":\"HeiHu_1632891466941\",\"age\":28},\"money\":200.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:57:46');
+INSERT INTO `sys_oper_log` VALUES (118, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632891466955\",\"params\":{},\"createTime\":1632891473538,\"opDoctorReceiveRecordId\":\"bao_1632891473538\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:57:53');
+INSERT INTO `sys_oper_log` VALUES (119, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632891487153,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632891473538\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:58:07');
+INSERT INTO `sys_oper_log` VALUES (120, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"脑膜炎\",\"description\":\"脑壳痛\",\"remark\":\"多多关照\",\"opDoctorResultId\":\"bao_1632891514980\",\"opDoctorReceiveRecordId\":\"bao_1632891473538\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:58:35');
+INSERT INTO `sys_oper_log` VALUES (121, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"bedId\":\"bao_1632887656896\",\"remark\":\"多注意\",\"params\":{},\"createTime\":1632891550267,\"doctorId\":\"1\",\"personId\":\"HeiHu_1632891466941\",\"id\":\"bao_1632891550267\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:59:10');
+INSERT INTO `sys_oper_log` VALUES (122, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799616936\",\"partNumber\":2,\"id\":\"bao_1632891568640\",\"opDoctorResultId\":\"bao_1632891514980\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 12:59:28');
+INSERT INTO `sys_oper_log` VALUES (123, '分床记录', 3, 'com.ruoyi.medical.controller.CpoeSplitbedController.remove()', 'DELETE', 1, 'bao', NULL, '/medical/splitbed/bao_1632890173848', '127.0.0.1', '内网IP', '{ids=bao_1632890173848}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:08:46');
+INSERT INTO `sys_oper_log` VALUES (124, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'bao', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"dictValue\":\"9\",\"listClass\":\"primary\",\"dictSort\":9,\"params\":{},\"dictType\":\"medical_receiveRecord_status\",\"dictLabel\":\"已出院\",\"createBy\":\"bao\",\"default\":false,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:10:28');
+INSERT INTO `sys_oper_log` VALUES (125, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"bedId\":\"bao_1632887656896\",\"remark\":\"多多关照\",\"params\":{},\"createTime\":1632892865387,\"doctorId\":\"1\",\"personId\":\"ZhangSan_1632888928222\",\"id\":\"bao_1632889026082\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:21:05');
+INSERT INTO `sys_oper_log` VALUES (126, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"build\",\"orderNum\":\"1\",\"menuName\":\"医嘱记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"doctorsorder\",\"component\":\"medical/doctorsorder/index\",\"children\":[],\"createTime\":1632741102000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2169,\"menuType\":\"C\",\"perms\":\"medical:doctorsorder:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:27:54');
+INSERT INTO `sys_oper_log` VALUES (127, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"documentation\",\"orderNum\":\"1\",\"menuName\":\"患者费用明细\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"detail\",\"component\":\"medical/detail/index\",\"children\":[],\"createTime\":1632806440000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2188,\"menuType\":\"C\",\"perms\":\"medical:detail:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:28:01');
+INSERT INTO `sys_oper_log` VALUES (128, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"build\",\"orderNum\":\"3\",\"menuName\":\"操作记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"do\",\"component\":\"medical/do/index\",\"children\":[],\"createTime\":1632469759000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2138,\"menuType\":\"C\",\"perms\":\"medical:do:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:28:06');
+INSERT INTO `sys_oper_log` VALUES (129, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"build\",\"orderNum\":\"1\",\"menuName\":\"医嘱记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"doctorsorder\",\"component\":\"medical/doctorsorder/index\",\"children\":[],\"createTime\":1632741102000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2169,\"menuType\":\"C\",\"perms\":\"medical:doctorsorder:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:29:37');
+INSERT INTO `sys_oper_log` VALUES (130, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"documentation\",\"orderNum\":\"1\",\"menuName\":\"患者费用明细\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"detail\",\"component\":\"medical/detail/index\",\"children\":[],\"createTime\":1632806440000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2188,\"menuType\":\"C\",\"perms\":\"medical:detail:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:29:42');
+INSERT INTO `sys_oper_log` VALUES (131, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"build\",\"orderNum\":\"3\",\"menuName\":\"操作记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"do\",\"component\":\"medical/do/index\",\"children\":[],\"createTime\":1632469759000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2138,\"menuType\":\"C\",\"perms\":\"medical:do:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:29:47');
+INSERT INTO `sys_oper_log` VALUES (132, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"3\",\"menuName\":\"个人档案建档\",\"params\":{},\"parentId\":2126,\"isCache\":\"0\",\"path\":\"#\",\"component\":\"\",\"children\":[],\"createTime\":1632398328000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2129,\"menuType\":\"F\",\"perms\":\"medical:archives:jian\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:30:59');
+INSERT INTO `sys_oper_log` VALUES (133, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"4\",\"menuName\":\"个人档案办卡\",\"params\":{},\"parentId\":2126,\"isCache\":\"0\",\"path\":\"#\",\"component\":\"\",\"children\":[],\"createTime\":1632398328000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2130,\"menuType\":\"F\",\"perms\":\"medical:archives:ban\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:31:15');
+INSERT INTO `sys_oper_log` VALUES (134, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"2\",\"menuName\":\"个人档案修改\",\"params\":{},\"parentId\":2126,\"isCache\":\"0\",\"path\":\"#\",\"component\":\"\",\"children\":[],\"createTime\":1632398328000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2128,\"menuType\":\"F\",\"perms\":\"medical:archives:edit\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:31:46');
+INSERT INTO `sys_oper_log` VALUES (135, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"2\",\"menuName\":\"接诊记录接诊\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"path\":\"#\",\"component\":\"\",\"children\":[],\"createTime\":1632630912000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2152,\"menuType\":\"F\",\"perms\":\"medical:receiverecord:jie\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:32:31');
+INSERT INTO `sys_oper_log` VALUES (136, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"3\",\"menuName\":\"接诊记录需做检查\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"path\":\"#\",\"component\":\"\",\"children\":[],\"createTime\":1632630912000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2153,\"menuType\":\"F\",\"perms\":\"medical:receiverecord:jian\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:32:49');
+INSERT INTO `sys_oper_log` VALUES (137, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"#\",\"orderNum\":\"4\",\"menuName\":\"接诊记录检查详情\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"path\":\"#\",\"component\":\"\",\"children\":[],\"createTime\":1632630912000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2154,\"menuType\":\"F\",\"perms\":\"medical:receiverecord:jianxq\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:33:10');
+INSERT INTO `sys_oper_log` VALUES (138, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"orderNum\":\"6\",\"menuName\":\"接诊记录开药\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"createBy\":\"bao\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"F\",\"perms\":\"medical:receiverecord:kai\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:34:10');
+INSERT INTO `sys_oper_log` VALUES (139, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"orderNum\":\"7\",\"menuName\":\"接诊记录用药详情\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"createBy\":\"bao\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"F\",\"perms\":\"medical:receiverecord:kaixq\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:34:47');
+INSERT INTO `sys_oper_log` VALUES (140, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"orderNum\":\"8\",\"menuName\":\"接诊记录完成开药\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"createBy\":\"bao\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"F\",\"perms\":\"medical:receiverecord:wan\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:35:20');
+INSERT INTO `sys_oper_log` VALUES (141, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632888928238\",\"id\":\"bao_1632888928246\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"cpa\":{\"code\":\"430456200310234326\",\"params\":{},\"name\":\"张三\"},\"deposit\":10,\"personid\":\"ZhangSan_1632888928222\",\"id\":1632888928238,\"lossTime\":1632893881789,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:38:01');
+INSERT INTO `sys_oper_log` VALUES (142, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632893885690,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632888928238\",\"id\":\"bao_1632888928246\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"cpa\":{\"code\":\"430456200310234326\",\"params\":{},\"name\":\"张三\"},\"deposit\":10,\"personid\":\"ZhangSan_1632888928222\",\"id\":1632888928238,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:38:05');
+INSERT INTO `sys_oper_log` VALUES (143, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632888928238\",\"id\":\"bao_1632888928246\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"cpa\":{\"code\":\"430456200310234326\",\"params\":{},\"name\":\"张三\"},\"deposit\":10,\"personid\":\"ZhangSan_1632888928222\",\"id\":1632888928238,\"lossTime\":1632893904904,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:38:24');
+INSERT INTO `sys_oper_log` VALUES (144, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632893921363,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632888928238\",\"id\":\"bao_1632888928246\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":50.0,\"cpa\":{\"code\":\"430456200310234326\",\"params\":{},\"name\":\"张三\"},\"deposit\":10,\"personid\":\"ZhangSan_1632888928222\",\"id\":1632888928238,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:38:41');
+INSERT INTO `sys_oper_log` VALUES (145, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430523200304234321\",\"sex\":\"1\",\"params\":{},\"name\":\"所长\",\"id\":\"SuoZhang_1632893964839\",\"age\":24},\"money\":10.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:39:24');
+INSERT INTO `sys_oper_log` VALUES (146, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632893964860\",\"params\":{},\"createTime\":1632893974184,\"opDoctorReceiveRecordId\":\"bao_1632893974184\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:39:34');
+INSERT INTO `sys_oper_log` VALUES (147, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"monitor\",\"orderNum\":\"1\",\"menuName\":\"药品采购信息\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"purchase\",\"component\":\"medical/purchase/index\",\"children\":[],\"createTime\":1632824749000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2237,\"menuType\":\"C\",\"perms\":\"medical:purchase:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:46:13');
+INSERT INTO `sys_oper_log` VALUES (148, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"dict\",\"orderNum\":\"1\",\"menuName\":\"药库库存\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"storage\",\"component\":\"medical/storage/index\",\"children\":[],\"createTime\":1632824771000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2243,\"menuType\":\"C\",\"perms\":\"medical:storage:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:46:19');
+INSERT INTO `sys_oper_log` VALUES (149, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"input\",\"orderNum\":\"1\",\"menuName\":\"药房库存\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"pharmacy\",\"component\":\"medical/pharmacy/index\",\"children\":[],\"createTime\":1632824798000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2249,\"menuType\":\"C\",\"perms\":\"medical:pharmacy:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:46:24');
+INSERT INTO `sys_oper_log` VALUES (150, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"redis\",\"orderNum\":\"1\",\"menuName\":\"盘点记录\",\"params\":{},\"parentId\":6,\"isCache\":\"0\",\"path\":\"inventory\",\"component\":\"medical/inventory/index\",\"children\":[],\"createTime\":1632824836000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2255,\"menuType\":\"C\",\"perms\":\"medical:inventory:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:46:28');
+INSERT INTO `sys_oper_log` VALUES (151, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'bao', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"flag\":false,\"roleId\":2,\"admin\":false,\"remark\":\"医生\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"params\":{},\"roleSort\":\"2\",\"deptCheckStrictly\":true,\"createTime\":1631948580000,\"updateBy\":\"bao\",\"menuCheckStrictly\":true,\"roleKey\":\"doctor\",\"roleName\":\"医生\",\"menuIds\":[4,5,2150,2151,2152,2153,2154,2155,2268,2269,2270,2261],\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:47:29');
+INSERT INTO `sys_oper_log` VALUES (152, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'bao', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"flag\":false,\"roleId\":100,\"admin\":false,\"remark\":\"护士\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"params\":{},\"roleSort\":\"3\",\"deptCheckStrictly\":true,\"createTime\":1632400292000,\"updateBy\":\"bao\",\"menuCheckStrictly\":true,\"roleKey\":\"nurse\",\"roleName\":\"护士\",\"menuIds\":[4,2126,2127,2128,2129,2130,2131,2144,2145,2146,2147,2148,2149,2169,2170,2171,2172,2173,2174,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2168,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,6,2176,2177,2178,2179,2180,2181,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,5,2261,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212],\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:48:04');
+INSERT INTO `sys_oper_log` VALUES (153, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"orderNum\":\"9\",\"menuName\":\"接诊记录诊断\",\"params\":{},\"parentId\":2150,\"isCache\":\"0\",\"createBy\":\"bao\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"F\",\"perms\":\"medical:receiverecord:zhen\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:51:42');
+INSERT INTO `sys_oper_log` VALUES (154, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'bao', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"flag\":false,\"roleId\":2,\"admin\":false,\"remark\":\"医生\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"params\":{},\"roleSort\":\"2\",\"deptCheckStrictly\":true,\"createTime\":1631948580000,\"updateBy\":\"bao\",\"menuCheckStrictly\":true,\"roleKey\":\"doctor\",\"roleName\":\"医生\",\"menuIds\":[4,5,2150,2151,2152,2153,2154,2155,2268,2269,2270,2271,2261],\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:56:42');
+INSERT INTO `sys_oper_log` VALUES (155, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'bao', NULL, '/system/menu/2127', '127.0.0.1', '内网IP', '{menuId=2127}', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":500}', 0, NULL, '2021-09-29 13:58:05');
+INSERT INTO `sys_oper_log` VALUES (156, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'bao', NULL, '/system/menu/2128', '127.0.0.1', '内网IP', '{menuId=2128}', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":500}', 0, NULL, '2021-09-29 13:58:16');
+INSERT INTO `sys_oper_log` VALUES (157, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"clipboard\",\"orderNum\":\"1\",\"menuName\":\"个人档案\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"archives\",\"component\":\"medical/archives/index\",\"children\":[],\"createTime\":1632398328000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2126,\"menuType\":\"C\",\"perms\":\"doctor\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:59:10');
+INSERT INTO `sys_oper_log` VALUES (158, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"user\",\"orderNum\":\"1\",\"menuName\":\"接诊管理\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"receiverecord\",\"component\":\"medical/receiverecord/index\",\"children\":[],\"createTime\":1632630912000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2150,\"menuType\":\"C\",\"perms\":\"doctor\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 13:59:31');
+INSERT INTO `sys_oper_log` VALUES (159, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"clipboard\",\"orderNum\":\"1\",\"menuName\":\"个人档案\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"archives\",\"component\":\"medical/archives/index\",\"children\":[],\"createTime\":1632398328000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2126,\"menuType\":\"C\",\"perms\":\"nurse\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:00:04');
+INSERT INTO `sys_oper_log` VALUES (160, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'bao', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"visible\":\"1\",\"icon\":\"dict\",\"orderNum\":\"1\",\"menuName\":\"门诊卡充值记录\",\"params\":{},\"parentId\":4,\"isCache\":\"0\",\"path\":\"record\",\"component\":\"medical/record/index\",\"children\":[],\"createTime\":1632551389000,\"updateBy\":\"bao\",\"isFrame\":\"1\",\"menuId\":2144,\"menuType\":\"C\",\"perms\":\"nurse\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:00:16');
+INSERT INTO `sys_oper_log` VALUES (161, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430523200103234321\",\"sex\":\"1\",\"params\":{},\"name\":\"百里长空\",\"id\":\"BaiLiZhangKong_1632895278350\",\"age\":25},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:01:18');
+INSERT INTO `sys_oper_log` VALUES (162, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"43052320021024431X\",\"sex\":\"0\",\"params\":{},\"name\":\"张宝\",\"id\":\"ZhangBao_1632897458339\",\"age\":15},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:37:38');
+INSERT INTO `sys_oper_log` VALUES (163, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632897458353\",\"id\":\"bao_1632897458361\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":500.0,\"cpa\":{\"code\":\"43052320021024431X\",\"params\":{},\"name\":\"张宝\"},\"deposit\":10,\"personid\":\"ZhangBao_1632897458339\",\"id\":1632897458353,\"lossTime\":1632897502012,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:38:22');
+INSERT INTO `sys_oper_log` VALUES (164, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632897552367,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632897458353\",\"id\":\"bao_1632897458361\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":500.0,\"cpa\":{\"code\":\"43052320021024431X\",\"params\":{},\"name\":\"张宝\"},\"deposit\":10,\"personid\":\"ZhangBao_1632897458339\",\"id\":1632897458353,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:39:12');
+INSERT INTO `sys_oper_log` VALUES (165, '充值/取现', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.editMoney()', 'POST', 1, 'bao', NULL, '/medical/info/money', '127.0.0.1', '内网IP', '{\"money\":500.0,\"type\":\"提现\",\"info\":{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632897580544,\"doId\":\"bao_1632897580544\",\"id\":\"bao_1632897580574\",\"params\":{},\"doType\":2,\"doUser\":\"bao\"},\"params\":{},\"money\":0.0,\"cpa\":{\"code\":\"43052320021024431X\",\"params\":{},\"name\":\"张宝\"},\"deposit\":10,\"personid\":\"ZhangBao_1632897458339\",\"id\":1632897458353,\"lossTime\":1632844800000,\"status\":1}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:39:40');
+INSERT INTO `sys_oper_log` VALUES (166, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"deadTime\":1632897592750,\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632897458353\",\"id\":\"bao_1632897458361\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":0.0,\"cpa\":{\"code\":\"43052320021024431X\",\"params\":{},\"name\":\"张宝\"},\"deposit\":10,\"personid\":\"ZhangBao_1632897458339\",\"id\":1632897458353,\"lossTime\":1632844800000,\"status\":3}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:39:52');
+INSERT INTO `sys_oper_log` VALUES (167, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"deadTime\":1632844800000,\"enableTime\":1632897600519,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632897458353\",\"id\":\"bao_1632897458361\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":0.0,\"cpa\":{\"code\":\"43052320021024431X\",\"params\":{},\"name\":\"张宝\"},\"deposit\":10,\"personid\":\"ZhangBao_1632897458339\",\"id\":1632897458353,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:40:00');
+INSERT INTO `sys_oper_log` VALUES (168, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"deadTime\":1632844800000,\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632897458353\",\"id\":\"bao_1632897458361\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"returnTime\":1632897608086,\"money\":0.0,\"cpa\":{\"code\":\"43052320021024431X\",\"params\":{},\"name\":\"张宝\"},\"deposit\":10,\"personid\":\"ZhangBao_1632897458339\",\"id\":1632897458353,\"lossTime\":1632844800000,\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:40:08');
+INSERT INTO `sys_oper_log` VALUES (169, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430523200210234321\",\"sex\":\"0\",\"params\":{},\"name\":\"李伍\",\"id\":\"LiWu_1632897704783\",\"age\":18},\"money\":400.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:41:44');
+INSERT INTO `sys_oper_log` VALUES (170, '接诊记录', 1, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.add()', 'POST', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"outpatientId\":\"1632897704798\",\"params\":{},\"createTime\":1632897716562,\"opDoctorReceiveRecordId\":\"bao_1632897716562\",\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:41:56');
+INSERT INTO `sys_oper_log` VALUES (171, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632897726839,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632893974184\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:42:06');
+INSERT INTO `sys_oper_log` VALUES (172, '医生看病流程', 1, 'com.ruoyi.medical.controller.OutpatientdoctorActionController.add()', 'POST', 1, 'bao', NULL, '/medical/action', '127.0.0.1', '内网IP', '{\"partMoney\":20.0,\"tmor\":{\"outpatientId\":\"1632893964860\",\"params\":{},\"createTime\":1632844800000,\"doctorId\":\"1\",\"coi\":{\"params\":{},\"cpa\":{\"params\":{},\"cs\":{\"params\":{},\"doctorId\":\"1\",\"personId\":\"SuoZhang_1632893964839\"},\"name\":\"所长\"},\"personid\":\"SuoZhang_1632893964839\"},\"opDoctorReceiveRecordId\":\"bao_1632893974184\",\"user\":{\"admin\":false,\"nickName\":\"宝哥\",\"params\":{}},\"status\":2},\"params\":{},\"type\":1,\"partName\":\"1002\",\"partNumber\":2,\"id\":\"bao_1632897750071\",\"opDoctorReceiveRecordId\":\"bao_1632893974184\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:42:30');
+INSERT INTO `sys_oper_log` VALUES (173, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632897750071\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:42:48');
+INSERT INTO `sys_oper_log` VALUES (174, 'Lis检验信息', 2, 'com.ruoyi.medical.controller.LisInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/lis', '127.0.0.1', '内网IP', '{\"params\":{},\"id\":\"bao_1632897750097\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:42:49');
+INSERT INTO `sys_oper_log` VALUES (175, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632897773641,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632893974184\",\"status\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:42:53');
+INSERT INTO `sys_oper_log` VALUES (176, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"感冒\",\"description\":\"发发撒\",\"remark\":\"郭德纲\",\"opDoctorResultId\":\"bao_1632897795601\",\"opDoctorReceiveRecordId\":\"bao_1632893974184\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:43:15');
+INSERT INTO `sys_oper_log` VALUES (177, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799140275\",\"partNumber\":2,\"id\":\"bao_1632897805684\",\"opDoctorResultId\":\"bao_1632897795601\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:43:25');
+INSERT INTO `sys_oper_log` VALUES (178, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799696037\",\"partNumber\":1,\"id\":\"bao_1632897816408\",\"opDoctorResultId\":\"bao_1632897795601\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:43:36');
+INSERT INTO `sys_oper_log` VALUES (179, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632844800000,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632888878133\",\"id\":\"bao_1632888878145\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":200.0,\"cpa\":{\"code\":\"430523200210254321\",\"params\":{},\"name\":\"李四\"},\"deposit\":10,\"personid\":\"LiSi_1632888878115\",\"id\":1632888878133,\"lossTime\":1632897867903,\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:44:27');
+INSERT INTO `sys_oper_log` VALUES (180, '门诊卡信息', 2, 'com.ruoyi.medical.controller.CostOutpatientInfoController.edit()', 'PUT', 1, 'bao', NULL, '/medical/info', '127.0.0.1', '内网IP', '{\"enableTime\":1632897884346,\"tmd\":{\"doTime\":1632844800000,\"doId\":\"1632888878133\",\"id\":\"bao_1632888878145\",\"params\":{},\"doType\":1,\"doUser\":\"bao\"},\"params\":{},\"money\":200.0,\"cpa\":{\"code\":\"430523200210254321\",\"params\":{},\"name\":\"李四\"},\"deposit\":10,\"personid\":\"LiSi_1632888878115\",\"id\":1632888878133,\"lossTime\":1632844800000,\"status\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:44:44');
+INSERT INTO `sys_oper_log` VALUES (181, '患者费用账单', 2, 'com.ruoyi.medical.controller.CostBillController.edit()', 'PUT', 1, 'bao', NULL, '/medical/bill', '127.0.0.1', '内网IP', '{\"money\":140.0,\"createTime\":1632897888996,\"outpatientId\":\"1632888878133\",\"id\":\"bao_1632889180236\",\"coi\":{\"params\":{},\"money\":200.0,\"cpa\":{\"params\":{},\"name\":\"李四\"},\"id\":1632888878133,\"status\":1},\"params\":{},\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:44:49');
+INSERT INTO `sys_oper_log` VALUES (182, '接诊记录', 2, 'com.ruoyi.medical.controller.TMedicalOutpatientdoctorReceiverecordController.edit()', 'PUT', 1, 'bao', NULL, '/medical/receiverecord', '127.0.0.1', '内网IP', '{\"params\":{},\"createTime\":1632897910065,\"doctorId\":\"1\",\"opDoctorReceiveRecordId\":\"bao_1632897716562\",\"status\":2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:45:10');
+INSERT INTO `sys_oper_log` VALUES (183, '医生看病结果', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResultController.add()', 'POST', 1, 'bao', NULL, '/medical/result', '127.0.0.1', '内网IP', '{\"name\":\"癌症\",\"description\":\"打发\",\"remark\":\"大大\",\"opDoctorResultId\":\"bao_1632897933128\",\"opDoctorReceiveRecordId\":\"bao_1632897716562\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:45:33');
+INSERT INTO `sys_oper_log` VALUES (184, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"bedId\":\"bao_1632881725217\",\"remark\":\"大萨达\",\"params\":{},\"createTime\":1632897967791,\"doctorId\":\"1\",\"personId\":\"LiWu_1632897704783\",\"id\":\"bao_1632897716562\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:46:07');
+INSERT INTO `sys_oper_log` VALUES (185, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799616936\",\"partNumber\":2,\"id\":\"bao_1632897986298\",\"opDoctorResultId\":\"bao_1632897933128\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:46:26');
+INSERT INTO `sys_oper_log` VALUES (186, '医生看病治疗方案', 1, 'com.ruoyi.medical.controller.OutpatientdoctorResulthandleController.add()', 'POST', 1, 'bao', NULL, '/medical/resulthandle', '127.0.0.1', '内网IP', '{\"drugsId\":\"bao_1632799696037\",\"partNumber\":3,\"id\":\"bao_1632898001404\",\"opDoctorResultId\":\"bao_1632897933128\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:46:41');
+INSERT INTO `sys_oper_log` VALUES (187, '分床记录', 1, 'com.ruoyi.medical.controller.CpoeSplitbedController.add()', 'POST', 1, 'bao', NULL, '/medical/splitbed', '127.0.0.1', '内网IP', '{\"bedId\":\"bao_1632881725217\",\"remark\":\"鼎折覆餗\",\"params\":{},\"createTime\":1632898054188,\"doctorId\":\"1\",\"personId\":\"HeiHu_1632891466941\",\"id\":\"bao_1632891473538\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 14:47:34');
+INSERT INTO `sys_oper_log` VALUES (188, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"sex\":\"0\",\"params\":{},\"id\":\"ZhangBao_1632897458339\"},\"money\":500.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 15:13:32');
+INSERT INTO `sys_oper_log` VALUES (189, '个人档案', 1, 'com.ruoyi.medical.controller.CostPersonArchivesController.jd()', 'POST', 1, 'bao', NULL, '/medical/archives/jd', '127.0.0.1', '内网IP', '{\"archives\":{\"code\":\"430345200210244321\",\"sex\":\"0\",\"params\":{},\"name\":\"风韵\",\"id\":\"FengYun_1632899648443\",\"age\":27},\"money\":200.0}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-09-29 15:14:08');
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1096,14 +1328,14 @@ CREATE TABLE `sys_role`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '管理员', 'admin', 1, '1', 1, 1, '0', '0', 'bao', '2021-09-18 15:03:00', 'bao', NULL, '管理员');
-INSERT INTO `sys_role` VALUES (2, '医生', 'doctor', 2, '2', 1, 1, '0', '0', 'bao', '2021-09-18 15:03:00', 'bao', '2021-09-25 20:16:37', '医生');
-INSERT INTO `sys_role` VALUES (100, '护士', 'nurse', 3, '1', 1, 1, '0', '0', 'bao', '2021-09-23 20:31:32', 'bao', '2021-09-23 20:31:45', '护士');
+INSERT INTO `sys_role` VALUES (2, '医生', 'doctor', 2, '2', 1, 1, '0', '0', 'bao', '2021-09-18 15:03:00', 'bao', '2021-09-29 13:56:42', '医生');
+INSERT INTO `sys_role` VALUES (100, '护士', 'nurse', 3, '1', 1, 1, '0', '0', 'bao', '2021-09-23 20:31:32', 'bao', '2021-09-29 13:48:04', '护士');
 INSERT INTO `sys_role` VALUES (101, '患者', 'patient', 4, '1', 1, 1, '0', '0', 'bao', '2021-09-23 20:32:56', 'bao', NULL, '患者');
 
 -- ----------------------------
@@ -1137,37 +1369,125 @@ CREATE TABLE `sys_role_menu`  (
 -- Records of sys_role_menu
 -- ----------------------------
 INSERT INTO `sys_role_menu` VALUES (2, 4);
-INSERT INTO `sys_role_menu` VALUES (2, 2126);
-INSERT INTO `sys_role_menu` VALUES (2, 2127);
-INSERT INTO `sys_role_menu` VALUES (2, 2128);
-INSERT INTO `sys_role_menu` VALUES (2, 2129);
-INSERT INTO `sys_role_menu` VALUES (2, 2130);
-INSERT INTO `sys_role_menu` VALUES (2, 2131);
-INSERT INTO `sys_role_menu` VALUES (2, 2132);
-INSERT INTO `sys_role_menu` VALUES (2, 2133);
-INSERT INTO `sys_role_menu` VALUES (2, 2134);
-INSERT INTO `sys_role_menu` VALUES (2, 2135);
-INSERT INTO `sys_role_menu` VALUES (2, 2136);
-INSERT INTO `sys_role_menu` VALUES (2, 2137);
-INSERT INTO `sys_role_menu` VALUES (2, 2138);
-INSERT INTO `sys_role_menu` VALUES (2, 2139);
-INSERT INTO `sys_role_menu` VALUES (2, 2140);
-INSERT INTO `sys_role_menu` VALUES (2, 2141);
-INSERT INTO `sys_role_menu` VALUES (2, 2142);
-INSERT INTO `sys_role_menu` VALUES (2, 2143);
-INSERT INTO `sys_role_menu` VALUES (2, 2144);
-INSERT INTO `sys_role_menu` VALUES (2, 2145);
-INSERT INTO `sys_role_menu` VALUES (2, 2146);
-INSERT INTO `sys_role_menu` VALUES (2, 2147);
-INSERT INTO `sys_role_menu` VALUES (2, 2148);
-INSERT INTO `sys_role_menu` VALUES (2, 2149);
+INSERT INTO `sys_role_menu` VALUES (2, 5);
+INSERT INTO `sys_role_menu` VALUES (2, 2150);
+INSERT INTO `sys_role_menu` VALUES (2, 2151);
+INSERT INTO `sys_role_menu` VALUES (2, 2152);
+INSERT INTO `sys_role_menu` VALUES (2, 2153);
+INSERT INTO `sys_role_menu` VALUES (2, 2154);
+INSERT INTO `sys_role_menu` VALUES (2, 2155);
+INSERT INTO `sys_role_menu` VALUES (2, 2261);
+INSERT INTO `sys_role_menu` VALUES (2, 2268);
+INSERT INTO `sys_role_menu` VALUES (2, 2269);
+INSERT INTO `sys_role_menu` VALUES (2, 2270);
+INSERT INTO `sys_role_menu` VALUES (2, 2271);
+INSERT INTO `sys_role_menu` VALUES (100, 4);
 INSERT INTO `sys_role_menu` VALUES (100, 5);
+INSERT INTO `sys_role_menu` VALUES (100, 6);
 INSERT INTO `sys_role_menu` VALUES (100, 2126);
 INSERT INTO `sys_role_menu` VALUES (100, 2127);
 INSERT INTO `sys_role_menu` VALUES (100, 2128);
 INSERT INTO `sys_role_menu` VALUES (100, 2129);
 INSERT INTO `sys_role_menu` VALUES (100, 2130);
 INSERT INTO `sys_role_menu` VALUES (100, 2131);
+INSERT INTO `sys_role_menu` VALUES (100, 2132);
+INSERT INTO `sys_role_menu` VALUES (100, 2133);
+INSERT INTO `sys_role_menu` VALUES (100, 2134);
+INSERT INTO `sys_role_menu` VALUES (100, 2135);
+INSERT INTO `sys_role_menu` VALUES (100, 2136);
+INSERT INTO `sys_role_menu` VALUES (100, 2137);
+INSERT INTO `sys_role_menu` VALUES (100, 2138);
+INSERT INTO `sys_role_menu` VALUES (100, 2139);
+INSERT INTO `sys_role_menu` VALUES (100, 2140);
+INSERT INTO `sys_role_menu` VALUES (100, 2141);
+INSERT INTO `sys_role_menu` VALUES (100, 2142);
+INSERT INTO `sys_role_menu` VALUES (100, 2143);
+INSERT INTO `sys_role_menu` VALUES (100, 2144);
+INSERT INTO `sys_role_menu` VALUES (100, 2145);
+INSERT INTO `sys_role_menu` VALUES (100, 2146);
+INSERT INTO `sys_role_menu` VALUES (100, 2147);
+INSERT INTO `sys_role_menu` VALUES (100, 2148);
+INSERT INTO `sys_role_menu` VALUES (100, 2149);
+INSERT INTO `sys_role_menu` VALUES (100, 2156);
+INSERT INTO `sys_role_menu` VALUES (100, 2157);
+INSERT INTO `sys_role_menu` VALUES (100, 2158);
+INSERT INTO `sys_role_menu` VALUES (100, 2159);
+INSERT INTO `sys_role_menu` VALUES (100, 2160);
+INSERT INTO `sys_role_menu` VALUES (100, 2161);
+INSERT INTO `sys_role_menu` VALUES (100, 2162);
+INSERT INTO `sys_role_menu` VALUES (100, 2163);
+INSERT INTO `sys_role_menu` VALUES (100, 2164);
+INSERT INTO `sys_role_menu` VALUES (100, 2165);
+INSERT INTO `sys_role_menu` VALUES (100, 2166);
+INSERT INTO `sys_role_menu` VALUES (100, 2167);
+INSERT INTO `sys_role_menu` VALUES (100, 2168);
+INSERT INTO `sys_role_menu` VALUES (100, 2169);
+INSERT INTO `sys_role_menu` VALUES (100, 2170);
+INSERT INTO `sys_role_menu` VALUES (100, 2171);
+INSERT INTO `sys_role_menu` VALUES (100, 2172);
+INSERT INTO `sys_role_menu` VALUES (100, 2173);
+INSERT INTO `sys_role_menu` VALUES (100, 2174);
+INSERT INTO `sys_role_menu` VALUES (100, 2176);
+INSERT INTO `sys_role_menu` VALUES (100, 2177);
+INSERT INTO `sys_role_menu` VALUES (100, 2178);
+INSERT INTO `sys_role_menu` VALUES (100, 2179);
+INSERT INTO `sys_role_menu` VALUES (100, 2180);
+INSERT INTO `sys_role_menu` VALUES (100, 2181);
+INSERT INTO `sys_role_menu` VALUES (100, 2182);
+INSERT INTO `sys_role_menu` VALUES (100, 2183);
+INSERT INTO `sys_role_menu` VALUES (100, 2184);
+INSERT INTO `sys_role_menu` VALUES (100, 2185);
+INSERT INTO `sys_role_menu` VALUES (100, 2186);
+INSERT INTO `sys_role_menu` VALUES (100, 2187);
+INSERT INTO `sys_role_menu` VALUES (100, 2188);
+INSERT INTO `sys_role_menu` VALUES (100, 2189);
+INSERT INTO `sys_role_menu` VALUES (100, 2190);
+INSERT INTO `sys_role_menu` VALUES (100, 2191);
+INSERT INTO `sys_role_menu` VALUES (100, 2192);
+INSERT INTO `sys_role_menu` VALUES (100, 2193);
+INSERT INTO `sys_role_menu` VALUES (100, 2195);
+INSERT INTO `sys_role_menu` VALUES (100, 2196);
+INSERT INTO `sys_role_menu` VALUES (100, 2197);
+INSERT INTO `sys_role_menu` VALUES (100, 2198);
+INSERT INTO `sys_role_menu` VALUES (100, 2199);
+INSERT INTO `sys_role_menu` VALUES (100, 2200);
+INSERT INTO `sys_role_menu` VALUES (100, 2201);
+INSERT INTO `sys_role_menu` VALUES (100, 2202);
+INSERT INTO `sys_role_menu` VALUES (100, 2203);
+INSERT INTO `sys_role_menu` VALUES (100, 2204);
+INSERT INTO `sys_role_menu` VALUES (100, 2205);
+INSERT INTO `sys_role_menu` VALUES (100, 2206);
+INSERT INTO `sys_role_menu` VALUES (100, 2207);
+INSERT INTO `sys_role_menu` VALUES (100, 2208);
+INSERT INTO `sys_role_menu` VALUES (100, 2209);
+INSERT INTO `sys_role_menu` VALUES (100, 2210);
+INSERT INTO `sys_role_menu` VALUES (100, 2211);
+INSERT INTO `sys_role_menu` VALUES (100, 2212);
+INSERT INTO `sys_role_menu` VALUES (100, 2237);
+INSERT INTO `sys_role_menu` VALUES (100, 2238);
+INSERT INTO `sys_role_menu` VALUES (100, 2239);
+INSERT INTO `sys_role_menu` VALUES (100, 2240);
+INSERT INTO `sys_role_menu` VALUES (100, 2241);
+INSERT INTO `sys_role_menu` VALUES (100, 2242);
+INSERT INTO `sys_role_menu` VALUES (100, 2243);
+INSERT INTO `sys_role_menu` VALUES (100, 2244);
+INSERT INTO `sys_role_menu` VALUES (100, 2245);
+INSERT INTO `sys_role_menu` VALUES (100, 2246);
+INSERT INTO `sys_role_menu` VALUES (100, 2247);
+INSERT INTO `sys_role_menu` VALUES (100, 2248);
+INSERT INTO `sys_role_menu` VALUES (100, 2249);
+INSERT INTO `sys_role_menu` VALUES (100, 2250);
+INSERT INTO `sys_role_menu` VALUES (100, 2251);
+INSERT INTO `sys_role_menu` VALUES (100, 2252);
+INSERT INTO `sys_role_menu` VALUES (100, 2253);
+INSERT INTO `sys_role_menu` VALUES (100, 2254);
+INSERT INTO `sys_role_menu` VALUES (100, 2255);
+INSERT INTO `sys_role_menu` VALUES (100, 2256);
+INSERT INTO `sys_role_menu` VALUES (100, 2257);
+INSERT INTO `sys_role_menu` VALUES (100, 2258);
+INSERT INTO `sys_role_menu` VALUES (100, 2259);
+INSERT INTO `sys_role_menu` VALUES (100, 2260);
+INSERT INTO `sys_role_menu` VALUES (100, 2261);
 INSERT INTO `sys_role_menu` VALUES (101, 4);
 
 -- ----------------------------
@@ -1195,15 +1515,15 @@ CREATE TABLE `sys_user`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 105 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 1, 'bao', '宝哥', '00', '2700564384@qq.com', '17680783834', '0', '/profile/avatar/2021/09/24/e0005466-f8f1-4f2d-9f84-89a67752f426.jpeg', '$2a$10$6acRKR6TYbYYzE4ig7w3GeJZPaP53KY445cn5UTRqBg7AEGibSWEG', '0', '0', '127.0.0.1', '2021-09-25 20:45:47', 'bao', '2021-09-22 08:46:46', '', '2021-09-25 20:45:47', '管理员');
-INSERT INTO `sys_user` VALUES (101, 201, 'yang', '小扬', '00', 'yang@qq.com', '13634566432', '0', '', '$2a$10$gTOjIHw9d/aCgiUYtVgqHOdKzstIvN9jWz1.w9OFUQYcb0azutvvW', '0', '0', '127.0.0.1', '2021-09-25 20:17:52', 'bao', '2021-09-24 13:57:30', 'bao', '2021-09-25 20:17:52', NULL);
+INSERT INTO `sys_user` VALUES (1, 1, 'bao', '宝哥', '00', '2700564384@qq.com', '17680783834', '0', '/profile/avatar/2021/09/24/e0005466-f8f1-4f2d-9f84-89a67752f426.jpeg', '$2a$10$6acRKR6TYbYYzE4ig7w3GeJZPaP53KY445cn5UTRqBg7AEGibSWEG', '0', '0', '127.0.0.1', '2021-09-29 14:29:29', 'bao', '2021-09-22 08:46:46', '', '2021-09-29 14:29:28', '管理员');
+INSERT INTO `sys_user` VALUES (101, 201, 'yang', '小扬', '00', 'yang@qq.com', '13634566432', '0', '', '$2a$10$gTOjIHw9d/aCgiUYtVgqHOdKzstIvN9jWz1.w9OFUQYcb0azutvvW', '0', '0', '127.0.0.1', '2021-09-29 13:55:49', 'bao', '2021-09-24 13:57:30', 'bao', '2021-09-29 13:55:48', NULL);
 INSERT INTO `sys_user` VALUES (102, 200, 'hang', '小航', '00', 'hang@qq.com', '13645343456', '0', '', '$2a$10$r5qAzwGT/zYS/5/gGbUHfuHmNPNNuPQJnLjwS664IOfrUR93hCZ0y', '0', '0', '', NULL, 'bao', '2021-09-24 13:59:06', '', NULL, NULL);
-INSERT INTO `sys_user` VALUES (103, 202, 'hong', '小红', '00', 'hong@qq.com', '13434543345', '1', '', '$2a$10$lWasRH4oeQY6l.EHxHcogORezps1Yk8clACKlepRIrwMF7.sTP3NK', '0', '0', '', NULL, 'bao', '2021-09-24 13:59:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (103, 202, 'hong', '小红', '00', 'hong@qq.com', '13434543345', '1', '', '$2a$10$lWasRH4oeQY6l.EHxHcogORezps1Yk8clACKlepRIrwMF7.sTP3NK', '0', '0', '127.0.0.1', '2021-09-29 02:58:24', 'bao', '2021-09-24 13:59:56', '', '2021-09-29 02:58:23', NULL);
 INSERT INTO `sys_user` VALUES (104, 203, 'yong', '小勇', '00', 'yong@qq.com', '13654345436', '0', '', '$2a$10$cDxfLJeraNoiIyEDqfvJ0up.QNWyUXK1wJ8eRnyh7kEhycOxRZg52', '0', '0', '', NULL, 'bao', '2021-09-24 14:00:48', '', NULL, NULL);
 INSERT INTO `sys_user` VALUES (105, 203, 'kai', '小凯', '00', 'kai@qq.com', '13434543234', '0', '', '$2a$10$I9gDXIuCw4Zt.3EceCVWNe9dFM1APl5FGfp3HnsIvB/9kboTb/oJu', '0', '0', '', NULL, 'bao', '2021-09-24 14:01:26', '', NULL, NULL);
 
@@ -2056,13 +2376,20 @@ CREATE TABLE `t_medical_cost_bill`  (
   `id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '患者费用账单id',
   `outpatientId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门诊卡信息id',
   `money` float NULL DEFAULT NULL COMMENT '金额',
-  `createTime` date NULL DEFAULT NULL COMMENT '充值取现日期',
+  `createTime` date NULL DEFAULT NULL COMMENT '付款时间',
+  `status` int NULL DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '患者费用账单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_medical_cost_bill
 -- ----------------------------
+INSERT INTO `t_medical_cost_bill` VALUES ('bao_1632889180236', '1632888878133', 140, '2021-09-29', 2);
+INSERT INTO `t_medical_cost_bill` VALUES ('bao_1632890378135', '1632888928238', 320, NULL, 1);
+INSERT INTO `t_medical_cost_bill` VALUES ('bao_1632891293341', '1632888954953', 270, '2021-09-29', 2);
+INSERT INTO `t_medical_cost_bill` VALUES ('bao_1632891580973', '1632891466955', 160, NULL, 1);
+INSERT INTO `t_medical_cost_bill` VALUES ('bao_1632897823813', '1632893964860', 135, NULL, 1);
+INSERT INTO `t_medical_cost_bill` VALUES ('bao_1632898008981', '1632897704798', 205, NULL, 1);
 
 -- ----------------------------
 -- Table structure for t_medical_cost_bill_detail
@@ -2073,6 +2400,7 @@ CREATE TABLE `t_medical_cost_bill_detail`  (
   `billid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '患者费用账单id',
   `partName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '消费事项',
   `partNumber` int NULL DEFAULT NULL COMMENT '事项数量',
+  `type` int NULL DEFAULT NULL COMMENT '事项类型',
   `partMoney` float NULL DEFAULT NULL COMMENT '单价',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '患者费用明细表' ROW_FORMAT = DYNAMIC;
@@ -2080,6 +2408,20 @@ CREATE TABLE `t_medical_cost_bill_detail`  (
 -- ----------------------------
 -- Records of t_medical_cost_bill_detail
 -- ----------------------------
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632889180240', 'bao_1632889180236', '阿莫西林胶囊', 2, 4, 40);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632889180248', 'bao_1632889180236', '九九感冒灵', 1, 4, 20);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632889180261', 'bao_1632889180236', '1002', 2, 1, 20);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632890378138', 'bao_1632890378135', '青霉素', 2, 4, 90);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632890378148', 'bao_1632890378135', '阿莫西林胶囊', 1, 4, 40);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632890378159', 'bao_1632890378135', '2002', 1, 2, 100);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632891293344', 'bao_1632891293341', '阿莫西林胶囊', 5, 4, 40);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632891293355', 'bao_1632891293341', '2001', 1, 2, 70);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632891580976', 'bao_1632891580973', '氨苄西林钠', 2, 4, 80);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632897823822', 'bao_1632897823813', '阿莫西林胶囊', 2, 4, 40);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632897823838', 'bao_1632897823813', '林可霉素', 1, 4, 15);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632897823858', 'bao_1632897823813', '1002', 2, 1, 20);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632898008987', 'bao_1632898008981', '氨苄西林钠', 2, 4, 80);
+INSERT INTO `t_medical_cost_bill_detail` VALUES ('bao_1632898008994', 'bao_1632898008981', '林可霉素', 3, 4, 15);
 
 -- ----------------------------
 -- Table structure for t_medical_cost_dead_bill
@@ -2118,11 +2460,16 @@ CREATE TABLE `t_medical_cost_outpatient_info`  (
 -- ----------------------------
 -- Records of t_medical_cost_outpatient_info
 -- ----------------------------
-INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632571715688, 1500, '2021-09-25', '2021-09-25', NULL, NULL, 2, 10, 'LiSi_1632571715664');
-INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632571768379, 51500, '2021-09-25', '2021-09-25', NULL, NULL, 1, 10, 'HeiMaHe_1632571768359');
-INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632571783796, 20000, '2021-09-25', NULL, NULL, NULL, 1, 10, 'RuHua_1632571783773');
-INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632572316079, 300, '2021-09-25', NULL, NULL, NULL, 1, 10, 'DaShen_1632572316063');
-INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632573764302, 0, '2021-09-25', NULL, '2021-09-25', NULL, 3, 10, 'HeiMaHe_1632571768359');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632888878133, 60, '2021-09-29', '2021-09-29', NULL, NULL, 1, 10, 'LiSi_1632888878115');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632888928238, 50, '2021-09-29', '2021-09-29', NULL, NULL, 1, 10, 'ZhangSan_1632888928222');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632888954953, 230, '2021-09-29', NULL, NULL, NULL, 1, 10, 'WangWu_1632888954934');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632891466955, 200, '2021-09-29', NULL, NULL, NULL, 1, 10, 'HeiHu_1632891466941');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632893964860, 10, '2021-09-29', NULL, NULL, NULL, 1, 10, 'SuoZhang_1632893964839');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632895278368, 500, '2021-09-29', NULL, NULL, NULL, 1, 10, 'BaiLiZhangKong_1632895278350');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632897458353, 0, '2021-09-29', '2021-09-29', '2021-09-29', '2021-09-29', 4, 10, 'ZhangBao_1632897458339');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632897704798, 400, '2021-09-29', NULL, NULL, NULL, 1, 10, 'LiWu_1632897704783');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632899612599, 500, '2021-09-29', NULL, NULL, NULL, 1, 10, 'ZhangBao_1632897458339');
+INSERT INTO `t_medical_cost_outpatient_info` VALUES (1632899648475, 200, '2021-09-29', NULL, NULL, NULL, 1, 10, 'FengYun_1632899648443');
 
 -- ----------------------------
 -- Table structure for t_medical_cost_outpatient_recharge_record
@@ -2140,16 +2487,20 @@ CREATE TABLE `t_medical_cost_outpatient_recharge_record`  (
 -- ----------------------------
 -- Records of t_medical_cost_outpatient_recharge_record
 -- ----------------------------
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632571715710', 500, 1, '2021-09-25', '1632571715688');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632571768399', 2000, 1, '2021-09-25', '1632571768379');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632571783814', 30000, 1, '2021-09-25', '1632571783796');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632572050443', 500, 2, '2021-09-25', '1632571768379');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('yang_1632572316095', 300, 1, '2021-09-25', '1632572316079');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('yang_1632573666368', 1000, 1, '2021-09-25', '1632571715688');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('yang_1632573696615', 10000, 2, '2021-09-25', '1632571783796');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('yang_1632573764320', 500, 1, '2021-09-25', '1632573764302');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('yang_1632573803267', 500, 2, '2021-09-25', '1632573764302');
-INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('yang_1632573829833', 50000, 1, '2021-09-25', '1632571768379');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632888878152', 200, 1, '2021-09-29', '1632888878133');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632888928255', 500, 1, '2021-09-29', '1632888928238');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632888954975', 500, 1, '2021-09-29', '1632888954953');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632888995433', 450, 2, '2021-09-29', '1632888928238');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632891318670', 270, 3, '2021-09-29', '1632888954953');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632891466969', 200, 1, '2021-09-29', '1632891466955');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632893964875', 10, 1, '2021-09-29', '1632893964860');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632895278384', 500, 1, '2021-09-29', '1632895278368');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632897458368', 500, 1, '2021-09-29', '1632897458353');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632897580544', 500, 2, '2021-09-29', '1632897458353');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632897704814', 400, 1, '2021-09-29', '1632897704798');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632897888996', 140, 3, '2021-09-29', '1632888878133');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632899612624', 500, 1, '2021-09-29', '1632899612599');
+INSERT INTO `t_medical_cost_outpatient_recharge_record` VALUES ('bao_1632899648526', 200, 1, '2021-09-29', '1632899648475');
 
 -- ----------------------------
 -- Table structure for t_medical_cost_person_archives
@@ -2167,10 +2518,15 @@ CREATE TABLE `t_medical_cost_person_archives`  (
 -- ----------------------------
 -- Records of t_medical_cost_person_archives
 -- ----------------------------
-INSERT INTO `t_medical_cost_person_archives` VALUES ('DaShen_1632572316063', '大婶', 27, '53523535', '1');
-INSERT INTO `t_medical_cost_person_archives` VALUES ('HeiMaHe_1632571768359', '黑马河', 43, '235353535', '0');
-INSERT INTO `t_medical_cost_person_archives` VALUES ('LiSi_1632571715664', '李四', 27, '2535336464', '0');
-INSERT INTO `t_medical_cost_person_archives` VALUES ('RuHua_1632571783773', '如花', 18, '423535345', '1');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('BaiLiZhangKong_1632895278350', '百里长空', 25, '430523200103234321', '1');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('FengYun_1632899648443', '风韵', 27, '430345200210244321', '0');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('HeiHu_1632891466941', '黑虎', 28, '430523200412214321', '1');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('LiSi_1632888878115', '李四', 27, '430523200210254321', '0');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('LiWu_1632897704783', '李伍', 18, '430523200210234321', '0');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('SuoZhang_1632893964839', '所长', 24, '430523200304234321', '1');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('WangWu_1632888954934', '王五', 15, '43254320031214432X', '0');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('ZhangBao_1632897458339', '张宝', 15, '43052320021024431X', '0');
+INSERT INTO `t_medical_cost_person_archives` VALUES ('ZhangSan_1632888928222', '张三', 32, '430456200310234326', '1');
 
 -- ----------------------------
 -- Table structure for t_medical_cpoe_bed
@@ -2178,15 +2534,79 @@ INSERT INTO `t_medical_cost_person_archives` VALUES ('RuHua_1632571783773', '如
 DROP TABLE IF EXISTS `t_medical_cpoe_bed`;
 CREATE TABLE `t_medical_cpoe_bed`  (
   `id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '床位记录id',
-  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '床位名称',
+  `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '床位名称',
   `sickroomId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '病房id',
-  `remark` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `remark` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '床位记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_medical_cpoe_bed
 -- ----------------------------
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827957755', 'sickroom_1_001_bed_001', 'bao_1632825651980', 'bao分配了床位:bao_sickroom_1_001_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827978020', 'bao_sickroom_2_001_bed_001', 'bao_1632825680712', 'bao分配了床位:bao_sickroom_2_001_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827978030', 'bao_sickroom_2_001_bed_002', 'bao_1632825680712', 'bao分配了床位:bao_sickroom_2_001_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827981332', 'bao_sickroom_3_001_bed_001', 'bao_1632825696964', 'bao分配了床位:bao_sickroom_3_001_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827981341', 'bao_sickroom_3_001_bed_002', 'bao_1632825696964', 'bao分配了床位:bao_sickroom_3_001_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827981350', 'bao_sickroom_3_001_bed_003', 'bao_1632825696964', 'bao分配了床位:bao_sickroom_3_001_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827984712', 'bao_sickroom_4_001_bed_001', 'bao_1632825741763', 'bao分配了床位:bao_sickroom_4_001_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827984720', 'bao_sickroom_4_001_bed_002', 'bao_1632825741763', 'bao分配了床位:bao_sickroom_4_001_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827984728', 'bao_sickroom_4_001_bed_003', 'bao_1632825741763', 'bao分配了床位:bao_sickroom_4_001_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827984734', 'bao_sickroom_4_001_bed_004', 'bao_1632825741763', 'bao分配了床位:bao_sickroom_4_001_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827986511', 'bao_sickroom_5_001_bed_001', 'bao_1632825811180', 'bao分配了床位:bao_sickroom_5_001_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827986518', 'bao_sickroom_5_001_bed_002', 'bao_1632825811180', 'bao分配了床位:bao_sickroom_5_001_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827986527', 'bao_sickroom_5_001_bed_003', 'bao_1632825811180', 'bao分配了床位:bao_sickroom_5_001_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827986533', 'bao_sickroom_5_001_bed_004', 'bao_1632825811180', 'bao分配了床位:bao_sickroom_5_001_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827986541', 'bao_sickroom_5_001_bed_005', 'bao_1632825811180', 'bao分配了床位:bao_sickroom_5_001_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827988245', 'bao_sickroom_6_001_bed_001', 'bao_1632825827674', 'bao分配了床位:bao_sickroom_6_001_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827988253', 'bao_sickroom_6_001_bed_002', 'bao_1632825827674', 'bao分配了床位:bao_sickroom_6_001_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827988261', 'bao_sickroom_6_001_bed_003', 'bao_1632825827674', 'bao分配了床位:bao_sickroom_6_001_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827988268', 'bao_sickroom_6_001_bed_004', 'bao_1632825827674', 'bao分配了床位:bao_sickroom_6_001_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827988275', 'bao_sickroom_6_001_bed_005', 'bao_1632825827674', 'bao分配了床位:bao_sickroom_6_001_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827988281', 'bao_sickroom_6_001_bed_006', 'bao_1632825827674', 'bao分配了床位:bao_sickroom_6_001_bed_006');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827989278', 'bao_sickroom_1_002_bed_001', 'bao_1632825854659', 'bao分配了床位:bao_sickroom_1_002_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827991647', 'bao_sickroom_1_003_bed_001', 'bao_1632825872513', 'bao分配了床位:bao_sickroom_1_003_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827992795', 'bao_sickroom_1_004_bed_001', 'bao_1632825893156', 'bao分配了床位:bao_sickroom_1_004_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827994153', 'bao_sickroom_1_005_bed_001', 'bao_1632825912357', 'bao分配了床位:bao_sickroom_1_005_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827995225', 'bao_sickroom_1_006_bed_001', 'bao_1632825942304', 'bao分配了床位:bao_sickroom_1_006_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827996609', 'bao_sickroom_2_002_bed_001', 'bao_1632825976096', 'bao分配了床位:bao_sickroom_2_002_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827996633', 'bao_sickroom_2_002_bed_002', 'bao_1632825976096', 'bao分配了床位:bao_sickroom_2_002_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827997727', 'bao_sickroom_6_002_bed_001', 'bao_1632825997943', 'bao分配了床位:bao_sickroom_6_002_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827997734', 'bao_sickroom_6_002_bed_002', 'bao_1632825997943', 'bao分配了床位:bao_sickroom_6_002_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827997743', 'bao_sickroom_6_002_bed_003', 'bao_1632825997943', 'bao分配了床位:bao_sickroom_6_002_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827997750', 'bao_sickroom_6_002_bed_004', 'bao_1632825997943', 'bao分配了床位:bao_sickroom_6_002_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827997758', 'bao_sickroom_6_002_bed_005', 'bao_1632825997943', 'bao分配了床位:bao_sickroom_6_002_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827997764', 'bao_sickroom_6_002_bed_006', 'bao_1632825997943', 'bao分配了床位:bao_sickroom_6_002_bed_006');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827999476', 'bao_sickroom_6_003_bed_001', 'bao_1632826020110', 'bao分配了床位:bao_sickroom_6_003_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827999482', 'bao_sickroom_6_003_bed_002', 'bao_1632826020110', 'bao分配了床位:bao_sickroom_6_003_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827999490', 'bao_sickroom_6_003_bed_003', 'bao_1632826020110', 'bao分配了床位:bao_sickroom_6_003_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827999495', 'bao_sickroom_6_003_bed_004', 'bao_1632826020110', 'bao分配了床位:bao_sickroom_6_003_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827999502', 'bao_sickroom_6_003_bed_005', 'bao_1632826020110', 'bao分配了床位:bao_sickroom_6_003_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632827999509', 'bao_sickroom_6_003_bed_006', 'bao_1632826020110', 'bao分配了床位:bao_sickroom_6_003_bed_006');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828000584', 'bao_sickroom_6_004_bed_001', 'bao_1632826030062', 'bao分配了床位:bao_sickroom_6_004_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828000591', 'bao_sickroom_6_004_bed_002', 'bao_1632826030062', 'bao分配了床位:bao_sickroom_6_004_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828000597', 'bao_sickroom_6_004_bed_003', 'bao_1632826030062', 'bao分配了床位:bao_sickroom_6_004_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828000604', 'bao_sickroom_6_004_bed_004', 'bao_1632826030062', 'bao分配了床位:bao_sickroom_6_004_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828000611', 'bao_sickroom_6_004_bed_005', 'bao_1632826030062', 'bao分配了床位:bao_sickroom_6_004_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828000618', 'bao_sickroom_6_004_bed_006', 'bao_1632826030062', 'bao分配了床位:bao_sickroom_6_004_bed_006');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828003853', 'bao_sickroom_6_005_bed_001', 'bao_1632826092218', 'bao分配了床位:bao_sickroom_6_005_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828003859', 'bao_sickroom_6_005_bed_002', 'bao_1632826092218', 'bao分配了床位:bao_sickroom_6_005_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828003866', 'bao_sickroom_6_005_bed_003', 'bao_1632826092218', 'bao分配了床位:bao_sickroom_6_005_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828003873', 'bao_sickroom_6_005_bed_004', 'bao_1632826092218', 'bao分配了床位:bao_sickroom_6_005_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828003879', 'bao_sickroom_6_005_bed_005', 'bao_1632826092218', 'bao分配了床位:bao_sickroom_6_005_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828003887', 'bao_sickroom_6_005_bed_006', 'bao_1632826092218', 'bao分配了床位:bao_sickroom_6_005_bed_006');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828004743', 'bao_sickroom_6_006_bed_001', 'bao_1632826111643', 'bao分配了床位:bao_sickroom_6_006_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828004750', 'bao_sickroom_6_006_bed_002', 'bao_1632826111643', 'bao分配了床位:bao_sickroom_6_006_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828004757', 'bao_sickroom_6_006_bed_003', 'bao_1632826111643', 'bao分配了床位:bao_sickroom_6_006_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828004763', 'bao_sickroom_6_006_bed_004', 'bao_1632826111643', 'bao分配了床位:bao_sickroom_6_006_bed_004');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828004773', 'bao_sickroom_6_006_bed_005', 'bao_1632826111643', 'bao分配了床位:bao_sickroom_6_006_bed_005');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828004779', 'bao_sickroom_6_006_bed_006', 'bao_1632826111643', 'bao分配了床位:bao_sickroom_6_006_bed_006');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828006282', 'bao_sickroom_3_002_bed_001', 'bao_1632826137112', 'bao分配了床位:bao_sickroom_3_002_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828006289', 'bao_sickroom_3_002_bed_002', 'bao_1632826137112', 'bao分配了床位:bao_sickroom_3_002_bed_002');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632828006294', 'bao_sickroom_3_002_bed_003', 'bao_1632826137112', 'bao分配了床位:bao_sickroom_3_002_bed_003');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632881725217', '宝哥_bed_001', 'bao_1632881717156', 'bao分配了床位:宝哥_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632887656896', '二号病房_bed_001', 'bao_1632887633102', 'bao分配了床位:二号病房_bed_001');
+INSERT INTO `t_medical_cpoe_bed` VALUES ('bao_1632887656905', '二号病房_bed_002', 'bao_1632887633102', 'bao分配了床位:二号病房_bed_002');
 
 -- ----------------------------
 -- Table structure for t_medical_cpoe_doctorsorderhandle
@@ -2250,16 +2670,37 @@ CREATE TABLE `t_medical_cpoe_prescriptiontotal`  (
 DROP TABLE IF EXISTS `t_medical_cpoe_sickroom`;
 CREATE TABLE `t_medical_cpoe_sickroom`  (
   `id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '病房记录id',
-  `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '病房名称',
+  `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '病房名称',
   `unit` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '规格',
   `attribute` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '属性',
-  `remark` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `remark` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `status` int NULL DEFAULT NULL COMMENT '病房状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '病房记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_medical_cpoe_sickroom
 -- ----------------------------
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825651980', 'bao_sickroom_1_001', '1', '5', '豪华房', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825680712', 'bao_sickroom_2_001', '2', '4', '牛掰', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825696964', 'bao_sickroom_3_001', '3', '1', '刚收到', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825741763', 'bao_sickroom_4_001', '4', '2', '三个红色', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825811180', 'bao_sickroom_5_001', '5', '6', '洪水过后大奉', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825827674', 'bao_sickroom_6_001', '6', '3', '巴适得很实收', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825854659', 'bao_sickroom_1_002', '1', '3', '归属感社工', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825872513', 'bao_sickroom_1_003', '1', '1', '阿傻师傅', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825893156', 'bao_sickroom_1_004', '1', '2', '还是个', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825912357', 'bao_sickroom_1_005', '1', '6', '的根深蒂固', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825942304', 'bao_sickroom_1_006', '1', '4', '格式的格式的风格', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825976096', 'bao_sickroom_2_002', '2', '2', '该事故发生', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632825997943', 'bao_sickroom_6_002', '6', '6', '好办法的身高多少', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632826020110', 'bao_sickroom_6_003', '6', '2', '讽德诵功第三个', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632826030062', 'bao_sickroom_6_004', '6', '1', '固定格式改', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632826092218', 'bao_sickroom_6_005', '6', '5', '还是得赶得上', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632826111643', 'bao_sickroom_6_006', '6', '4', '是根深蒂固', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632826137112', 'bao_sickroom_3_002', '3', '1', '护手霜', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632881717156', '宝哥', '1', '1', '法法发', 2);
+INSERT INTO `t_medical_cpoe_sickroom` VALUES ('bao_1632887633102', '二号病房', '2', '2', '今年的方法很多', 2);
 
 -- ----------------------------
 -- Table structure for t_medical_cpoe_sickroom_duty
@@ -2294,6 +2735,7 @@ CREATE TABLE `t_medical_cpoe_splitbed`  (
 -- ----------------------------
 -- Records of t_medical_cpoe_splitbed
 -- ----------------------------
+INSERT INTO `t_medical_cpoe_splitbed` VALUES ('bao_1632891473538', 'HeiHu_1632891466941', '1', 'bao_1632881725217', '2021-09-29', '鼎折覆餗');
 
 -- ----------------------------
 -- Table structure for t_medical_do
@@ -2311,25 +2753,39 @@ CREATE TABLE `t_medical_do`  (
 -- ----------------------------
 -- Records of t_medical_do
 -- ----------------------------
-INSERT INTO `t_medical_do` VALUES ('bao_1632571715648', 'bao', '2021-09-25 20:08:36', 'LiSi_1632571715664', 0);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571715701', 'bao', '2021-09-25 20:46:07', '1632571715688', 1);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571715722', 'bao', '2021-09-25 20:08:36', 'bao_1632571715710', 2);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571768359', 'bao', '2021-09-25 20:09:28', 'HeiMaHe_1632571768359', 0);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571768389', 'yang', '2021-09-25 20:43:43', '1632571768379', 1);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571768410', 'bao', '2021-09-25 20:09:28', 'bao_1632571768399', 2);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571783772', 'bao', '2021-09-25 20:09:44', 'RuHua_1632571783773', 0);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571783805', 'yang', '2021-09-25 20:41:37', '1632571783796', 1);
-INSERT INTO `t_medical_do` VALUES ('bao_1632571783821', 'bao', '2021-09-25 20:09:44', 'bao_1632571783814', 2);
-INSERT INTO `t_medical_do` VALUES ('bao_1632572050459', 'bao', '2021-09-25 20:14:10', 'bao_1632572050443', 2);
-INSERT INTO `t_medical_do` VALUES ('yang_1632572316063', 'yang', '2021-09-25 20:18:36', 'DaShen_1632572316063', 0);
-INSERT INTO `t_medical_do` VALUES ('yang_1632572316086', 'yang', '2021-09-25 20:18:36', '1632572316079', 1);
-INSERT INTO `t_medical_do` VALUES ('yang_1632572316103', 'yang', '2021-09-25 20:18:36', 'yang_1632572316095', 2);
-INSERT INTO `t_medical_do` VALUES ('yang_1632573666393', 'yang', '2021-09-25 20:41:06', 'yang_1632573666368', 2);
-INSERT INTO `t_medical_do` VALUES ('yang_1632573696643', 'yang', '2021-09-25 20:41:37', 'yang_1632573696615', 2);
-INSERT INTO `t_medical_do` VALUES ('yang_1632573764311', 'yang', '2021-09-25 20:42:44', '1632573764302', 1);
-INSERT INTO `t_medical_do` VALUES ('yang_1632573764329', 'yang', '2021-09-25 20:42:44', 'yang_1632573764320', 2);
-INSERT INTO `t_medical_do` VALUES ('yang_1632573803283', 'yang', '2021-09-25 20:43:23', 'yang_1632573803267', 2);
-INSERT INTO `t_medical_do` VALUES ('yang_1632573829849', 'yang', '2021-09-25 20:43:50', 'yang_1632573829833', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888878098', 'bao', '2021-09-29 12:14:38', 'LiSi_1632888878115', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888878145', 'bao', '2021-09-29 12:14:38', '1632888878133', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888878163', 'bao', '2021-09-29 12:14:38', 'bao_1632888878152', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888928221', 'bao', '2021-09-29 12:15:28', 'ZhangSan_1632888928222', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888928246', 'bao', '2021-09-29 12:15:28', '1632888928238', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888928265', 'bao', '2021-09-29 12:15:28', 'bao_1632888928255', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888954934', 'bao', '2021-09-29 12:15:55', 'WangWu_1632888954934', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888954967', 'bao', '2021-09-29 12:15:55', '1632888954953', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888954984', 'bao', '2021-09-29 12:15:55', 'bao_1632888954975', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632888995449', 'bao', '2021-09-29 12:16:35', 'bao_1632888995433', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632891318687', 'bao', '2021-09-29 12:55:19', 'bao_1632891318670', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632891466941', 'bao', '2021-09-29 12:57:47', 'HeiHu_1632891466941', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632891466962', 'bao', '2021-09-29 12:57:47', '1632891466955', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632891466977', 'bao', '2021-09-29 12:57:47', 'bao_1632891466969', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632893964820', 'bao', '2021-09-29 13:39:25', 'SuoZhang_1632893964839', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632893964868', 'bao', '2021-09-29 13:39:25', '1632893964860', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632893964888', 'bao', '2021-09-29 13:39:25', 'bao_1632893964875', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632895278350', 'bao', '2021-09-29 14:01:18', 'BaiLiZhangKong_1632895278350', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632895278376', 'bao', '2021-09-29 14:01:18', '1632895278368', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632895278393', 'bao', '2021-09-29 14:01:18', 'bao_1632895278384', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897458339', 'bao', '2021-09-29 14:37:38', 'ZhangBao_1632897458339', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897458361', 'bao', '2021-09-29 14:37:38', '1632897458353', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897458376', 'bao', '2021-09-29 14:37:38', 'bao_1632897458368', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897580574', 'bao', '2021-09-29 14:39:41', 'bao_1632897580544', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897704783', 'bao', '2021-09-29 14:41:45', 'LiWu_1632897704783', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897704806', 'bao', '2021-09-29 14:41:45', '1632897704798', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897704822', 'bao', '2021-09-29 14:41:45', 'bao_1632897704814', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632897889009', 'bao', '2021-09-29 14:44:49', 'bao_1632897888996', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632899612615', 'bao', '2021-09-29 15:13:33', '1632899612599', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632899612635', 'bao', '2021-09-29 15:13:33', 'bao_1632899612624', 2);
+INSERT INTO `t_medical_do` VALUES ('bao_1632899648424', 'bao', '2021-09-29 15:14:08', 'FengYun_1632899648443', 0);
+INSERT INTO `t_medical_do` VALUES ('bao_1632899648518', 'bao', '2021-09-29 15:14:08', '1632899648475', 1);
+INSERT INTO `t_medical_do` VALUES ('bao_1632899648536', 'bao', '2021-09-29 15:14:08', 'bao_1632899648526', 2);
 
 -- ----------------------------
 -- Table structure for t_medical_drugs_info
@@ -2338,6 +2794,7 @@ DROP TABLE IF EXISTS `t_medical_drugs_info`;
 CREATE TABLE `t_medical_drugs_info`  (
   `id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '药品id',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '药品名称',
+  `money` float NULL DEFAULT NULL COMMENT '药品单价',
   `Specifications` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '规格',
   `unit` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单位',
   `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '药品描述',
@@ -2347,6 +2804,11 @@ CREATE TABLE `t_medical_drugs_info`  (
 -- ----------------------------
 -- Records of t_medical_drugs_info
 -- ----------------------------
+INSERT INTO `t_medical_drugs_info` VALUES ('bao_1632798980503', '九九感冒灵', 20, '0.25g*4片', '2', '治疗感冒');
+INSERT INTO `t_medical_drugs_info` VALUES ('bao_1632799140275', '阿莫西林胶囊', 40, '0.5g*64', '2', '治疗发炎');
+INSERT INTO `t_medical_drugs_info` VALUES ('bao_1632799616936', '氨苄西林钠', 80, '0.5g', '1', '抗生素');
+INSERT INTO `t_medical_drugs_info` VALUES ('bao_1632799696037', '林可霉素', 15, '1.25g*1片', '5', '头疼，发烧');
+INSERT INTO `t_medical_drugs_info` VALUES ('bao_1632879703419', '青霉素', 90, '0.6g*3片', '3', '抗生素');
 
 -- ----------------------------
 -- Table structure for t_medical_drugs_inventory_record
@@ -2443,6 +2905,12 @@ CREATE TABLE `t_medical_emr_doctorsorder`  (
 -- ----------------------------
 -- Records of t_medical_emr_doctorsorder
 -- ----------------------------
+INSERT INTO `t_medical_emr_doctorsorder` VALUES ('bao_1632889042215', 'LiSi_1632888878115', '1', 2, 3, '1002', '2021-09-29');
+INSERT INTO `t_medical_emr_doctorsorder` VALUES ('bao_1632889042234', 'LiSi_1632888878115', '1', 2, 3, '1002', '2021-09-29');
+INSERT INTO `t_medical_emr_doctorsorder` VALUES ('bao_1632889080776', 'ZhangSan_1632888928222', '1', 2, 3, '2002', '2021-09-29');
+INSERT INTO `t_medical_emr_doctorsorder` VALUES ('bao_1632891191013', 'WangWu_1632888954934', '1', 2, 3, '2001', '2021-09-29');
+INSERT INTO `t_medical_emr_doctorsorder` VALUES ('bao_1632897750071', 'SuoZhang_1632893964839', '1', 2, 3, '1002', '2021-09-29');
+INSERT INTO `t_medical_emr_doctorsorder` VALUES ('bao_1632897750097', 'SuoZhang_1632893964839', '1', 2, 3, '1002', '2021-09-29');
 
 -- ----------------------------
 -- Table structure for t_medical_lis_info
@@ -2462,6 +2930,10 @@ CREATE TABLE `t_medical_lis_info`  (
 -- ----------------------------
 -- Records of t_medical_lis_info
 -- ----------------------------
+INSERT INTO `t_medical_lis_info` VALUES ('bao_1632889042215', '1002', 'LiSi_1632888878115', '1', '2021-09-29', 2, 'bao_1632889008709');
+INSERT INTO `t_medical_lis_info` VALUES ('bao_1632889042234', '1002', 'LiSi_1632888878115', '1', '2021-09-29', 2, 'bao_1632889008709');
+INSERT INTO `t_medical_lis_info` VALUES ('bao_1632897750071', '1002', 'SuoZhang_1632893964839', '1', '2021-09-29', 2, 'bao_1632893974184');
+INSERT INTO `t_medical_lis_info` VALUES ('bao_1632897750097', '1002', 'SuoZhang_1632893964839', '1', '2021-09-29', 2, 'bao_1632893974184');
 
 -- ----------------------------
 -- Table structure for t_medical_outpatientdoctor_action
@@ -2471,16 +2943,19 @@ CREATE TABLE `t_medical_outpatientdoctor_action`  (
   `id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '医生看病流程id',
   `partName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '消费事项',
   `partNumber` int NULL DEFAULT NULL COMMENT '事项数量',
-  `personType` int NOT NULL COMMENT '患者类型',
   `partMoney` float NULL DEFAULT NULL COMMENT '单价',
   `type` int NULL DEFAULT NULL COMMENT '类型',
-  `opDoctorReceiveRecordId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门诊医生接诊记录id/医嘱记录id',
+  `opDoctorReceiveRecordId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '接诊记录id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '医生看病流程表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_medical_outpatientdoctor_action
 -- ----------------------------
+INSERT INTO `t_medical_outpatientdoctor_action` VALUES ('bao_1632889042215', '1002', 2, 20, 1, 'bao_1632889008709');
+INSERT INTO `t_medical_outpatientdoctor_action` VALUES ('bao_1632889080776', '2002', 1, 100, 2, 'bao_1632889026082');
+INSERT INTO `t_medical_outpatientdoctor_action` VALUES ('bao_1632891191013', '2001', 1, 70, 2, 'bao_1632891176649');
+INSERT INTO `t_medical_outpatientdoctor_action` VALUES ('bao_1632897750071', '1002', 2, 20, 1, 'bao_1632893974184');
 
 -- ----------------------------
 -- Table structure for t_medical_outpatientdoctor_medicalrecord
@@ -2505,6 +2980,7 @@ CREATE TABLE `t_medical_outpatientdoctor_receiverecord`  (
   `opDoctorReceiveRecordId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '接诊记录id',
   `outpatientId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门诊卡信息id',
   `doctorId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '医生id',
+  `type` int NULL DEFAULT NULL COMMENT '类型',
   `status` int NULL DEFAULT NULL COMMENT '状态',
   `createTime` date NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`opDoctorReceiveRecordId`) USING BTREE
@@ -2513,6 +2989,12 @@ CREATE TABLE `t_medical_outpatientdoctor_receiverecord`  (
 -- ----------------------------
 -- Records of t_medical_outpatientdoctor_receiverecord
 -- ----------------------------
+INSERT INTO `t_medical_outpatientdoctor_receiverecord` VALUES ('bao_1632889008709', '1632888878133', '1', 1, 7, '2021-09-29');
+INSERT INTO `t_medical_outpatientdoctor_receiverecord` VALUES ('bao_1632889026082', '1632888928238', '1', 2, 9, '2021-09-29');
+INSERT INTO `t_medical_outpatientdoctor_receiverecord` VALUES ('bao_1632891176649', '1632888954953', '1', 1, 7, '2021-09-29');
+INSERT INTO `t_medical_outpatientdoctor_receiverecord` VALUES ('bao_1632891473538', '1632891466955', '1', 2, 8, '2021-09-29');
+INSERT INTO `t_medical_outpatientdoctor_receiverecord` VALUES ('bao_1632893974184', '1632893964860', '1', 1, 7, '2021-09-29');
+INSERT INTO `t_medical_outpatientdoctor_receiverecord` VALUES ('bao_1632897716562', '1632897704798', '1', 2, 9, '2021-09-29');
 
 -- ----------------------------
 -- Table structure for t_medical_outpatientdoctor_result
@@ -2523,13 +3005,19 @@ CREATE TABLE `t_medical_outpatientdoctor_result`  (
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '病名称',
   `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述症状',
   `remark` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '医嘱',
-  `opDoctorReceiveRecordId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门诊医生接诊记录id',
+  `opDoctorReceiveRecordId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '接诊记录id',
   PRIMARY KEY (`opDoctorResultId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '医生看病结果表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_medical_outpatientdoctor_result
 -- ----------------------------
+INSERT INTO `t_medical_outpatientdoctor_result` VALUES ('bao_1632889119695', '感冒', '头疼', '多喝热水', 'bao_1632889008709');
+INSERT INTO `t_medical_outpatientdoctor_result` VALUES ('bao_1632889142847', '肝癌', '肝痛', '住院治疗', 'bao_1632889026082');
+INSERT INTO `t_medical_outpatientdoctor_result` VALUES ('bao_1632891259685', '肾虚', '晚上睡不着', '多喝热水', 'bao_1632891176649');
+INSERT INTO `t_medical_outpatientdoctor_result` VALUES ('bao_1632891514980', '脑膜炎', '脑壳痛', '多多关照', 'bao_1632891473538');
+INSERT INTO `t_medical_outpatientdoctor_result` VALUES ('bao_1632897795601', '感冒', '发发撒', '郭德纲', 'bao_1632893974184');
+INSERT INTO `t_medical_outpatientdoctor_result` VALUES ('bao_1632897933128', '癌症', '打发', '大大', 'bao_1632897716562');
 
 -- ----------------------------
 -- Table structure for t_medical_outpatientdoctor_resulthandle
@@ -2537,9 +3025,8 @@ CREATE TABLE `t_medical_outpatientdoctor_result`  (
 DROP TABLE IF EXISTS `t_medical_outpatientdoctor_resulthandle`;
 CREATE TABLE `t_medical_outpatientdoctor_resulthandle`  (
   `id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '医生看病治疗方案id',
-  `partName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '消费事项',
-  `partNumber` int NULL DEFAULT NULL COMMENT '事项数量',
-  `partMoney` float NULL DEFAULT NULL COMMENT '单价',
+  `drugsId` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '药品id',
+  `partNumber` int NULL DEFAULT NULL COMMENT '药品数量',
   `opDoctorResultId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '医生治疗结果id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '医生看病治疗方案表' ROW_FORMAT = DYNAMIC;
@@ -2547,6 +3034,16 @@ CREATE TABLE `t_medical_outpatientdoctor_resulthandle`  (
 -- ----------------------------
 -- Records of t_medical_outpatientdoctor_resulthandle
 -- ----------------------------
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632889166544', 'bao_1632799140275', 2, 'bao_1632889119695');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632889174759', 'bao_1632798980503', 1, 'bao_1632889119695');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632890344392', 'bao_1632879703419', 2, 'bao_1632889142847');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632890359536', 'bao_1632799140275', 1, 'bao_1632889142847');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632891274190', 'bao_1632799140275', 5, 'bao_1632891259685');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632891568640', 'bao_1632799616936', 2, 'bao_1632891514980');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632897805684', 'bao_1632799140275', 2, 'bao_1632897795601');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632897816408', 'bao_1632799696037', 1, 'bao_1632897795601');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632897986298', 'bao_1632799616936', 2, 'bao_1632897933128');
+INSERT INTO `t_medical_outpatientdoctor_resulthandle` VALUES ('bao_1632898001404', 'bao_1632799696037', 3, 'bao_1632897933128');
 
 -- ----------------------------
 -- Table structure for t_medical_pacs_info
@@ -2566,5 +3063,7 @@ CREATE TABLE `t_medical_pacs_info`  (
 -- ----------------------------
 -- Records of t_medical_pacs_info
 -- ----------------------------
+INSERT INTO `t_medical_pacs_info` VALUES ('bao_1632889080776', '2002', 'ZhangSan_1632888928222', '1', '2021-09-29', 2, 'bao_1632889026082');
+INSERT INTO `t_medical_pacs_info` VALUES ('bao_1632891191013', '2001', 'WangWu_1632888954934', '1', '2021-09-29', 2, 'bao_1632891176649');
 
 SET FOREIGN_KEY_CHECKS = 1;

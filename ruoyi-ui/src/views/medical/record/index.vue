@@ -1,84 +1,7 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="金额" prop="money">
-        <el-input
-          v-model="queryParams.money"
-          placeholder="请输入金额"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="类型" prop="type">
-        <el-select v-model="queryParams.type" placeholder="请选择类型" clearable size="small">
-          <el-option
-            v-for="dict in dict.type.medical_recharge_record_type"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="充值取现日期" prop="createTime">
-        <el-date-picker clearable size="small"
-                        v-model="queryParams.createTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        placeholder="选择充值取现日期">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="门诊卡信息id" prop="outpatientId">
-        <el-input
-          v-model="queryParams.outpatientId"
-          placeholder="请输入门诊卡信息id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
-      </el-form-item>
-    </el-form>
 
     <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['medical:record:add']"
-        >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['medical:record:edit']"
-        >修改
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:record:remove']"
-        >删除
-        </el-button>
-      </el-col>
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -96,40 +19,18 @@
 
     <el-table v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="门诊卡充值记录id" align="center" prop="id"/>
       <el-table-column label="金额" align="center" prop="money"/>
       <el-table-column label="类型" align="center" prop="type">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.medical_recharge_record_type" :value="scope.row.type"/>
         </template>
       </el-table-column>
-      <el-table-column label="充值取现日期" align="center" prop="createTime" width="180">
+      <el-table-column label="日期" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="门诊卡信息id" align="center" prop="outpatientId"/>
       <el-table-column label="操作人" align="center" prop="tmd.doUser"/>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['medical:record:edit']"
-          >修改
-          </el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['medical:record:remove']"
-          >删除
-          </el-button>
-        </template>
-      </el-table-column>
     </el-table>
 
     <pagination

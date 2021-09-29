@@ -18,17 +18,8 @@
           placeholder="选择操作时间">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="操作对象id" prop="doId">
-        <el-input
-          v-model="queryParams.doId"
-          placeholder="请输入操作对象id"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="操作对象类型" prop="doType">
-        <el-select v-model="queryParams.doType" placeholder="请选择操作对象类型" clearable size="small">
+      <el-form-item label="类型" prop="doType">
+        <el-select v-model="queryParams.doType" placeholder="请选择类型" clearable size="small">
           <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
@@ -39,38 +30,6 @@
     </el-form>
 
     <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['medical:do:add']"
-        >新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['medical:do:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:do:remove']"
-        >删除</el-button>
-      </el-col>
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -96,26 +55,8 @@
       </el-table-column>
       <el-table-column label="操作对象id" align="center" prop="doId" />
       <el-table-column label="操作对象类型" align="center" prop="doType" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['medical:do:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['medical:do:remove']"
-          >删除</el-button>
-        </template>
-      </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"

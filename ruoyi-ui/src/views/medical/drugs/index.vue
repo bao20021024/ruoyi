@@ -70,18 +70,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:drugs:remove']"
-        >删除
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
           type="warning"
           plain
           icon="el-icon-download"
@@ -97,7 +85,6 @@
 
     <el-table v-loading="loading" :data="drugsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="药品id" align="center" prop="id"/>
       <el-table-column label="药品名称" align="center" prop="name"/>
       <el-table-column label="单价" align="center" prop="money"/>
       <el-table-column label="规格" align="center" prop="specifications"/>
@@ -116,14 +103,6 @@
             @click="handleUpdate(scope.row)"
             v-hasPermi="['medical:drugs:edit']"
           >修改
-          </el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['medical:drugs:remove']"
-          >删除
           </el-button>
         </template>
       </el-table-column>
@@ -147,7 +126,7 @@
           <el-input v-model="form.specifications" placeholder="请输入规格"/>
         </el-form-item>
         <el-form-item label="单价" prop="money">
-          <el-input v-model="form.money" placeholder="请输入单价"/>
+          <el-input v-model.number="form.money" placeholder="请输入单价"/>
         </el-form-item>
         <el-form-item label="单位" prop="unit">
           <el-select v-model="form.unit" placeholder="请选择单位">
@@ -160,7 +139,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="药品描述" prop="description">
-          <el-input v-model="form.description" placeholder="请输入药品描述"/>
+          <el-input type="textarea" v-model="form.description" placeholder="请输入药品描述"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -211,7 +190,14 @@
         // 表单参数
         form: {},
         // 表单校验
-        rules: {}
+        rules: {
+          name: [{required: true, message: '请输入药名', trigger: 'blur'}],
+          specifications: [{required: true, message: '请输入规格', trigger: 'blur'}],
+          money: [{required: true, message: '请输入单价', trigger: 'blur'},
+            {type: 'number', message: '单价必须为数字'}],
+          unit: [{required: true, message: '请选择单位', trigger: 'blur'}],
+          description: [{required: true, message: '请输入药品描述', trigger: 'blur'}]
+        }
       };
     },
     created() {

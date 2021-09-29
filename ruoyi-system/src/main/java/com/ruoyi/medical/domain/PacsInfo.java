@@ -38,6 +38,8 @@ public class PacsInfo extends BaseEntity
     @Excel(name = "门诊医生接诊记录id")
     private String receiveRecordId;
 
+    private CostPersonArchives cpa;
+
     public void setId(String id) 
     {
         this.id = id;
@@ -104,5 +106,13 @@ public class PacsInfo extends BaseEntity
             .append("status", getStatus())
             .append("receiveRecordId", getReceiveRecordId())
             .toString();
+    }
+
+    public CostPersonArchives getCpa() {
+        return cpa;
+    }
+
+    public void setCpa(CostPersonArchives cpa) {
+        this.cpa = cpa;
     }
 }

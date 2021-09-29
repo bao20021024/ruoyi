@@ -7,102 +7,116 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * Lis检验信息对象 t_medical_lis_info
- * 
+ *
  * @author bao
  * @date 2021-09-23
  */
-public class LisInfo extends BaseEntity
-{
+public class LisInfo extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
-    /** Lis检验信息id */
+    /**
+     * Lis检验信息id
+     */
     private String id;
 
-    /** 消费事项 */
+    /**
+     * 消费事项
+     */
     @Excel(name = "消费事项")
     private String name;
 
-    /** 患者id */
+    /**
+     * 患者id
+     */
     @Excel(name = "患者id")
     private String personId;
 
-    /** 医生id */
+    /**
+     * 医生id
+     */
     @Excel(name = "医生id")
     private String doctorid;
 
-    /** 状态 */
+    /**
+     * 状态
+     */
     @Excel(name = "状态")
     private Long status;
 
-    /** 门诊医生接诊记录id */
+    /**
+     * 门诊医生接诊记录id
+     */
     @Excel(name = "门诊医生接诊记录id")
     private String receiveRecordId;
 
-    public void setId(String id) 
-    {
+    private CostPersonArchives cpa;
+
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getId() 
-    {
+    public String getId() {
         return id;
     }
-    public void setName(String name) 
-    {
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getName() 
-    {
+    public String getName() {
         return name;
     }
-    public void setPersonId(String personId) 
-    {
+
+    public void setPersonId(String personId) {
         this.personId = personId;
     }
 
-    public String getPersonId() 
-    {
+    public String getPersonId() {
         return personId;
     }
-    public void setDoctorid(String doctorid) 
-    {
+
+    public void setDoctorid(String doctorid) {
         this.doctorid = doctorid;
     }
 
-    public String getDoctorid() 
-    {
+    public String getDoctorid() {
         return doctorid;
     }
-    public void setStatus(Long status) 
-    {
+
+    public void setStatus(Long status) {
         this.status = status;
     }
 
-    public Long getStatus() 
-    {
+    public Long getStatus() {
         return status;
     }
-    public void setReceiveRecordId(String receiveRecordId) 
-    {
+
+    public void setReceiveRecordId(String receiveRecordId) {
         this.receiveRecordId = receiveRecordId;
     }
 
-    public String getReceiveRecordId() 
-    {
+    public String getReceiveRecordId() {
         return receiveRecordId;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("name", getName())
-            .append("personId", getPersonId())
-            .append("doctorid", getDoctorid())
-            .append("createTime", getCreateTime())
-            .append("status", getStatus())
-            .append("receiveRecordId", getReceiveRecordId())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("id", getId())
+                .append("name", getName())
+                .append("personId", getPersonId())
+                .append("doctorid", getDoctorid())
+                .append("createTime", getCreateTime())
+                .append("status", getStatus())
+                .append("receiveRecordId", getReceiveRecordId())
+                .toString();
+    }
+
+    public CostPersonArchives getCpa() {
+        return cpa;
+    }
+
+    public void setCpa(CostPersonArchives cpa) {
+        this.cpa = cpa;
     }
 }

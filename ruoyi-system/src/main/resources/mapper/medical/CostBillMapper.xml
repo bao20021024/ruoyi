@@ -45,11 +45,9 @@
 
     <select id="selectCostBillList" parameterType="CostBill" resultMap="CostBillResult">
         <include refid="selJoin"/>
-        <where>
-            <if test="money != null ">and tb.money = #{money}</if>
-            <if test="status != null ">and tb.status = #{status}</if>
-            <if test="createTime != null ">and tb.createTime = #{createTime}</if>
-        </where>
+        <if test="outpatientId != null ">and name like concat('%',#{outpatientId},'%')</if>
+        <if test="status != null ">and tb.status = #{status}</if>
+        <if test="createTime != null ">and tb.createTime = #{createTime}</if>
     </select>
 
     <select id="selectCostBillById" parameterType="String" resultMap="CostBillResult">

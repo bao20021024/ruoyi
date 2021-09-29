@@ -31,6 +31,20 @@
                 <result property="age" column="age"/>
                 <result property="code" column="code"/>
                 <result property="sex" column="sex"/>
+                <association property="cs" javaType="CpoeSplitbed">
+                    <result property="id" column="csId"/>
+                    <result property="personId" column="personId"/>
+                    <result property="doctorId" column="doctorId"/>
+                    <result property="bedId" column="bedId"/>
+                    <result property="createTime" column="csCreateTime"/>
+                    <result property="remark" column="remark"/>
+                    <association property="cb" javaType="CpoeBed">
+                        <result property="id" column="cbId"/>
+                        <result property="name" column="cbName"/>
+                        <result property="sickroomId" column="sickroomId"/>
+                        <result property="remark" column="cbRemark"/>
+                    </association>
+                </association>
             </association>
         </association>
         <association property="user" javaType="SysUser">
@@ -40,10 +54,10 @@
             <result property="nickName" column="nick_name"/>
             <result property="email" column="email"/>
             <result property="phonenumber" column="phonenumber"/>
-            <result property="sex" column="sex"/>
+            <result property="sex" column="userSex"/>
             <result property="avatar" column="avatar"/>
             <result property="password" column="password"/>
-            <result property="status" column="status"/>
+            <result property="status" column="userStatus"/>
             <result property="delFlag" column="del_flag"/>
             <result property="loginIp" column="login_ip"/>
             <result property="loginDate" column="login_date"/>
@@ -67,6 +81,22 @@
         left join sys_user u on t.doctorId = u.user_id
     </sql>
 
+    <sql id="selSickroom">
+        select t.opDoctorReceiveRecordId, t.outpatientId, t.doctorId, t.type, t.status, t.money,t.coiStatus,t.personid,t.nick_name,t.name,t.code,p.bedId,p.cbName,p.csCreateTime
+        from (
+            select tr.opDoctorReceiveRecordId, tr.outpatientId, tr.doctorId, tr.type, tr.status, tr.createTime,ti.money,ti.status coiStatus,ti.personid,su.nick_name,ta.name,ta.code
+            from t_medical_outpatientdoctor_receiverecord tr, t_medical_cost_outpatient_info ti,sys_user su,t_medical_cost_person_archives ta
+            where tr.type = 2 and tr.outpatientId = ti.id and tr.doctorId = su.user_id and ti.personid = ta.id
+            ) t
+        left join
+            (
+            select ts.bedId,ts.personId,ts.createTime csCreateTime, tb.name cbName, tb.sickroomId, tb.remark cbRemark
+            from t_medical_cpoe_splitbed ts,t_medical_cpoe_bed tb
+            where ts.bedId = tb.id
+            ) p
+        on t.personid = p.personId
+    </sql>
+
     <select id="selectTMedicalOutpatientdoctorReceiverecordList" parameterType="TMedicalOutpatientdoctorReceiverecord"
             resultMap="TMedicalOutpatientdoctorReceiverecordResult">
         <include refid="selJoin"/>
@@ -84,6 +114,16 @@
             resultMap="TMedicalOutpatientdoctorReceiverecordResult">
         <include refid="selJoin"/>
         where opDoctorReceiveRecordId = #{opDoctorReceiveRecordId}
+    </select>
+
+    <select id="selectListAboutSickroom" parameterType="TMedicalOutpatientdoctorReceiverecord"
+            resultMap="TMedicalOutpatientdoctorReceiverecordResult">
+        <include refid="selSickroom"/>
+        <where>
+            <if test="outpatientId != null  and outpatientId != ''">and t.name like concat('%',#{outpatientId},'%')</if>
+            <if test="doctorId != null  and doctorId != ''">and t.nick_name like concat('%',#{doctorId},'%')</if>
+            <if test="createTime != null ">and p.csCreateTime = #{createTime}</if>
+        </where>
     </select>
 
     <insert id="insertTMedicalOutpatientdoctorReceiverecord" parameterType="TMedicalOutpatientdoctorReceiverecord">

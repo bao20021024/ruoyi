@@ -1,37 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.CpoeSplitbedMapper">
-    
-    <resultMap type="CpoeSplitbed" id="CpoeSplitbedResult">
-        <result property="id"    column="id"    />
-        <result property="personId"    column="personId"    />
-        <result property="doctorId"    column="doctorId"    />
-        <result property="bedId"    column="bedId"    />
-        <result property="createTime"    column="createTime"    />
-        <result property="remark"    column="remark"    />
+
+    <resultMap type="CpoeSplitbed" id="base">
+        <result property="id" column="id"/>
+        <result property="personId" column="personId"/>
+        <result property="doctorId" column="doctorId"/>
+        <result property="bedId" column="bedId"/>
+        <result property="createTime" column="createTime"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <resultMap type="CpoeSplitbed" extends="base" id="CpoeSplitbedResult">
+        <association property="cb" javaType="CpoeBed">
+            <result property="id" column="cbId"/>
+            <result property="name" column="cbName"/>
+            <result property="sickroomId" column="sickroomId"/>
+            <result property="remark" column="cbRemark"/>
+        </association>
+        <association property="cpa" javaType="CostPersonArchives">
+            <result property="id" column="cpaId"/>
+            <result property="name" column="cpaName"/>
+            <result property="age" column="age"/>
+            <result property="code" column="code"/>
+            <result property="sex" column="sex"/>
+        </association>
     </resultMap>
 
     <sql id="selectCpoeSplitbedVo">
         select id, personId, doctorId, bedId, createTime, remark from t_medical_cpoe_splitbed
     </sql>
 
+    <sql id="selJoin">
+        select ts.id, ts.personId, ts.doctorId, ts.bedId, ts.createTime, ts.remark ,tb.id cbId, tb.name cbName, tb.sickroomId, tb.remark cbRemark,ta.id cpaId, ta.name cpaName, ta.age, ta.code, ta.sex
+        from t_medical_cpoe_splitbed ts,t_medical_cpoe_bed tb,t_medical_cost_person_archives ta
+        where ts.bedId = tb.id and ts.personId = ta.id
+    </sql>
+
     <select id="selectCpoeSplitbedList" parameterType="CpoeSplitbed" resultMap="CpoeSplitbedResult">
-        <include refid="selectCpoeSplitbedVo"/>
-        <where>  
-            <if test="personId != null  and personId != ''"> and personId = #{personId}</if>
-            <if test="doctorId != null  and doctorId != ''"> and doctorId = #{doctorId}</if>
-            <if test="bedId != null  and bedId != ''"> and bedId = #{bedId}</if>
-            <if test="createTime != null "> and createTime = #{createTime}</if>
-        </where>
+        <include refid="selJoin"/>
+        <if test="personId != null  and personId != ''">and ta.name like concat('%',#{personId},'%')</if>
+        <if test="doctorId != null  and doctorId != ''">and ta.sex = #{doctorId}</if>
+        <if test="bedId != null  and bedId != ''">and tb.name like concat('%',#{bedId},'%')</if>
+        <if test="createTime != null ">and createTime = #{createTime}</if>
     </select>
-    
+
     <select id="selectCpoeSplitbedById" parameterType="String" resultMap="CpoeSplitbedResult">
         <include refid="selectCpoeSplitbedVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertCpoeSplitbed" parameterType="CpoeSplitbed">
         insert into t_medical_cpoe_splitbed
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -41,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="bedId != null">bedId,</if>
             <if test="createTime != null">createTime,</if>
             <if test="remark != null">remark,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
             <if test="personId != null">#{personId},</if>
@@ -49,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="bedId != null">#{bedId},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="remark != null">#{remark},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateCpoeSplitbed" parameterType="CpoeSplitbed">
@@ -69,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteCpoeSplitbedByIds" parameterType="String">
-        delete from t_medical_cpoe_splitbed where id in 
+        delete from t_medical_cpoe_splitbed where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

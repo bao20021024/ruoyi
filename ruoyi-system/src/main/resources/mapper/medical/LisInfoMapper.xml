@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.medical.mapper.LisInfoMapper">
 
-    <resultMap type="LisInfo" id="LisInfoResult">
+    <resultMap type="LisInfo" id="base">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="personId" column="personId"/>
@@ -12,6 +12,16 @@
         <result property="createTime" column="createTime"/>
         <result property="status" column="status"/>
         <result property="receiveRecordId" column="receiveRecordId"/>
+    </resultMap>
+
+    <resultMap type="LisInfo" extends="base" id="LisInfoResult">
+        <association property="cpa" javaType="CostPersonArchives">
+            <result property="id" column="cpaId"/>
+            <result property="name" column="cpaName"/>
+            <result property="age" column="age"/>
+            <result property="code" column="code"/>
+            <result property="sex" column="sex"/>
+        </association>
     </resultMap>
 
     <resultMap type="com.ruoyi.medical.modle.LisAndPacs" id="selAll">
@@ -30,6 +40,12 @@
          where ta.opDoctorReceiveRecordId = tl.receiveRecordId and ta.partName = tl.name and tl.personId = te.id
     </sql>
 
+    <sql id="selJoin">
+        select ti.id, ti.name,ti.personId, ti.doctorid, ti.createTime, ti.status, ti.receiveRecordId ,ta.id cpaId,ta.name cpaName,ta.age,ta.code,ta.sex
+        from t_medical_lis_info ti,t_medical_cost_person_archives ta
+        where ti.personId = ta.id
+    </sql>
+
     <sql id="selectLisInfoVo">
         select id, name, personId, doctorid, createTime, status, receiveRecordId from t_medical_lis_info
     </sql>
@@ -40,15 +56,13 @@
     </select>
 
     <select id="selectLisInfoList" parameterType="LisInfo" resultMap="LisInfoResult">
-        <include refid="selectLisInfoVo"/>
-        <where>
-            <if test="name != null  and name != ''">and name like concat('%', #{name}, '%')</if>
-            <if test="personId != null  and personId != ''">and personId = #{personId}</if>
-            <if test="doctorid != null  and doctorid != ''">and doctorid = #{doctorid}</if>
-            <if test="createTime != null ">and createTime = #{createTime}</if>
-            <if test="status != null ">and status = #{status}</if>
-            <if test="receiveRecordId != null  and receiveRecordId != ''">and receiveRecordId = #{receiveRecordId}</if>
-        </where>
+        <include refid="selJoin"/>
+        <if test="name != null  and name != ''">and ta.name like concat('%', #{name}, '%')</if>
+        <if test="personId != null  and personId != ''">and personId = #{personId}</if>
+        <if test="doctorid != null  and doctorid != ''">and doctorid = #{doctorid}</if>
+        <if test="createTime != null ">and createTime = #{createTime}</if>
+        <if test="status != null ">and status = #{status}</if>
+        <if test="receiveRecordId != null  and receiveRecordId != ''">and receiveRecordId = #{receiveRecordId}</if>
     </select>
 
     <select id="selectLisInfoById" parameterType="String" resultMap="LisInfoResult">

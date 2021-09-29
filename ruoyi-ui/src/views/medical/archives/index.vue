@@ -71,7 +71,7 @@
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
                      v-hasPermi="['medical:archives:edit']">修改
           </el-button>
-          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleBk(scope.row)"
+          <el-button size="mini" type="text" icon="el-icon-plus" @click="handleBk(scope.row)"
                      v-hasPermi="['medical:archives:edit']">办卡
           </el-button>
         </template>
@@ -88,12 +88,12 @@
           <el-input v-model="form.name" placeholder="请输入姓名"/>
         </el-form-item>
         <el-form-item v-show="show" label="年龄" prop="age">
-          <el-input v-model="form.age" placeholder="请输入年龄"/>
+          <el-input v-model.number="form.age" placeholder="请输入年龄"/>
         </el-form-item>
         <el-form-item v-show="show" label="身份证" prop="code">
           <el-input v-model="form.code" placeholder="请输入身份证" :disabled="!pdMoney"/>
         </el-form-item>
-        <el-form-item v-show="show" label="性别">
+        <el-form-item v-show="show" label="性别" prop="sex">
           <el-radio-group v-model="form.sex">
             <el-radio v-for="dict in dict.type.sys_user_sex" :key="dict.value" :label="dict.value">{{dict.label}}
             </el-radio>
@@ -129,6 +129,19 @@
     name: "Archives",
     dicts: ['sys_user_sex'],
     data() {
+      const checkIDCard = (rule, value, callback) => {
+        const IDCardReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[0-2])(([0-2][1-9])|10|20|30|31)\d{3}(\d|X|x)$/
+        // const sfzhReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+        if (value) {
+          if (IDCardReg.test(value)) {
+            callback()
+          } else {
+            callback(new Error('身份证号格式不正确'))
+          }
+        } else {
+          callback(new Error('请输入身份证号'))
+        }
+      }
       return {
         // 遮罩层
         loading: true,
@@ -163,7 +176,16 @@
         form: {},
         money: null,
         // 表单校验
-        rules: {},
+        rules: {
+          name: [{
+            required: true, message: '请输入姓名', trigger: 'blur'
+          }],
+          age: [{required: true, message: '年龄不能为空'},
+            {type: 'number', message: '年龄必须为数字值'}],
+          code: [
+            {required: false, validator: checkIDCard, trigger: 'blur'}],
+          sex: [{required: true, message: '必须选择性别', trigger: 'blur'}]
+        },
         pdMoney: false,
         show: true
       };
@@ -253,7 +275,7 @@
       /** 提交按钮 */
       submitForm() {
         this.$refs["form"].validate(valid => {
-          if (valid) {
+          if (valid || this.title == "办卡") {
             if (this.form.id != null && this.money == null) {
               updateArchives(this.form).then(response => {
                 this.msgSuccess("修改成功");

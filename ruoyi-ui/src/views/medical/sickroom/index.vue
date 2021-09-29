@@ -30,6 +30,16 @@
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="状态" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择状态" clearable size="small">
+          <el-option
+            v-for="dict in dict.type.medical_sickroom_status"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -62,18 +72,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['medical:sickroom:remove']"
-        >删除
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
           type="warning"
           plain
           icon="el-icon-download"
@@ -89,7 +87,6 @@
 
     <el-table v-loading="loading" :data="sickroomList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="病房记录id" align="center" prop="id"/>
       <el-table-column label="病房名称" align="center" prop="name"/>
       <el-table-column label="规格" align="center" prop="unit">
         <template slot-scope="scope">
@@ -102,16 +99,23 @@
         </template>
       </el-table-column>
       <el-table-column label="备注" align="center" prop="remark"/>
+      <el-table-column label="状态" align="center" prop="status">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.medical_sickroom_status" :value="scope.row.status"/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleFen(scope.row)"
-            v-hasPermi="['medical:sickroom:edit']"
-          >分配床位
-          </el-button>
+          <template v-if="scope.row.status == 1">
+            <el-button
+              size="mini"
+              type="text"
+              icon="el-icon-edit"
+              @click="handleFen(scope.row)"
+              v-hasPermi="['medical:sickroom:edit']"
+            >分配床位
+            </el-button>
+          </template>
           <el-button
             size="mini"
             type="text"
@@ -119,14 +123,6 @@
             @click="handleUpdate(scope.row)"
             v-hasPermi="['medical:sickroom:edit']"
           >修改
-          </el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['medical:sickroom:remove']"
-          >删除
           </el-button>
         </template>
       </el-table-column>
@@ -147,7 +143,7 @@
           <el-input v-model="form.name" placeholder="请输入病房名称"/>
         </el-form-item>
         <el-form-item label="规格" prop="unit">
-          <el-select v-model="form.unit" placeholder="请选择规格">
+          <el-select v-model="form.unit" :disabled="doShow" placeholder="请选择规格">
             <el-option
               v-for="dict in dict.type.medical_sickroom_unit"
               :key="dict.value"
@@ -191,7 +187,7 @@
 
   export default {
     name: "Sickroom",
-    dicts: ['medical_sickroom_unit', 'medical_sickroom_attribute'],
+    dicts: ['medical_sickroom_status', 'medical_sickroom_unit', 'medical_sickroom_attribute', 'medical_sickroom_status'],
     data() {
       return {
         // 遮罩层
@@ -221,11 +217,17 @@
           name: null,
           unit: null,
           attribute: null,
+          status: null
         },
         // 表单参数
         form: {},
         // 表单校验
-        rules: {}
+        rules: {
+          name: [{required: true, message: '请输入病房名', trigger: 'blur'}],
+          unit: [{required: true, message: '请选择病房规格', trigger: 'blur'}],
+          attribute: [{required: true, message: '请选择病房属性', trigger: 'blur'}]
+        },
+        doShow: true
       };
     },
     created() {
@@ -253,7 +255,8 @@
           name: null,
           unit: null,
           attribute: null,
-          remark: null
+          remark: null,
+          status: null
         };
         this.resetForm("form");
       },
@@ -276,12 +279,14 @@
       /** 新增按钮操作 */
       handleAdd() {
         this.reset();
+        this.doShow = false;
         this.open = true;
         this.title = "添加病房记录";
       },
       /** 修改按钮操作 */
       handleUpdate(row) {
         this.reset();
+        this.doShow = true;
         const id = row.id || this.ids
         getSickroom(id).then(response => {
           this.form = response.data;
@@ -292,6 +297,7 @@
       handleFen(row) {
         addBedSickroom(row).then(resp => {
           this.msgSuccess("分配成功!");
+          this.getList();
         });
       },
       /** 提交按钮 */
